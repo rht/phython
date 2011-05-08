@@ -1,0 +1,103 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}         
+\geometry{letterpaper}         
+%\usepackage{pstricks}
+%\usepackage{pst-sigsys}
+\usepackage{pst-sigsys,pst-plot,pstricks-add}
+
+\begin{document}
+%http://www.tug.org/texlive/Contents/live/texmf-dist/doc/generic/pst-sigsys/pst-sigsys-doc.pdf
+
+\section{psaxeslabels}
+%\psaxeslabels[keys] {arrows} (x0,y0)(x1,y1)(x2,y2){x-label}{y-label}
+\begin{pspicture}[showgrid=true](-2,-1)(2,1) \psaxeslabels(0,0)(-2,-1)(2,1){$\Re$}{$\Im$}
+\end{pspicture}
+\begin{pspicture}[showgrid=true](-2,-1)(2,2) \psset{linecolor=blue,xlpos=t,ylpos=l} \psaxeslabels{->}(-1,0)(-2,-1)(2,2){$x$}{$y$}
+\end{pspicture}
+
+
+
+
+
+\section{pstick}
+%\pstick[keys ]	{angle }	(coor ){ticklength }
+\begin{pspicture}[showgrid=true](-2,-1)(3,2) \psaxeslabels(0,0)(-2,-1)(3,2){$x$}{$y$} \pstick[linecolor=red](0,1){.2} \pstick[arrows=|-|]{90}(-1,0){.5} \psset{angle=45} \pstick[arrows=->](0,0){1} \pstick[linecolor=blue](1,0){.5} \pstick[linecolor=green]{135}(2,0){.5}
+\end{pspicture}
+
+\section{psstem}
+\begin{pspicture}[showgrid=true](0,-1)(6,2)
+    \psset{style=Stem,linecolor=blue,% 
+    stemtagformat=\color{red}\scriptstyle}
+    \psstem[stemhead=>,stemtag](1,2){-1,1,2}
+\end{pspicture}
+
+
+\begin{pspicture}[showgrid=true](6,2) 	\psldots(1,1) 	\psldots{45}(2,1) 	\psldots[ldotssize=.1]{120}(3,1)
+	\psset{linecolor=blue,angle=90}
+	\psldots[ldotssep=.5](4,1)
+	\psldots[scale=3](5,1)
+ \end{pspicture}
+
+
+
+\begin{pspicture}[showgrid=true](-3,-1)(3,1)
+	\psblock(-1.5,0){H}{$H(z)$}
+	\psadaptive[aoffset=-.5]{->}{H}(.5,-.75){Ha}
+	%-----------------
+	\psblock(1.5,0){H}{$H(z)$}
+	\psadaptive[aoffset=.5]{->}{H}(.5,.75){Ha}
+ \end{pspicture}
+ 
+
+
+\begin{pspicture}[showgrid=true](6,4) \psknob(1,1){w1}
+\nput{180}{w1}{$w_1$} \psknob[knoblength=2](3,1){w2}
+\nput{0}{w2}{$w_2$} \psknob[knobangle=90](5,1){w3} \psknob[knobwidth=1.5pt](1,3){w4} \psknob[scale=2.5](3,3){w5} \psset{radius=.5,knoblength=2} \psknob[arrows=-*](5,3){w6}
+\end{pspicture}
+
+
+ 
+\begin{pspicture}[showgrid=true](-3,-2)(4,1) \psset{style=RoundCorners,style=Arrow} \pssignal(-2.5,0){x}{$x[n]$} \dotnode(-1.25,0){dot} \psblock(0,0){H}{$H(z)$} \pscircleop(1.5,0){oplus} \pssignal(3,0){y}{$y[n]$} \nclist{ncline}{x,H,oplus,y} \ncbar[angle=-90,arm=.75]{dot}{oplus}
+\end{pspicture}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{figure}[ht]
+\centering %
+\begin{pspicture}[showgrid=false](0.5,-1.2)(9,1.55)
+%--- Define blocks ---
+\rput(0.5,0){\rnode{s}{$s[n]$}}
+\dotnode[dotstyle=square*,dotscale=0.001](1.7,0){dot}
+\psblock(3,.75){H1}{$H_1(z)$}
+\psblock(3,-.75){H2}{$H_2(z)$}
+\psblock(5.8,.75){B2}{$\hat H_2(z)$}
+\psblock(5.8,-.75){B1}{$\hat H_1(z)$}
+\pscircleop(7.7,0){ominus}
+\rput(9,0){\rnode{e}{$e[n]$}}
+
+%--- Connect blocks ---
+\psset{style=Arrow}
+\ncline[nodesepA=.15]{-}{s}{dot}
+\ncangle[angleA=90,angleB=180]{dot}{H1}
+\ncangle[angleA=-90,angleB=180]{dot}{H2}
+\ncline{H1}{B2} \naput[npos=.5]{$x_1[n]$}
+\ncline{H2}{B1} \naput[npos=.5]{$x_2[n]$}
+\ncangle[angleB=90]{B2}{ominus} \naput[npos=.5]{$z_1[n]$}
+\ncangle[angleB=-90]{B1}{ominus} \naput[npos=.5]{$z_2[n]$}
+\ncline[nodesepB=.15]{ominus}{e}
+\end{pspicture}
+\end{figure}
+
+
+
+\end{document}
+

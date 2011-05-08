@@ -1,0 +1,235 @@
+
+\documentclass{article}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage[ascii]{inputenc}
+
+
+
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\def\PY@tok@gd{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\def\PY@tok@gu{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\def\PY@tok@gt{\def\PY@tc##1{\textcolor[rgb]{0.00,0.25,0.82}{##1}}}
+\def\PY@tok@gs{\let\PY@bf=\textbf}
+\def\PY@tok@gr{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\def\PY@tok@cm{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@vg{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@m{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@mh{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@go{\def\PY@tc##1{\textcolor[rgb]{0.50,0.50,0.50}{##1}}}
+\def\PY@tok@ge{\let\PY@it=\textit}
+\def\PY@tok@vc{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@il{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@cs{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@cp{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\def\PY@tok@gi{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\def\PY@tok@gh{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\def\PY@tok@ni{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\def\PY@tok@nl{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\def\PY@tok@nn{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@no{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\def\PY@tok@na{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\def\PY@tok@nb{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@nc{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@nd{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\def\PY@tok@ne{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\def\PY@tok@nf{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@si{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\def\PY@tok@s2{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@vi{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@nt{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@nv{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@s1{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sh{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sc{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sx{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@bp{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@c1{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@kc{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@c{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@mf{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@err{\def\PY@bc##1{\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{##1}}}
+\def\PY@tok@kd{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@ss{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@sr{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\def\PY@tok@mo{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@kn{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@mi{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@gp{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\def\PY@tok@o{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@kr{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@s{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@kp{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@w{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\def\PY@tok@kt{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\def\PY@tok@ow{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\def\PY@tok@sb{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@k{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@se{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\def\PY@tok@sd{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+\begin{document}
+
+\section*{}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{}}
+\PY{c}{\PYZsh{}  BlobEdit - A totally silly application for showing}
+\PY{c}{\PYZsh{}  ========   off the GUI framework and providing an example}
+\PY{c}{\PYZsh{}             of its use.}
+\PY{c}{\PYZsh{}}
+\PY{c}{\PYZsh{}  Blobs are red squares that you place on a Blob Document}
+\PY{c}{\PYZsh{}  by clicking and move around by dragging. You can save}
+\PY{c}{\PYZsh{}  your blob arrangement in a file and load it back later}
+\PY{c}{\PYZsh{}  to impress your friends (or send them away screaming).}
+\PY{c}{\PYZsh{}}
+\PY{c}{\PYZsh{}  News flash: Got a blob you don't want? Now you can}
+\PY{c}{\PYZsh{}  get rid of it by shift-clicking it! Isn't that useful!}
+\PY{c}{\PYZsh{}}
+
+\PY{k+kn}{import} \PY{n+nn}{pickle}
+\PY{k+kn}{from} \PY{n+nn}{GUI} \PY{k+kn}{import} \PY{n}{Application}\PY{p}{,} \PY{n}{ScrollableView}\PY{p}{,} \PY{n}{Document}\PY{p}{,} \PY{n}{Window}\PY{p}{,} \PY{n}{FileType}\PY{p}{,} \PY{n}{Cursor}\PY{p}{,} \PY{n}{rgb}
+\PY{k+kn}{from} \PY{n+nn}{GUI.Geometry} \PY{k+kn}{import} \PY{n}{pt\PYZus{}in\PYZus{}rect}\PY{p}{,} \PY{n}{offset\PYZus{}rect}\PY{p}{,} \PY{n}{rects\PYZus{}intersect}
+\PY{k+kn}{from} \PY{n+nn}{GUI.StdColors} \PY{k+kn}{import} \PY{n}{black}\PY{p}{,} \PY{n}{red}
+
+
+\PY{k}{class} \PY{n+nc}{BlobApp}\PY{p}{(}\PY{n}{Application}\PY{p}{)}\PY{p}{:}
+
+    \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+        \PY{n}{Application}\PY{o}{.}\PY{n}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blob\PYZus{}type} \PY{o}{=} \PY{n}{FileType}\PY{p}{(}\PY{n}{name} \PY{o}{=} \PY{l+s}{"}\PY{l+s}{Blob Document}\PY{l+s}{"}\PY{p}{,} \PY{n}{suffix} \PY{o}{=} \PY{l+s}{"}\PY{l+s}{blob}\PY{l+s}{"}\PY{p}{,} 
+            \PY{c}{\PYZsh{}mac\PYZus{}creator = "BLBE", mac\PYZus{}type = "BLOB", \PYZsh{} These are optional}
+        \PY{p}{)}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{file\PYZus{}type} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blob\PYZus{}type}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blob\PYZus{}cursor} \PY{o}{=} \PY{n}{Cursor}\PY{p}{(}\PY{l+s}{"}\PY{l+s}{blob.tiff}\PY{l+s}{"}\PY{p}{)}
+    
+    \PY{k}{def} \PY{n+nf}{open\PYZus{}app}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{new\PYZus{}cmd}\PY{p}{(}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{make\PYZus{}document}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{fileref}\PY{p}{)}\PY{p}{:}
+        \PY{k}{return} \PY{n}{BlobDoc}\PY{p}{(}\PY{n}{file\PYZus{}type} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blob\PYZus{}type}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{make\PYZus{}window}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{document}\PY{p}{)}\PY{p}{:}
+        \PY{n}{win} \PY{o}{=} \PY{n}{Window}\PY{p}{(}\PY{n}{size} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{400}\PY{p}{,} \PY{l+m+mi}{400}\PY{p}{)}\PY{p}{,} \PY{n}{document} \PY{o}{=} \PY{n}{document}\PY{p}{)}
+        \PY{n}{view} \PY{o}{=} \PY{n}{BlobView}\PY{p}{(}\PY{n}{model} \PY{o}{=} \PY{n}{document}\PY{p}{,} \PY{n}{extent} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1000}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{,} \PY{n}{scrolling} \PY{o}{=} \PY{l+s}{'}\PY{l+s}{hv}\PY{l+s}{'}\PY{p}{,}
+            \PY{n}{cursor} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blob\PYZus{}cursor}\PY{p}{)}
+        \PY{n}{win}\PY{o}{.}\PY{n}{place}\PY{p}{(}\PY{n}{view}\PY{p}{,} \PY{n}{left} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{top} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{right} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{bottom} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{sticky} \PY{o}{=} \PY{l+s}{'}\PY{l+s}{nsew}\PY{l+s}{'}\PY{p}{)}
+        \PY{n}{win}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+
+
+\PY{k}{class} \PY{n+nc}{BlobView}\PY{p}{(}\PY{n}{ScrollableView}\PY{p}{)}\PY{p}{:}
+
+    \PY{k}{def} \PY{n+nf}{draw}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{canvas}\PY{p}{,} \PY{n}{update\PYZus{}rect}\PY{p}{)}\PY{p}{:}
+        \PY{n}{canvas}\PY{o}{.}\PY{n}{erase\PYZus{}rect}\PY{p}{(}\PY{n}{update\PYZus{}rect}\PY{p}{)}
+        \PY{n}{canvas}\PY{o}{.}\PY{n}{fillcolor} \PY{o}{=} \PY{n}{red}
+        \PY{n}{canvas}\PY{o}{.}\PY{n}{pencolor} \PY{o}{=} \PY{n}{black}
+        \PY{k}{for} \PY{n}{blob} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{model}\PY{o}{.}\PY{n}{blobs}\PY{p}{:}
+            \PY{k}{if} \PY{n}{blob}\PY{o}{.}\PY{n}{intersects}\PY{p}{(}\PY{n}{update\PYZus{}rect}\PY{p}{)}\PY{p}{:}
+                \PY{n}{blob}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{n}{canvas}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{mouse\PYZus{}down}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{event}\PY{p}{)}\PY{p}{:}
+        \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{n}{event}\PY{o}{.}\PY{n}{position}
+        \PY{n}{blob} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{model}\PY{o}{.}\PY{n}{find\PYZus{}blob}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+        \PY{k}{if} \PY{n}{blob}\PY{p}{:}
+            \PY{k}{if} \PY{o+ow}{not} \PY{n}{event}\PY{o}{.}\PY{n}{shift}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{drag\PYZus{}blob}\PY{p}{(}\PY{n}{blob}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{model}\PY{o}{.}\PY{n}{delete\PYZus{}blob}\PY{p}{(}\PY{n}{blob}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{model}\PY{o}{.}\PY{n}{add\PYZus{}blob}\PY{p}{(}\PY{n}{Blob}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{)}
+    
+    \PY{k}{def} \PY{n+nf}{drag\PYZus{}blob}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{blob}\PY{p}{,} \PY{n}{x0}\PY{p}{,} \PY{n}{y0}\PY{p}{)}\PY{p}{:}
+        \PY{k}{for} \PY{n}{event} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{track\PYZus{}mouse}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{n}{event}\PY{o}{.}\PY{n}{position}
+            \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{model}\PY{o}{.}\PY{n}{move\PYZus{}blob}\PY{p}{(}\PY{n}{blob}\PY{p}{,} \PY{n}{x} \PY{o}{-} \PY{n}{x0}\PY{p}{,} \PY{n}{y} \PY{o}{-} \PY{n}{y0}\PY{p}{)}
+            \PY{n}{x0} \PY{o}{=} \PY{n}{x}
+            \PY{n}{y0} \PY{o}{=} \PY{n}{y}
+    
+    \PY{k}{def} \PY{n+nf}{blob\PYZus{}changed}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{model}\PY{p}{,} \PY{n}{blob}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{invalidate\PYZus{}rect}\PY{p}{(}\PY{n}{blob}\PY{o}{.}\PY{n}{rect}\PY{p}{)}
+
+
+\PY{k}{class} \PY{n+nc}{BlobDoc}\PY{p}{(}\PY{n}{Document}\PY{p}{)}\PY{p}{:}
+
+    \PY{n}{blobs} \PY{o}{=} \PY{n+nb+bp}{None}
+
+    \PY{k}{def} \PY{n+nf}{new\PYZus{}contents}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blobs} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+
+    \PY{k}{def} \PY{n+nf}{read\PYZus{}contents}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n+nb}{file}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blobs} \PY{o}{=} \PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n+nb}{file}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{write\PYZus{}contents}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n+nb}{file}\PY{p}{)}\PY{p}{:}
+        \PY{n}{pickle}\PY{o}{.}\PY{n}{dump}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blobs}\PY{p}{,} \PY{n+nb}{file}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{add\PYZus{}blob}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{blob}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blobs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{blob}\PY{p}{)}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{changed}\PY{p}{(}\PY{p}{)}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{notify\PYZus{}views}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{blob\PYZus{}changed}\PY{l+s}{'}\PY{p}{,} \PY{n}{blob}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{find\PYZus{}blob}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
+        \PY{k}{for} \PY{n}{blob} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blobs}\PY{p}{:}
+            \PY{k}{if} \PY{n}{blob}\PY{o}{.}\PY{n}{contains}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n}{blob}
+        \PY{k}{return} \PY{n+nb+bp}{None}
+
+    \PY{k}{def} \PY{n+nf}{move\PYZus{}blob}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{blob}\PY{p}{,} \PY{n}{dx}\PY{p}{,} \PY{n}{dy}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{notify\PYZus{}views}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{blob\PYZus{}changed}\PY{l+s}{'}\PY{p}{,} \PY{n}{blob}\PY{p}{)}
+        \PY{n}{blob}\PY{o}{.}\PY{n}{move}\PY{p}{(}\PY{n}{dx}\PY{p}{,} \PY{n}{dy}\PY{p}{)}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{changed}\PY{p}{(}\PY{p}{)}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{notify\PYZus{}views}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{blob\PYZus{}changed}\PY{l+s}{'}\PY{p}{,} \PY{n}{blob}\PY{p}{)}
+    
+    \PY{k}{def} \PY{n+nf}{delete\PYZus{}blob}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{blob}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{notify\PYZus{}views}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{blob\PYZus{}changed}\PY{l+s}{'}\PY{p}{,} \PY{n}{blob}\PY{p}{)}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blobs}\PY{o}{.}\PY{n}{remove}\PY{p}{(}\PY{n}{blob}\PY{p}{)}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{changed}\PY{p}{(}\PY{p}{)}
+
+
+\PY{k}{class} \PY{n+nc}{Blob}\PY{p}{:}
+
+    \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{rect} \PY{o}{=} \PY{p}{(}\PY{n}{x} \PY{o}{-} \PY{l+m+mi}{20}\PY{p}{,} \PY{n}{y} \PY{o}{-} \PY{l+m+mi}{20}\PY{p}{,} \PY{n}{x} \PY{o}{+} \PY{l+m+mi}{20}\PY{p}{,} \PY{n}{y} \PY{o}{+} \PY{l+m+mi}{20}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{contains}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
+        \PY{k}{return} \PY{n}{pt\PYZus{}in\PYZus{}rect}\PY{p}{(}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{rect}\PY{p}{)}
+    
+    \PY{k}{def} \PY{n+nf}{intersects}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{rect}\PY{p}{)}\PY{p}{:}
+        \PY{k}{return} \PY{n}{rects\PYZus{}intersect}\PY{p}{(}\PY{n}{rect}\PY{p}{,} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{rect}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{move}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{dx}\PY{p}{,} \PY{n}{dy}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{rect} \PY{o}{=} \PY{n}{offset\PYZus{}rect}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{rect}\PY{p}{,} \PY{p}{(}\PY{n}{dx}\PY{p}{,} \PY{n}{dy}\PY{p}{)}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{draw}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{canvas}\PY{p}{)}\PY{p}{:}
+        \PY{n}{canvas}\PY{o}{.}\PY{n}{fill\PYZus{}frame\PYZus{}rect}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{rect}\PY{p}{)}
+
+
+\PY{n}{BlobApp}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{run}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\end{document}
