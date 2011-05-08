@@ -1,0 +1,20 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}         
+\geometry{letterpaper}         
+
+
+\usepackage{pst-spectra}
+
+
+\begin{document}
+    \psspectrum \psspectrum[element=Fe] \psspectrum[absorption,element=Fe2+]
+    
+    \section{}
+    \psspectrum[element={Hg,Cd2+,W+}]
+
+    \section{}
+
+    \psspectrum[brightness=0.5,gamma=0.6](\linewidth,1)
+    \psspectrum[axe,brightness=5,element=Hg,lwidth=0.05,Imin=0.05](\linewidth,1)
+
+\end{document}

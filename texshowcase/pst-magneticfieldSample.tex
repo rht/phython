@@ -1,0 +1,37 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}         
+\geometry{letterpaper}         
+
+
+\usepackage{pst-magneticfield}
+
+
+\begin{document}
+
+\begin{pspicture*}[showgrid](-7,-8)(7,8)
+\psmagneticfield[linecolor={[HTML]{006633}},N=3,R=2,nS=1](-7,-8)(7,8)
+\psframe*[linecolor={[HTML]{99FF66}}](-7,-8)(7,-7)
+\rput(0,-7.5){[{\textcolor{white}{L=4}},N=3,R=2,nS=1]}
+\end{pspicture*}
+%
+%
+%\begin{pspicture*}[showgrid](-7,-8)(7,8)
+%\psmagneticfield[linecolor={[HTML]{006633}},L=8,N=3,R=2,nS=1,PasB=0.0025,pointsB=5500](-7,-8)(7,8)
+%\psframe*[linecolor={[HTML]{99FF66}}](-7,-8)(7,-7)
+%\rput(0,-7.5){[textcolor{white}{L=8}},N=3,R=2,nS=1]}
+%\end{pspicture*}
+%
+%\begin{postscript}
+%\psset{unit=0.75,AntiHelmholtz,
+%  R=2,pointsB=500,pointsS=2000,PasB=0.02,PasS=0.00275,nS=10,
+%  nL=2,drawSelf=true,styleSpire=styleSpire,styleCourant=sensCourant}
+%\begin{pspicture*}(-7,-6)(7,6)
+%\psmagneticfield[linecolor={[HTML]{660066}},StreamDensityPlot](-7,-6)(7,6)
+%\end{pspicture*}
+%\end{postscript}
+
+\begin{pspicture}(-6,-4)(6,4)
+    \psmagneticfield[N=3,R=2,L=2,StreamDensityPlot](-6,-4)(6,4)
+\end{pspicture}
+
+\end{document}
