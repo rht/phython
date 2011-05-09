@@ -1,20 +1,4 @@
-\synctex=1
-\documentclass[12pt]{article}
-\usepackage{graphicx}
-\usepackage{setspace}
-\usepackage{fullpage}
-\usepackage{pdfpages}
-\usepackage{float}
-\usepackage{rotating}
-\usepackage{graphicx}
-\usepackage{setspace}
-\usepackage{fullpage}
-\usepackage{pdfpages}
-\usepackage{float}
-\usepackage{rotating}
-
-\usepackage{braket}
-
+\input{preamble.tex}
 \title{Guiding Principles of Statistical Mechanics}
 \begin{document}
 \maketitle
@@ -85,7 +69,7 @@ $$ S = \sum_{\mu} p \ln(p)$$
 
 Suppose $f_i(p,q)$ are functions of the microstate in question, i.e. can be total energy.  The, maximizing entropy with the following constraints:
 
-$$<f_i>= F_i$$
+$$\expect{f_i}= F_i$$
 
 leads directly to the bolztmann factor, if we are considering distinguishable particles, Fermi-dirac Factor if we are considering Fermions, and Bose-Einstein factors if we are considering Bosons.
 
@@ -115,7 +99,7 @@ $$Z(\alpha, \lambda_i) = \sum_{\mu} e^{- \alpha - \sum_i \lambda_i F_i}$$
 \item  If you go through the math, you'll see all the information thermodynamic information we actually measure ($\{F_i \}$)is actually encoded in Z.  That's why it's called the "generating function".  Specifically,
 $$\partial_{\lambda_i} \ln(Z) = F_i$$
 and 
-$$\partial_{\lambda_i}^2 \ln(Z)= <(f_i-F_i)^2>$$
+$$\partial_{\lambda_i}^2 \ln(Z)= \expect{(f_i-F_i)^2}$$
 
 \end{itemize}
 
@@ -138,12 +122,12 @@ $$Z(\beta_i) = \int \Omega_i(F_i) e^{- \beta_i F_i} dF_i$$
 
 This is the same partition function as obtained above when there is one constraint, specifically:
 
-$$<f_i (q,p)>= F_i$$
+$$\expect{f_i (q,p)}= F_i$$
 
 What is cute, is that the cumulants of $f_i$ are generated directly by the expansion:
 
-$$\ln(Z)= \sum_n<(f_i- F_i)^n> \frac{\beta_i^n}{n!}$$
-$$\rightarrow \partial_{\beta_i}^n \ln Z = <(f_i- F_i)^n>$$
+$$\ln(Z)= \sum_n\expect{(f_i- F_i)^n} \frac{\beta_i^n}{n!}$$
+$$\rightarrow \partial_{\beta_i}^n \ln Z = \expect{(f_i- F_i)^n}$$
 
 This fact might be easier to digest if we consider a laplace transform to be a fourier transform with the contour of integration rotated.
 
