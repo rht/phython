@@ -1,0 +1,73 @@
+\input{preamble.tex}
+
+\usepackage{multicol}
+
+\begin{document}
+
+    \section{$\Omega$ and $Z$}
+    \newcommand{\ThE}{thermal equilibrium}
+        
+        In this section, we want to answer why $Z$ is a more efficient technology than the good 'ol $\Omega$.
+        \begin{align*}
+            &P(\mu_i) = e^{-\beta E_i}
+            \left( \frac{Z_{N-1}(\beta)}{Z_N(\beta)}\right)\\
+            &P(\mu_1,\mu_2,\mu_3,\ldots) = \frac{e^{-\beta E_1} e^{-\beta E_2} e^{-\beta E_3} \cdots}{Z(\beta)} = \frac{e^{-\beta E} }{Z(\beta)}\\
+        \end{align*}
+
+        %&=& &=& &=& &=& &=& &=& &=& &=& &=& =
+        Let's zoom into the system to see what's really going in there. As usual, in \ThE, the probability of a microstate only depends on its energy.
+
+            \[P(\mu_i) = \frac1{\Omega_1(E_{\mu_i})} \]
+        \begin{align}
+            P(\mu_1,\mu_2,\mu_3,\ldots) &= \frac1{\Omega_1(E_1)} \frac1{\Omega_1(E_2)} \frac1{\Omega_1(E_3)} \ldots \\
+            &= \frac1{\Omega_N(E)}
+        \end{align}
+
+        Notice that these equations already represent thermal equilibrium, since they are characterized only by energy and both the element and the whole system are described by the SAME characteristic function, $\Omega$. Thermal equilibrium is our one and only approximation, hence, one shouldn't expect to do more approximation in order to arrive at Z. Boltzmann relation means your system is renormalizable.\\
+        There are three ways to exploit the relation between (1) and (2):
+        \paragraph{1. not even close to a harmonic oscillator}
+        Equation (1) to (2) may look like a tiny step in \LaTeX, but it is actually a giant step.
+        Rewrite $\Omega_1$ as $e^{ S_1}$, hence the relation becomes
+\[
+            \sum_i S_1(E_i) = S_N(E) = S_N(\sum_i E_i) \\
+            \]
+        \newcommand{\aE}{\epsilon}
+        which means $S_N$ must not depend on the spread of the $E_i$ distribution, to see this mathematically, let's taylor-expand around $\aE$
+        \newcommand{\soi}{\sum_i}
+        \newcommand{\Stothei}[1] {{\hat\pdc}^{#1} S_1(\aE)}
+        \[ \soi S_1(\aE) +  \hat\pdc S_1 \soi(E_i-\aE) +  {\hat\pdc}^2 S_1 \soi (E_i-\aE)^2 + \cdots  = S_N(E) \]
+        \[ NS_1(\aE) + \Stothei{} \cdot 0 + \Stothei{2}\sigma_E + \cdots = S_N(E)   \]
+        or, $\Stothei{}=\beta$ where $\beta$ is a constant.
+        %\[  \sum_{i=1}\sum_k \frac1{k!}\pdc^k_xS_1\Big|_{x=E_i} (E_i-E)^k = S_N(\sum_iE_i - NE) \]
+        %\[  \sum_{i=1}S_1(E_i) + \sum_iS'_1(E_i)(E_i-E) + \cdots = S_N(0) \]
+
+        Hey, the entropy is automatically maximized, too (which means, it is redundant to further assume that entropy is maximized).
+
+        \paragraph{2. vary N}
+        
+
+
+
+
+        Back to one particle, we are now authorized to use this relation
+        \begin{align*}
+            &p(\mu_i) = \frac{\Omega_{N -1}(E-E_{\mu_i})}{\Omega_N(E)} \\
+            &= \exp(\log\Omega_{N-1}(E-E_{\mu_i}) - \log \Omega_N(E))\\
+            & = \frac{\Omega_{N-1}( E )}{\Omega_N(E)} \exp(-\pd{}{E}\log \Omega_{N-1}E_i - \frac{1}{2}\pddc \log\Omega_{N-1}E_i^2 - \cdots  )\\
+            & = \frac{\Omega_{N-1}( E )}{\Omega_N(E)} \exp(-\beta E_i -\frac12 \pd{\beta}{E} E_i^2 - \cdots  )\\
+            & = \frac{\exp(-\beta E_i)}{Z(\beta,\mathcal{O}(E_i^2))}\\ 
+        \end{align*}
+        where $\beta$ is just a label (until this point, you can safely assume that the). There are two completely different arguments: one, the multiplicty is maximized, two, the state only depends on energy
+
+        Another way to look at thermal equilibrium: we randomly sample a small element of our system, and yet it will still look exactly the same as its parent system (redundancy of information, rescaling, whatever).
+
+        Possible mathematical relations:
+        \[Z_{1R}(\beta,E_i)  = \frac{\Omega_N(E)}{ \Omega_{N-1}(E)}\frac1{\exp(+ \frac{\beta}{2C_v T}E_i^2 - \cdots  )}\]
+            Now we begin to see why we need log. All of our arguments
+            \[\log Z_1 = \pd{}{N}\log \Omega_N(E)\]
+        The difference between the two description is that the former gives us the real-life particle description, why the latter only tells us about the smoothed out representation of the system.
+
+        In the Z description, we are instead viewing the system as a field (``N is not fixed'', but we don't care).\\
+        topic: http://ajp.aapt.org/resource/1/ajpias/v71/i11/p1136_s1
+
+\end{document}
