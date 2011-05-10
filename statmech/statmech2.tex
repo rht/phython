@@ -29,9 +29,9 @@
 
         Notice that these equations already represent thermal equilibrium,
         since they are characterized only by energy.
-        Thermal equilibrium is our one and only approximation,
+        Thermal equilibrium is our one and only approximation\footnote{this includes the assumption that $\beta$ is constant in the range $E\pm\Delta E$},
         hence, one shouldn't expect to do more approximation in order to arrive at Z.\\
-        There are three ways to exploit the relation between (1) and (2):
+        There are three ways to exploit the relation between (1) and (2), but first I need to introduce several notations:
 
         %Preliminary
         \newcommand{\aE}{\epsilon}
@@ -40,25 +40,32 @@
         Equation (1) to (2) may look like a tiny step in \LaTeX,
         but it is actually a giant step.
         Rewrite $\Omega_1$ as $e^{ S_1}$, hence the relation becomes
-        \[
-        \soi S_1(E_i) = S_N(E) = S_N(\soi E_i) \\
-            \]
+        \begin{equation}
+            \label{eq:mainassumption}
+            \soi S_1(E_i) = S_N(E) = S_N(\soi E_i) \\
+        \end{equation}
 
 
-            \paragraph{1. principle of least assumption}
-            \footnote{a more mediocre and tedious derivation is given in the appendix}
+            \paragraph{1. principle of least assumption
+            \footnote{a more mediocre and tedious derivation is given in the appendix}}
+            For \eqref{eq:mainassumption} to be true,
             $S_N(E)$ must not depend on the spread of the $E_i$ distribution,
             where mathematically you can freely rearrange your energy distribution as you wish
             \[S_1(E_1) + S_1(E_2) = S_1(E_1+E_2) + S_1(0) \]
-            From here I claim $S_1$ to be
+            From here we know that $S_1$ must be a linear function
             \[ S_1(x) = S_1(0) + \beta x\]
             where $\beta = \pdc S_1 = \mathrm{constant}$.
 
 
-            Hey, the entropy is automatically maximized, too
-            (which means, it is redundant to further assume that entropy is maximized).\\
-            We can now write the probability as
-            \[ P(\mu_i) = e^{-S_1(0) -\beta E_i} \]
+            Interpretations:
+            \begin{itemize}
+                \item Hey, the entropy is automatically maximized, too
+                    (which means, it is redundant
+                    to further assume that entropy is maximized).\\
+                \item We can now write the probability as
+                    \[ P(\mu_i) = e^{-S_1(0) -\beta E_i} \]
+                \item any visual reasons on why the entropy increases linearly?
+            \end{itemize}
 
 
             \paragraph{2. vary N}
@@ -77,10 +84,12 @@
                          - \cdots  )\\
                 & = \frac{\exp(-\beta E_i)}{Z_1(\beta,\mathcal{O}(E_i^2))}\\ 
             \end{align*}
-            where $\beta$ is just a label
-            (until this point, you can safely assume that the).
-            There are two completely different arguments:
-            one, the multiplicty is maximized, two, the state only depends on energy
+            There are two completely different arguments
+            to arrive at Boltzmann distribution:
+            \begin{itemize}
+                \item the multiplicity is maximized
+                \item the state only depends on energy
+            \end{itemize}
 
             Another way to look at thermal equilibrium:
             we randomly sample a small element of our system,

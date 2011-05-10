@@ -107,8 +107,63 @@ Complete vertex:
 
 
 \section{feynmp}
-\begin{fmfgraph*}(40,30) \fmfpen{thick} \fmfleft{i1,i2} \fmfright{o1,o2} \fmf{fermion}{i1,v1,o1} \fmf{fermion}{i2,v2,o2} \fmf{photon,label=$q$}{v1,v2} \fmfdot{v1,v2}
-\end{fmfgraph*}
+\begin{fmffile}{simple} \begin{fmfgraph}(40,25)
+% Note that the size is given in normal parentheses % instead of curly brackets.
+% Define external vertices from bottom to top
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{photon}{v1,v2}
+\end{fmfgraph}
+\end{fmffile}
+
+\begin{fmffile}{simple_tree} \begin{fmfgraph}(40,25)
+\fmfleft{i} \fmfright{o1,o2,o3} \fmf{fermion}{i,v1,o1} \fmf{photon}{v1,v2} \fmf{fermion}{o2,v2,o3}
+\end{fmfgraph} \end{fmffile}
+
+\begin{fmffile}{simple_box} \begin{fmfgraph}(40,25)
+\fmfleft{i1,i2} \fmfright{o1,o2} \fmf{fermion}{i1,v1,v2,o1} \fmf{fermion}{o2,v4,v3,i2} \fmf{photon}{v1,v3} \fmf{photon}{v2,v4}
+\end{fmfgraph} \end{fmffile}
+
+\begin{fmffile}{simple_labels} \begin{fmfgraph*}(40,25)
+\fmfleft{i1,i2} \fmfright{o1,o2}
+\fmflabel{$e^-$}{i1} \fmflabel{$e^+$}{i2} \fmflabel{$e^+,\mu^+$}{o1} \fmflabel{$e^-,\mu^-$}{o2}
+\fmflabel{$i\sqrt{\alpha}$}{v1} \fmflabel{$i\sqrt{\alpha}$}{v2}
+\fmf{fermion}{i1,v1,i2} \fmf{fermion}{o1,v2,o2}
+\fmf{photon,label=$\gamma,,Z^0$}{v1,v2} \end{fmfgraph*}
+\end{fmffile}
+
+\begin{fmffile}{tree} \begin{fmfgraph}(40,30)
+\fmfbottom{i1,d1,o1} \fmfright{o0,o2,o3} \fmf{fermion}{i1,v1,o1} \fmffreeze \fmf{fermion}{o2,v2,o3} \fmf{photon,tension=1.5}{v1,v2}
+\end{fmfgraph} \end{fmffile}
+
+\begin{fmffile}{simple_cross} % This is a bad sample. \begin{fmfgraph}(40,25)
+\fmfleft{i1,i2} \fmfright{o1,o2} \fmf{fermion}{i1,v1,o2} \fmf{fermion}{i2,v2,o1} \fmf{photon}{v1,v2}
+\end{fmfgraph} \end{fmffile}
+
+\begin{fmffile}{penguin_both} \begin{fmfgraph}(40,25)
+\fmfleft{i1,i2} \fmfright{o1,o2} \fmf{fermion}{i1,v1,o1} \fmf{fermion}{i2,v2,v3,v4,o2} \fmf{photon}{v1,v3} \fmf{photon,left=0.5,tension=0.2}{v2,v4} % W line
+\end{fmfgraph} \end{fmffile}
+
+\begin{fmffile}{penguin_oneside} \begin{fmfgraph*}(40,30)
+\fmfstraight \fmfleft{g1,g2,i3} % g1 and g2 will be used later \fmfright{o1,o2,o3} \fmf{fermion}{i3,v2,v3,v4,o3} \fmf{fermion}{o1,v1,o2} \fmf{photon,label=$Z^0$}{v1,v3} \fmf{photon,left=0.5,tension=0.2}{v2,v4}
+\fmf{phantom}{g1,v1,g2} % pull Z0 from the left \end{fmfgraph*}
+\end{fmffile}
+
+
+\begin{fmffile}{sunset} \begin{fmfgraph}(40,40)
+\fmfleft{i} \fmfright{o} \fmf{plain,tension=5}{i,v1} \fmf{plain,tension=5}{v2,o} \fmf{plain,left,tension=0.4}{v1,v2,v1} \fmf{plain}{v1,v2} \fmfdot{v1,v2}
+\end{fmfgraph} \end{fmffile}
+
+\begin{fmffile}{ears} \begin{fmfgraph}(50,30)
+\fmftop{t0,t1,t2,t3} \fmfbottom{b0,b1,b2,b3} \fmf{phantom}{t1,v1,b1} \fmf{phantom}{t2,v2,b2} \fmffreeze \fmf{plain,right}{v1,v2,v1} \fmf{plain,tension=0.8,right=270}{v1,v1} \fmf{plain,tension=0.8,right}{v2,v2} \fmfdot{v1,v2}
+\end{fmfgraph} \end{fmffile}
+
+
+\begin{fmffile}{eyeglasses} \begin{fmfgraph}(50,30)
+\fmfleft{i} \fmfright{o} \fmf{phantom,tension=10}{i,i1} \fmf{phantom,tension=10}{o,o1} \fmf{fermion,left,tension=0.4}{i1,v1,i1} \fmf{fermion,right,tension=0.4}{o1,v2,o1} \fmf{dashes}{v1,v2}
+\end{fmfgraph} \end{fmffile}
 
 
 \end{document}

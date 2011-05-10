@@ -1,30 +1,22 @@
+phython -- "physics hackathon"
+=============================
 
+## DESCRIPTION
+This is a collection of small physics projects (quick simulations, back-of-the-envelope calculations, and reviews)
 
-requirement: scons
-
+## LaTeX tools
+The ultimate latex preamble with modern tools (e.g. siunitx)
 Realtime latex: gummi
-
-Shift+command click in Skim
-
-"compile once" write many
-
-most cutting edge SI units package (2011/04/28)
-documentations:
-http://mirror.unl.edu/ctan/macros/latex/contrib/siunitx/siunitx.pdf
-
+latexmk: "compile once" write many
 
 for the impatient, check out the texshowcase files
 
 Useful documentclass:
 article
-*tufte-latex*
+*tufte-latex *
 revtex4-1
-exam209
 badge ; badge labe
-bizcar ; business card
-booklet
 card
-cdcover
 courseoutline; university course outline
 coursepaper; university course paper
 *labbook; lab journals*
