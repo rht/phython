@@ -1,0 +1,18 @@
+\section{APPENDIX}
+        \subsection{1. principle of least assumption: not even close to a harmonic oscillator}
+        there are two styles to do the taylor expansion:
+        
+        \paragraph{1. expand around average energy \aE}
+        \[ \soi S_1(\aE) +  \hat\pdc S_1 \soi(E_i-\aE) +  {\hat\pdc}^2 S_1 \soi (E_i-\aE)^2 + \cdots  = S_N(E) \]
+        \[ NS_1(\aE) + \Stothei{} \cdot 0 + \Stothei{2}\sigma_\aE + \cdots = S_N(E)   \]
+        \[ NS_1(\aE) + \beta \cdot 0 + \frac12\pd{\beta}{\aE}\sigma_\aE + \cdots = S_N(E)   \]
+        Unfortunately it is no longer obvious whether the higher order terms will die or not. in general it could be, for example $ \pd{\beta}{\aE}\sigma_\aE = f(E)$.
+
+        \paragraph{2. expand around $E=0$}
+        \[ \soi S_1(0) +  \hat\pdc S_1(0) \soi E_i +  {\hat\pdc}^2 S_1(0) \soi E_i^2 + \cdots  = S_N(E) \]
+
+         Now, here comes the crucial step in deriving $Z$, our {\bf second approximation: we truncate our series by claiming that  }(this would later means that the specific heat depends only on the variance of the energy!). One misconception would be to assume that $\pd{\beta}{\aE}=0$.
+        %\[  \sum_{i=1}\sum_k \frac1{k!}\pdc^k_xS_1\Big|_{x=E_i} (E_i-E)^k = S_N(\sum_iE_i - NE) \]
+        %\[  \sum_{i=1}S_1(E_i) + \sum_iS'_1(E_i)(E_i-E) + \cdots = S_N(0) \]
+
+
