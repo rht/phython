@@ -1,0 +1,114 @@
+\documentclass[axodraw]{amsart}
+\usepackage{amsmath}
+\usepackage{feyn}
+\usepackage{feynmp}
+\begin{document}
+
+\section{feyn}
+
+\begin{align*}
+    \feyn{a} \\
+    \feyn{b} \\
+    \feyn{c} \\
+    \feyn{d} \\
+    \feyn{e} \\
+    \feyn{f} \\
+    \feyn{g} \\
+    \feyn{h} \\
+    \feyn{i} \\
+    \feyn{j} \\
+    \feyn{k} \\
+    \feyn{l} \\
+    \feyn{m} \\
+    \feyn{n} \\
+    \feyn{o} \\
+    \feyn{p} \\
+    \feyn{q} \\
+    \feyn{r} \\
+    \feyn{s} \\
+    \feyn{t} \\
+    \feyn{u} \\
+    \feyn{v} \\
+    \feyn{w} \\
+    \feyn{x} \\
+    \feyn{y} \\
+    \feyn{z} \\
+\end{align*}
+\[
+\Diagram{\vertexlabel^a \\
+  fd \\
+& g\vertexlabel_{\mu,c} \\
+\vertexlabel_b fu \\
+}
+=
+\Diagram{\vertexlabel^a \\
+  fdA \\
+& gA\vertexlabel_{\mu,c} \\
+\vertexlabel_b fuV \\
+}
+=
+\Diagram{\momentum{fdA}a\\
+   & \vertexlabel_{\gamma_\mu} \momentum{gA}{\mu,c} \\
+\momentum{fuV}b
+}
+=
+ig\gamma_\mu (T^c)_{ab}
+\]
+
+Two-loop diagram:
+\[
+\feyn{ff gl ff}
+\to
+\feyn{ff\bigbosonloopA\smallbosonloopV ff}
+=
+\feyn{!{fA}p f!{glBV}k !{glSA}l a\vertexlabel_{p+k-l} ff}
+\]
+
+Bremsstrahlung:
+\[
+  \Diagram{        & x \\
+                   & ![ulft]{gvV}{q=p'+k-p}   & !{guA}k \\
+           ![bot]{fA}p & ![bot]{fA}{p'+k} & ![lrt]{fA}{p'} \\
+        }
+        +
+  \Diagram{    & !{guA}k \\
+           !{fA}p & fs ![bot]{fA}{p-k} & !{fA}{p'} \\
+               &         & ![lrt]{gvA}{q=p'+k-p} \\
+               &         & x\\
+        }
+\]
+
+
+
+OPE:
+\def\bracket#1{\langle #1 \rangle}
+\begin{eqnarray*}
+-i\Sigma_{\mathrm{ope}} &=&
+     \left[\feyn{faf + fsfglffs 
+                 + \cdots} \right] 1 \\
+     && \quad{}+ 
+           \left[ \feyn{ fxfs0glfs0xf 
+                  + \cdots} \right]
+         \bracket{\overline\psi M \psi} \\
+     && \quad{}+ \left[
+         \Diagram{   &x  &x  \\
+                     &gv &gv \\
+                  fs &fs &fs \\} + \cdots
+         \right]
+         \bracket{G_{\mu\nu}^a G_{\mu\nu}^a}\\
+\end{eqnarray*}
+
+Complete vertex:
+\begin{eqnarray*}
+\feyn{fcf} &=& \feyn{faf + fpf + fpfpf + \cdots} \\
+    &=& \sum_{n=0}^\infty \feyn{fA ( pfA)}^n \\
+    &=& \feyn{\frac{fA}{1-(pfA)}}.
+\end{eqnarray*}
+
+
+\section{feynmp}
+\begin{fmfgraph*}(40,30) \fmfpen{thick} \fmfleft{i1,i2} \fmfright{o1,o2} \fmf{fermion}{i1,v1,o1} \fmf{fermion}{i2,v2,o2} \fmf{photon,label=$q$}{v1,v2} \fmfdot{v1,v2}
+\end{fmfgraph*}
+
+
+\end{document}
