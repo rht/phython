@@ -1,0 +1,72 @@
+% THE canonical preamble
+% wisdom from http://stackoverflow.com/questions/193298/best-practices-in-latex
+
+% The Zen of LaTeX
+%1. When writing a large document (book), keep the chapters in separate files
+%2. Use a versioning system
+%3. Repeated code (i.e. piece of formula occurring many times) is evil. Use macros
+%4. Use macros to represent concepts, not to type less
+%5. Use long, descriptive names for macros, labels, and bibliographic entries
+%6. Use block comments
+%   %===================================
+%   to emphasize the beginning of sections and subsections
+%7. Comment out suppressed paragraphs, don't delete them yet
+%8. Don't format formulas (i.e. break them into many lines) until the final font size and page format are decided
+%9. Learn to use BibTeX
+%10. avoid eqnarray, use align, align*, or split (from amsmath)
+%11. reading mathmode is a must http://www.ctan.org/tex-archive/info/math/voss/mathmode/
+%12. If you really have to produce double-spaced documents, use setspace package instead of changing baselinestreach yourself.
+%13. use \centering instead of \begin{center}
+%14. use hyprref
+%15. Use \newcommand to make things more logical.
+
+\synctex=1
+\documentclass[hyperpdf,bindnopdf]{article}
+\usepackage{
+nag, %It warns the user about the usage of old packages or commands (for example, using \it, \tt, etc.)
+fixltx2e, %It fixes some 'mistakes' in Latex
+booktabs, % must better-looking tables than latex default
+amsmath,
+cancel,
+caption,
+cleveref,
+colortbl,
+csquotes,
+datatool,
+multirow,
+listings,
+%graphicx,
+pgfplots,
+xcolor,
+%mathpazo,
+}
+%fonts
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern }% enhanced version of the standard computer modern, actively developed
+\usepackage{cmbright}
+%end fonts
+%\usepackage[auto]{chappg} %page numbering by chapter
+%\pagenumbering{bychapter}
+
+
+%==============
+%useful physics
+%\usepackage{siunitx} % actively maintained
+\usepackage{physymb} % by David Zaslavsky
+%==============
+%
+%\usepackage{graphicx}
+%\usepackage{setspace}
+%\usepackage{fullpage}
+%\usepackage{pdfpages}
+%\usepackage{float}
+%\usepackage{rotating}
+%\usepackage{graphicx}
+%\usepackage{setspace}
+%\usepackage{fullpage}
+%\usepackage{pdfpages}
+%\usepackage{float}
+%\usepackage{rotating}
+
+
+
