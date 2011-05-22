@@ -29,4 +29,8 @@ Tips for thesis writing (i.e. writing huge latex files)
 http://mirror.its.uidaho.edu/pub/tex-archive/macros/latex/contrib/hepthesis/hepthesis.pdf
 
 
+\[ \psi({\skew0\vec r}) = \psi_0({\skew0\vec r}) - \frac{m}{2\pi\hbar^2} \int_{{\rm all\ }{\skew0\vec r}^{\,\prime}}
+    \frac{e^{{\rm i}k |{\skew0\vec r}-{\skew0\vec r}^{\,\prime}|}}{|{\skew0\vec r}-{\skew0\vec r}^{\,\prime}|} V({\skew0\vec r}^{\,\prime}) \psi({\skew0\vec r}^{\,\prime}) {\,\rm d}^3{\skew0\vec r}^{\,\prime}
+ \]
+
 
