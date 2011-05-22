@@ -1,0 +1,26 @@
+This is MetaPost, version 1.211 (TeX Live 2010) (kpathsea version 6.0.0) (mem=mpost 2011.05.08)  10 MAY 2011 10:56
+**penguin_oneside.mp
+(./penguin_oneside.mp
+(/usr/local/texlive/2010/texmf-dist/metapost/feynmf/feynmp.mp)
+! A group begun on line 7 never ended.
+<to be read again> 
+                   end
+l.14 end
+        .
+? 
+! Emergency stop.
+<to be read again> 
+                   end
+l.14 end
+        .
+End of file on the terminal!
+
+
+ 
+Here is how much of MetaPost's memory you used:
+ 803 strings out of 1162
+ 5890 string characters out of 6307
+ 20592 words of memory out of 3000000
+ 893 symbolic tokens out of 16384
+ 12i,71n,22p,111b,3f stack positions out of 300i,84n,10000p,200b,15f
+ 8 string compactions (moved 21557 characters, 3163 strings)

@@ -1,0 +1,64 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}         
+\geometry{letterpaper}         
+
+
+\usepackage{pst-electricfield}
+
+\begin{document}
+
+\section{Examples}
+
+\begin{pspicture*}(-6,-6)(6,6)
+\psframe*[linecolor=lightgray!50](-6,-6)(6,6)
+\psgrid[subgriddiv=0,gridcolor=gray,griddots=10]
+\psElectricfield[Q={[-1 -2 2][1 2 2][-1 2 -2][1 -2 -2]},linecolor=red]
+\psEquipotential[Q={[-1 -2 2][1 2 2][-1 2 -2][1 -2 -2]},linecolor=blue](-6.1,-6.1)(6.1,6.1)
+\psEquipotential[Q={[-1 -2 2][1 2 2][-1 2 -2][1 -2 -2]},linecolor=green,linewidth=2\pslinewidth,Vmax=0,Vmin=0](-6.1,-6.1)(6.1,6.1)
+\end{pspicture*}
+
+\psset{unit=0.75cm}
+\begin{pspicture*}(-5,-5)(5,5)
+\psframe*[linecolor=green!20](-5,-5)(5,5)
+\psgrid[subgriddiv=0,gridcolor=lightgray,griddots=10]
+\psElectricfield[Q={[1 -2 0][1 2 0]},linecolor=red,N=15,points=500]
+\psEquipotential[Q={[1 -2 0][1 2 0]},linecolor=blue,Vmin=0,Vmax=20,stepV=2](-5,-5)(5,5)
+\psEquipotential[Q={[1 -2 0][1 2 0]},linecolor=green,Vmin=9,Vmax=9](-5,-5)(5,5)
+\end{pspicture*}
+
+\psset{unit=0.75cm}
+\begin{pspicture*}(-10,-5)(6,5)
+\psframe*[linecolor=lightgray!40](-10,-5)(6,5)
+\psgrid[subgriddiv=0,gridcolor=lightgray,griddots=10]
+\psElectricfield[Q={[600 -60 0 false][-4 0 0] },N=50,points=500,runit=0.8]
+\psEquipotential[Q={[600 -60 0 false][-4 0 0]},linecolor=blue,Vmax=100,Vmin=50,stepV=2](-10,-5)(6,5)
+\psframe*(-10,-5)(-9.5,5)
+\rput(0,0){\textcolor{white}{\large$-$}}
+\multido{\rA=4.75+-0.5}{20}{\rput(-9.75,\rA){\textcolor{white}{\large$+$}}}
+\end{pspicture*}
+
+\psset{unit=0.75cm}
+\begin{pspicture*}(-5,-5)(5,5)
+\psframe*[linecolor=green!20](-5,-5)(5,5)
+\psgrid[subgriddiv=0,gridcolor=lightgray,griddots=10]
+\psElectricfield[Q={[1 2 0][1 1 1.732][1 -1 1.732][1 -2 0][1 -1 -1.732][1 1 -1.732][-1 0 0]},linecolor=red]
+\psEquipotential[Q={[1 2 0][1 1 1.732 12][1 -1 1.732][1 -2 0][1 -1 -1.732][1 1 -1.732][-1 0 0]},Vmax=40,Vmin=-10,stepV=5,linecolor=blue](-5,-5)(5,5)
+\end{pspicture*}
+
+\psset{unit=0.75cm}
+\begin{pspicture*}(-6,-5)(6,5)
+\psframe*[linecolor=green!20](-6,-5)(6,5)
+\psgrid[subgriddiv=0,gridcolor=lightgray,griddots=10]
+\psElectricfield[Q={[1 -4 0][1 -2 0 12][1 0 0][1 2 0][1 4 0]},linecolor=red]
+\psEquipotential[Q={[1 -4 0][1 -2 0][1 0 0][1 2 0][1 4 0]},linecolor=blue,Vmax=30,Vmin=0,stepV=2](-7,-5)(7,5)
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+\end{document}

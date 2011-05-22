@@ -1,0 +1,12 @@
+This is MetaPost, version 1.211 (TeX Live 2010) (kpathsea version 6.0.0) (mem=mpost 2011.05.08)  10 MAY 2011 10:56
+**tree.mp
+(./tree.mp (/usr/local/texlive/2010/texmf-dist/metapost/feynmf/feynmp.mp) [1] )
+
+ 
+Here is how much of MetaPost's memory you used:
+ 927 strings out of 1162
+ 6054 string characters out of 8807
+ 22632 words of memory out of 3000000
+ 894 symbolic tokens out of 16384
+ 14i,71n,28p,100b,3f stack positions out of 300i,84n,10000p,200b,15f
+ 9 string compactions (moved 27404 characters, 4084 strings)1 output file written: tree.1

@@ -1,0 +1,138 @@
+\documentclass[hyperpdf,bindnopdf,twocolumn]{hepthesis}
+
+\usepackage{url, relsize, booktabs, ccaption, braket}
+\usepackage{maybemath,xspace,setspace,fancyvrb,fancybox}
+\usepackage{a4wide,url,relsize,underscore}
+\usepackage[colorlinks=true,bookmarks=true]{hyperref}
+
+
+%=============================================
+\usepackage{slashed} % Feynman slash notation
+\usepackage{cancel} % alternative for slash
+\usepackage{hep} % hepunits and hepnames by insectnation dude! 2007. hepnames comes from hepparticles
+\usepackage{genmisc} % macro for slashed, braket, and normal ordered
+%=============================================
+
+
+\newcommand{\hepunits}{\texttt{hepunits}\xspace}
+\newcommand{\texcmd}[1]{\texttt{\char`\\#1}} 
+
+\begin{document}
+    \paragraph{Slash Notation}
+    \[ \left( i\slashed{\partial} - m\right) \psi(x) = 0\]
+    \[ \left( i\cancel{\partial} - m\right) \psi(x) = 0\] % used in 8.323S11
+
+    \paragraph{hepunits SI}
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{ll}
+            \toprule
+            Unit command & Example \\
+
+            \midrule 
+            Lengths & \\
+            \texcmd{nm} & \unit{1.0}{\nm} \\
+            \texcmd{micron} & \unit{1.0}{\micron} \\
+            \texcmd{mm} & \unit{1.0}{\mm} \\
+            \texcmd{cm} & \unit{1.0}{\cm} \\
+
+            \midrule 
+            Times & \\
+            \texcmd{ns} & \unit{1.0}{\ns} \\
+            \texcmd{ps} & \unit{1.0}{\ps} \\
+            \texcmd{fs} & \unit{1.0}{\fs} \\
+            \texcmd{as} & \unit{1.0}{\as} \\
+
+            \midrule 
+            Rates & \\
+            \texcmd{mHz}   & \unit{1.0}{\mHz} \\
+            \texcmd{Hz}    & \unit{1.0}{\Hz} \\
+            \texcmd{kHz}   & \unit{1.0}{\kHz} \\
+            \texcmd{MHz}   & \unit{1.0}{\MHz} \\
+            \texcmd{GHz}   & \unit{1.0}{\GHz} \\
+            \texcmd{THz}   & \unit{1.0}{\THz} \\
+
+            \midrule 
+            Misc. & \\
+            \texcmd{mrad} & \unit{1.0}{\mrad} \\
+            \texcmd{gauss} & \unit{1.0}{\gauss} \\
+
+            \bottomrule 
+        \end{tabular}
+        \caption{List of non-HEP specific units provided by \hepunits}
+        \label{tab:normunits}
+    \end{table}
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{ll}
+            \toprule
+            Unit command & Example \\
+            \midrule 
+            Luminosities & \\
+            \texcmd{invcmsqpersecond} & \unit{1.0}{\invcmsqpersecond} \\
+            \texcmd{invcmsqpersec} & \unit{1.0}{\invcmsqpersec} \\
+            \texcmd{lumiunits} & \unit{1.0}{\lumiunits} \\
+
+            \midrule
+            Cross-sections & \\
+            \texcmd{barn} & \unit{1.0}{\barn} \\
+            \texcmd{invbarn} & \unit{1.0}{\invbarn} \\
+            \texcmd{nanobarn}    & \unit{1.0}{\nanobarn} \\
+            \texcmd{invnanobarn} / \texcmd{invnb} & \unit{1.0}{\invnanobarn} \\
+            \texcmd{picobarn}    & \unit{1.0}{\picobarn} \\
+            \texcmd{invpicobarn} / \texcmd{invpb} & \unit{1.0}{\invpicobarn} \\
+            \texcmd{femtobarn}    & \unit{1.0}{\femtobarn} \\
+            \texcmd{invfemtobarn} / \texcmd{invfb} & \unit{1.0}{\invfemtobarn} \\
+            \texcmd{attobarn}    & \unit{1.0}{\attobarn} \\
+            \texcmd{invattobarn} / \texcmd{invab} & \unit{1.0}{\invattobarn} \\
+
+            \bottomrule 
+        \end{tabular}
+        \caption{List of HEP-specific units provided by \hepunits}
+        \label{tab:hepunits}
+    \end{table}
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{ll}
+            \toprule
+            Unit command & Example \\
+            \midrule
+            \eV-based units & \\
+            \texcmd{eV} & \unit{1.0}{\eV} \\
+            \texcmd{inveV} & \unit{1.0}{\inveV} \\
+            \texcmd{eVoverc} & \unit{1.0}{\eVoverc} \\
+            \texcmd{eVovercsq} & \unit{1.0}{\eVovercsq} \\
+            \texcmd{meV} & \unit{1.0}{\meV} \\
+            \texcmd{keV} & \unit{1.0}{\keV} \\
+            \texcmd{MeV} & \unit{1.0}{\MeV} \\
+            \texcmd{GeV} & \unit{1.0}{\GeV} \\
+            \texcmd{TeV} & \unit{1.0}{\TeV} \\
+            \texcmd{minveV} & \unit{1.0}{\minveV} \\
+            \texcmd{kinveV} & \unit{1.0}{\kinveV} \\
+            \texcmd{MinveV} & \unit{1.0}{\MinveV} \\
+            \texcmd{GinveV} & \unit{1.0}{\GinveV} \\
+            \texcmd{TinveV} & \unit{1.0}{\TinveV} \\
+            \texcmd{meVoverc} & \unit{1.0}{\meVoverc} \\
+            \texcmd{keVoverc} & \unit{1.0}{\keVoverc} \\
+            \texcmd{MeVoverc} & \unit{1.0}{\MeVoverc} \\
+            \texcmd{GeVoverc} & \unit{1.0}{\GeVoverc} \\
+            \texcmd{TeVoverc} & \unit{1.0}{\TeVoverc} \\
+            \texcmd{meVovercsq} & \unit{1.0}{\meVovercsq} \\
+            \texcmd{keVovercsq} & \unit{1.0}{\keVovercsq} \\
+            \texcmd{MeVovercsq} & \unit{1.0}{\MeVovercsq} \\
+            \texcmd{GeVovercsq} & \unit{1.0}{\GeVovercsq} \\
+            \texcmd{TeVovercsq} & \unit{1.0}{\TeVovercsq} \\
+
+            \bottomrule 
+        \end{tabular}
+        \contcaption{List of HEP-specific units provided by \hepunits (cont.)}
+        \label{tab:hepunits2}
+    \end{table}
+
+    \section{hepnames}
+
+
+\end{document}

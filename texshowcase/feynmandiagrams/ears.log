@@ -1,0 +1,12 @@
+This is MetaPost, version 1.211 (TeX Live 2010) (kpathsea version 6.0.0) (mem=mpost 2011.05.08)  10 MAY 2011 10:47
+**ears.mp
+(./ears.mp (/usr/local/texlive/2010/texmf-dist/metapost/feynmf/feynmp.mp) [1] )
+
+ 
+Here is how much of MetaPost's memory you used:
+ 1287 strings out of 1638
+ 6428 string characters out of 8807
+ 23636 words of memory out of 3000000
+ 893 symbolic tokens out of 16384
+ 12i,71n,22p,100b,3f stack positions out of 300i,84n,10000p,200b,15f
+ 13 string compactions (moved 52744 characters, 8901 strings)1 output file written: ears.1

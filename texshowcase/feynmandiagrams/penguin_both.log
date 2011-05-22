@@ -1,0 +1,13 @@
+This is MetaPost, version 1.211 (TeX Live 2010) (kpathsea version 6.0.0) (mem=mpost 2011.05.08)  10 MAY 2011 10:56
+**penguin_both.mp
+(./penguin_both.mp
+(/usr/local/texlive/2010/texmf-dist/metapost/feynmf/feynmp.mp) [1] )
+ 
+Here is how much of MetaPost's memory you used:
+ 1006 strings out of 1162
+ 6166 string characters out of 8807
+ 23632 words of memory out of 3000000
+ 893 symbolic tokens out of 16384
+ 14i,71n,28p,108b,3f stack positions out of 300i,84n,10000p,200b,15f
+ 9 string compactions (moved 27613 characters, 4162 strings)
+1 output file written: penguin_both.1

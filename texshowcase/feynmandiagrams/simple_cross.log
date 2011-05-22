@@ -1,0 +1,39 @@
+This is MetaPost, version 1.211 (TeX Live 2010) (kpathsea version 6.0.0) (mem=mpost 2011.05.08)  10 MAY 2011 10:56
+**simple_cross.mp
+(./simple_cross.mp
+(/usr/local/texlive/2010/texmf-dist/metapost/feynmf/feynmp.mp)
+>> 0.9sw+0.1se
+! Isolated expression.
+<to be read again> 
+                   ..
+curved_left_gallery->begingroup0.9[se,sw]..
+                                           0.5[sw,nw]..0.1[nw,ne]endgroup
+left_gallery->begingroup.curved_left_gallery
+                                            .endgroup
+vleft->begingroup.vdistribute(left_gallery
+                                          ,(TEXT2))endgroup
+l.4 vleft (__i1, __i2)
+                      ;
+? 
+! Emergency stop.
+<to be read again> 
+                   ..
+curved_left_gallery->begingroup0.9[se,sw]..
+                                           0.5[sw,nw]..0.1[nw,ne]endgroup
+left_gallery->begingroup.curved_left_gallery
+                                            .endgroup
+vleft->begingroup.vdistribute(left_gallery
+                                          ,(TEXT2))endgroup
+l.4 vleft (__i1, __i2)
+                      ;
+End of file on the terminal!
+
+
+ 
+Here is how much of MetaPost's memory you used:
+ 767 strings out of 781
+ 5821 string characters out of 6307
+ 19251 words of memory out of 3000000
+ 891 symbolic tokens out of 16384
+ 12i,71n,22p,108b,3f stack positions out of 300i,84n,10000p,200b,15f
+ 6 string compactions (moved 9803 characters, 1603 strings)

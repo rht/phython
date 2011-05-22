@@ -1,0 +1,114 @@
+
+\documentclass[hyperpdf,bindnopdf,twocolumn]{article}
+\usepackage{
+amsmath,
+booktabs,
+cancel,
+caption,
+cleveref,
+colortbl,
+csquotes,
+datatool,
+helvet,
+mathpazo,
+multirow,
+listings,
+pgfplots,
+xcolor,}
+
+%==============
+%useful physics
+\usepackage{siunitx}
+\usepackage{physymb} % by David Zaslavsky
+%==============
+
+
+
+\begin{document}
+    \section{Units}
+    Numbers:\\
+        \num{12345,67890} \\
+        \num{1+-2i}       \\
+        \num{.3e45}       \\
+        \num{1.654 x 2.34 x 3.430}\\
+
+    List/Range of numbers:\\
+        \numlist{10;20;30}                    \\
+        \SIlist{0.13;0.67;0.80}{\milli\metre} \\
+        \numrange{10}{20}                     \\
+        \SIrange{0.13}{0.67}{\milli\metre}\\
+
+    Units:\\
+        \si{kg.m.s^{-1}}                \\
+        \si{\kilogram\metre\per\second} \\
+        \si[per-mode=symbol]
+        {\kilogram\metre\per\second}  \\
+        \si[per-mode=symbol]
+        {\kilogram\metre\per\ampere\per\second}\\
+        \ang{10}\\ %degree
+
+    Numbers and Units:\\
+        \SI[mode=text]{1.23}{J.mol^{-1}.K^{-1}}\\
+
+    SI base units:\\
+    \si{\ampere}\\
+    \si{\candela}\\
+    \si{\kelvin}\\
+    \si{\kilogram}\\
+    \si{\meter }\\
+    \si{\mole  }\\
+    \si{\second}\\
+    SI derived units:\\
+    \si{\becquerel} \\
+    \si{\newton}    \\
+    \si{\degreeCelsius} \\
+    \si{\ohm}       \\
+    \si{\coulomb}   \\
+    \si{\pascal}    \\
+    \si{\farad}     \\
+    \si{\radian}    \\
+    \si{\gray}      \\
+    \si{\siemens}   \\
+    \si{\hertz}     \\
+    \si{\sievert}   \\
+    \si{\henry}     \\
+    \si{\steradian} \\
+    \si{\joule}     \\
+    \si{\tesla}     \\
+    \si{\katal}     \\
+    \si{\volt}      \\
+    \si{\lumen}     \\
+    \si{\watt}      \\
+    \si{\lux}       \\
+    \si{\weber}     \\
+    \si{\angstrom}     \\
+    \si{\electronvolt}     \\
+
+
+          
+    \section{Formulas}
+
+    From physymb:\\
+    \begin{align*}
+        \sn{6.23}{6}\\
+        \snunit{3.1}{6}{meter^3}\\ % conflict with siunitx
+        \asin \acos \sech \\
+        \intset \realset \\
+        \ud{y}{x}\\
+        \pd{y}{x}\\
+        \pddd{y}{x}\\
+        \udc\\
+        \iint e^{i\vec{k}\cdot\vec{x}}\udds\vec{x}\\ % use s because we want a small space between the integrand and the d symbol
+        \div \grad \curl \lapl\\
+        \conj{z}  \real{z} \realop \\
+        \unitx \unity \uniti \unite \unitomega \unit{\phi}\\
+        \commut{A}{B} \acommut{A}{B}  \herm{A}\\
+        \commut{\frac{\hat{A}}{c}}{\hat{B}}\\
+        \left[\hat{A},\hat{B}\right]\\
+        \exd \hodge \\
+        classmech \pbrac{f}{g} \\
+        QM \ket{\phi} \braket{\phi}{\psi} \melement{\phi}{A}{\psi} \expect{A}
+    \end{align*}
+    
+
+\end{document}
