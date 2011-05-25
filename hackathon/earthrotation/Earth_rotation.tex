@@ -1,0 +1,149 @@
+\title{Spin Orbit Coupling Applied to Earth's rotation}
+
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{rotating}
+\begin{document}
+\maketitle
+
+\section{Some preliminaries}
+
+We apply spin orbit coupling to the problem.  Let ${\bf R_{cm}}$ be the radial vector from the center of the sun to the center of the earth. Let ${\bf r'}$ be the vector from the center of mass of the earth to element of mass under consideration.  Let $\alpha '$ be the angle between those 2 vectors.  Let $v$ denote the orientation of the earth about a certain axis relative to the earth/sun plane.
+
+\noindent The potential energy can be written as:
+
+\begin{equation}
+    V(R_{cm}, v) = \int dV' \rho({\bf r'}) \frac{-GM}{\sqrt{R_{cm}^2 + r'^2 - 2r'R_{cm} \cos(\alpha')}}
+\end{equation}
+
+This form of the integral makes it easy to taylor expand the integrand, according to the famous multipole expansion.
+
+\begin{equation}
+    V(R_{cm}, v) =- \int dV' \rho({\bf r'}) \frac{GM}{R_{cm}} \sum_l (\frac{r'}{R_{cm}})^l P_l (\cos(\alpha'))
+\end{equation}
+
+Where $P_l$ denotes orthonormalized legendre polynomials. We note the integral vanishes for all $l>0$, for a spherical distribution.  Hence, this expansion allows us to put increasing accuracy to corrections from a spherical matter distribution.
+
+\section{Extracting information}
+
+Let's extract information by examining successive values of l.
+
+\paragraph{l = 1}: For l = 1, we have an integral over $\rho({\bf r'})\frac{r'}{R} \cos(\alpha')$ which vanishes if we choose the center of mass to be our origin (we can make dipole moment of any charge distribution of single polarity to vanish).
+
+\paragraph{l = 2}: \begin{equation}
+    P_2(x) = \frac{1}{2} (3 x^2 -1) = \frac{1}{2}(2- 3\sin(\alpha')^2)
+\end{equation}
+\begin{equation}
+    int \rho({\bf r'})dV' r'^2 \frac{1}{2}(2-3\sin(\alpha')^2) = \frac{1}{2}(I_1 + I_2 + I_3 - 3I)
+\end{equation}
+
+Where $I_i$ represent moments about orthogonal axis and I represent the moment about the axis going through $R_{cm}$.  We can arbitrarily pick the 3 moments to be along principle axis.
+
+For our purposes, expanding along l = 2 is enough.
+
+\section{Application to Earth's rotation}
+
+Let us now see why the spin of the earth changes.  We can model the earth as an oblate ellipsoid 
+of constant density $\rho_0$ that rotates initially rotates along the principle axis defining rotational symmetry 
+(Call the moment about that one $I_2$).  
+This sets our initial conditions. The 2 other principle axis are equal and called $I_1$.  
+Let the angle between the plane of rotation and the ellipsoid be approximately $\theta = 23$ degrees.  
+The precession time for the earth's axis is 23000 years (see Kleppner), hence we will ignore precession as its time scale is much larger than the time scale of the evolution we are interested in.
+
+\noindent  Let us break in terms of the free parameters the system can have.  The free parameters are:$R_{cm} = R$ because the distance to the sun varies, $\phi$ because the angular variable about the sun of the earth's CM varies, $\gamma$ because the axis of spin of the earth varies, and $\gamma$ because the spin rotation angle also varies.  Note we have reduced the number of free parameters of the rigid body of 6 to 4.
+
+\section{Lagrangian}:
+
+\begin{equation}
+    L = T- V = \frac{1}{2} \left(MR^2  \dot{\phi}^2 + M \dot{R}^2 + I_2 \dot{\theta}^2 + I_1 \dot{\gamma}^2 \right)+ \frac{GM_sM}{R}+ GM_s \frac{1}{R^3} \left(2I_1 + I_2 - 3I \right)
+\end{equation}
+
+For an ellipsoid of constant density, $I_1 = M \frac{R_1^2 + R_2^2}{5}$, $I_2 = M \frac{2R_1^2}{5}$  where $R_1$ denotes the radial distance to the equator, $R_2$ denotes the radial distance to  the north pole.
+
+\section{Level 1}
+
+For level 1 design, we do not need to use such an elaborate scheme.  We will instead consider conservation of angular momentum in the direction perpendicular to the motion, call it z.  Call $L_s$ the spin angular momentum magnitude, equal to $I_2 \dot{\theta}$.  The orbital angular momentum, on the other hand, can be $ MR^2 \dot{\phi}$.  We apply conservation of energy and momentum, ignoring the sun's contribution (E, L are constants of motion):
+
+\begin{equation}
+    frac{1}{2}(M\dot{R}^2 + MR^2 \dot{\phi}^2)+ \frac{(I_2 \dot{\theta})^2}{2 M R^2}  - GM_s M \frac{1}{R}= E
+\end{equation}
+
+\begin{equation}
+    I_2 \dot{\theta} \cos(\gamma) + MR^2 \dot{\phi} = L
+\end{equation}
+
+\paragraph{Level 1.1}:
+
+Assume that the repetition of $\omega_s$ will repeat annually at the epogee of the elliptical orbit.  
+Then $\dot{R}$ will be 0 at those points.
+
+If we plug the second equation into the first for $\dot{\phi}$ we have:
+
+\begin{equation}
+    \left(\dot{R}^2 + R^2 (\frac{L- I_2 \dot{\theta} \cos{\gamma}}{MR^2})^2+ \frac{(I_2 \dot{\theta})^2}{M^2 R^2}  - \frac{2GM_S}{R}\right) = \frac{2E}{M}
+\end{equation}
+
+Because E and L does not tell anything about the physics of spin orbit coupling, we do not expect to be able to extract $\omega_s$ maximum and minimum from just assuming ideal elliptical orbital parameters and solving for $\omega$ at $R_{max}$ and $R_{min}$. 
+
+However, we can approach the problem as follows.  
+
+\begin{equation}
+    L_1 + S_1|_{apoapsis} = L_2 + S_2|_{periapsis}
+\end{equation}
+
+\begin{equation}
+    frac{L_1^2}{2mr_1^2}+ \frac{S_1^2}{2I}- \frac{\alpha}{r_1}= \frac{L_2^2}{2mr_2^2} + \frac{S_2^2}{2I}- \frac{\alpha}{r_2}
+\end{equation}
+
+We have 6 variables: $L_1, L_2, S_1, S_2, r_1, r_2$, where S is the spin angular momentum, L is
+the orbital angular momentum.  Note $\alpha $ is a constant corresponding to the gravitational energy. We can make the following assumptions:
+
+\begin{itemize}
+\item The orbit-coupling is annually periodic
+\item The times of maximum and minimum spin occur at the apoapsis and periapsis, where $\dot{R}= 0$
+\item The spin is larger when it is at the apoapsis (experimental data), i. e. at 1
+\item $S_1 = S_0 + \Delta S$, $S_2 = S_0 - \Delta S$ and trivially: $L_1 = L_0 + \Delta S$, $L_2 = L_0 - \Delta S$, where $S_0$ and $L_0$ denote the average spin and orbital angular momenta respectively
+\end{itemize}
+
+
+Because the original orbital motion satisfies the following integral of motion:
+
+\begin{equation}
+    \frac{L_0^2}{2 m r^2} - \frac{\alpha}{r} = Constant
+\end{equation}
+This implies that:
+
+\begin{equation}
+    \frac{L_0^2}{2mr_1^2} - \frac{\alpha}{r_1} = \frac{L_0^2}{2m r_2^2}- \frac{\alpha}{r_2}
+\end{equation}
+
+because $L_0$ corresponds to the orbital angular momentum before any spin-coupling was applied.  We plug in our ansatz  %%%%%PUT eqn number%%%%% 
+about the spin coupling term, and obtain the following equations:
+
+\begin{equation}
+    = \frac{L_0}{m}  \left(\frac{1}{r_1^2}+ \frac{1}{r_2^2} \right) + \frac{\Delta S}{2m} (\frac{1}{r_2^2}- \frac{1}{r_1^2}) - 2 \frac{S_0}{I}
+\end{equation}
+
+This method does not lead to a sensible answer!!  Our approach does not endogenize $\Delta I$, the seasonal change in moment of inertia.
+
+{\bf PHYSICS FAIL !!!!!!}
+
+\paragraph{Level 1.2}:
+
+We have an unknown variable, R.  If we approximate that the radial coordinate is not very different even when coupling is applied, we can substitute the normal values of R obtained from solving point particle central force motion into the equations. 
+
+
+
+
+
+\end{document}
