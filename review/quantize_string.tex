@@ -1,0 +1,197 @@
+\input{preamble.tex}
+\title{String Quantization}
+
+
+\begin{document}
+\maketitle 
+
+\section{Discrete phonons}
+
+Suppose we have a chain of masses m, each linked by a string of length a.
+Each mass can be displaced about the equilibrium position vertically, by an amount
+\(x_n\).
+
+Then we have the following equations of motion:
+
+\[m \ddot{x_n} = k \left(x_{n+1} + x_{n-1}\right) - 2 k x_n\]
+
+We can work in the fourier basis, which decouples the motion of the masses into modes of vibrations labelled
+by the wavenumber \(q \in (-\frac{\pi}{2}, \frac{\pi}{2})\):
+
+
+\begin{align}
+    & x_q = e^{i(qan-\omega(q) t)}\\
+    & \omega_q^2 = -2k/m \cos(qa)- 2k/m
+\end{align}
+
+\subsection{Lagrangian and Hamiltonian Style}
+
+It is nice to work in the Lagrangian and Hamiltonian scheme in preparation for quantization.
+Let's set up a finite string of N masses, each mass m, separated by distance l in equilibrium. 
+The displacement of the ith mass is \(\phi_i\).
+
+The Hamiltonian is KE +PE:
+
+\begin{align}
+    & H = \frac12 \sum_{i = 0}^{N-1} ( m(\dot{\phi_i}^2) + k (\phi_i- \phi_{i-1})^2) \\
+    & \frac12 \sum_{i = 0}^{N-1} l \left( \frac{m}{l} \dot{\phi_i}^2 + k l^2 (\phi_i - \phi_{i-1}/l)^2 \right)
+\end{align}
+
+The lagrangian is:
+
+\begin{align}
+    & L = \frac12 \sum_{i = 0}^{N-1} ( m(\dot{\phi_i}^2) - k (\phi_i- \phi_{i-1})^2) \\
+    & \frac12 \sum_{i = 0}^{N-1} \left(l \frac{m}{l} \dot{\phi_i}^2 - k l^2 (\phi_i - \phi_{i-1}/l)^2 \right))
+\end{align}
+
+
+In the limit N goes to infinity, l to 0 , we can define the ratio: \(l/m = \mu\), \(kl = T\).
+The lagrangian density, \(\mathcal{L} = L/l\):
+
+\begin{align}
+    & \mathcal{L} = \int dx  \frac12 \left(\mu \dot{\phi}^2 - T \pd{\phi}{x}^2 \right)
+\end{align}
+
+
+The principle of least action guarantees that the variation of the action is 0:
+
+\newcommand{\La}{\mathcal L}
+\newcommand{\Ha}{\mathcal H}
+
+\begin{align}
+    &\delta \int d^4 x \mathcal{L}(\phi, \partial_{x^\mu}{\phi}) = 0 \\
+    \arr & \int d^4 x \pd{\La}{\phi} \delta \phi + \pd{\La}{(\partial_\mu \phi)} \delta \partial_\mu(\phi) \\
+    \arr & \int d^4 (\pd{\La}{\phi} \delta - \partial_\mu \pd{\La}{(\partial_\mu \phi)}) \delta \phi 
+    + \partial_\mu \left(\pd{\La}{(\partial_\mu \phi)} \delta \phi \right)
+\end{align}
+
+The last term is the 4-divergence, which can be converted to the difference between the spatial integrals
+at the initial and final times, and therefore vanishes.
+
+We therefore have the condition:
+
+\begin{align}
+    \partial_\mu \pd{\La}{(\partial_\mu \phi)} - \pd{\La}{\phi} = 0
+\end{align}
+
+Applying equation (11) to the string, we obtain the famous string equation:
+
+\begin{align}
+    \pdd{\phi}{x}-\frac{1}{v^2}\pdd{\phi}{t} = 0
+\end{align}
+where \(v^2 = \frac{T}{\mu}\)
+
+\subsection{Classical Source Term}
+
+\subsection{Canonical Momenta}
+
+We can compute the following canonical momenta:
+
+\begin{align}
+    & \pd{L}{\dot{\phi}} = \mu \dot{\phi} - T \partial_x \phi v \\
+    & \pd{L}{\partial_x \phi} = \frac{\mu}{v} \dot{\phi} - T \partial_x \phi
+\end{align}
+
+
+We see the canonical momenta is associated with the momentum of the transverse motion of the wave,
+i.e. the larger \(\dot{\phi}\) is, the larger the canonical momentum.
+
+\paragraph{Some redefinition}: for convenience purposes, we redefine the field \(\phi \arr \sqrt{T} \phi\),
+so that T disappears from the equations. The field will have different units
+
+
+
+
+
+\section{Decoupling the String into independent Oscillators}
+
+\subsection{Normal Coordinates}
+
+As with any wave equation, canonical quantization lends itself more nicely in a fourier basis.  We make the following guess:
+
+\begin{align}
+    & \phi_n = \frac{1}{\sqrt{L}} e^{i(k_n x- \omega_n t)}
+\end{align}
+
+Where we choose
+\begin{itemize}
+    \item \(\omega_n >0\)
+    \item \(k_n = 2n \pi/L\) with \(n \in I\)(periodic Boundary Conditions)
+    \item \(\omega_n^2 = v^2 k_n^2\) (Wave Equation)
+\end{itemize}
+
+We note that there are both positive and negative \(\omega and k_n\) solutions.
+By Plancherel's theorem, the general solution can be written as follows.
+
+\begin{align}
+    & \phi(x,t)= \sum_{n= -\infty}^{\infty} c_n(a_n \phi_n + a_n* \phi_n*)
+    & \phi(x,t)= \sum_{n = -\infty}^{\infty} c_n(a_n(t)e^{ik_n x} + a_n(t)* e^{-ik_n x})
+\end{align}
+Where \(a_n(t)= a(0)e^{-i \omega_n t}\)
+We have indeed successfully decoupled the string into independent oscillators, since the coefficient \(a(t)\) satisfy:
+\[\ddot{a_n}+ \omega_n^2 a_n = 0\]
+
+The complex conjugate is there to ensure real solutions for the field.
+
+We also have the following orthogonality identities:
+
+\begin{align}:
+    &\int_0^L \phi_n \phi_m = \delta_{n,-m} e^{-2i\omega_n t} \\
+    &\int_0^L \phi_n* \phi_m = \delta_{n,m}
+\end{align}
+
+\subsection{Hamiltonian}
+
+The new kinetic energy, potential energy and Hamitonian are:
+
+\begin{align}
+    & T = \frac{1}{2v^2} \int dx \dot{\phi}^2 \\
+    & U = \frac{1}{2} \int dx \pd{\phi}{x}^2 \\
+    & H = T + U = \sum_{-\infty}^{\infty} c_n^2(\frac{\omega^2}{v^2} + k_n^2) a_n^2(t) + c_n c_{-n} (k_n^2 - \frac{\omega_n^2}{v^2})Re(a_n a_{-n}) \\
+\end{align}
+
+Using the \(c_{-n} = -c_n\), we can rewrite:
+
+\begin{align}
+    & H = \sum_n 2 c_n^2 \frac{\omega_n^2}{v^2} a_n(t) a_n(t)*
+\end{align}
+
+We work in natural units, where \(h = c = 1\).  
+We can make a dimensionless by defining \(c_n = \sqrt{\frac{v^2}{2 \omega_n}}\).
+THe hamiltonian takes the form of:
+\[H = \sum_n \omega_n a_n a*_n\]
+
+Remarks:
+
+\begin{itemize}
+    \item The number a and a* have a lot of similarity to raising and lowering operators
+    \item To make real a real dynamical variable, we can define \(q_n = \frac{1}{\sqrt{2 \omega_n}}(a_n + a_n*)\)
+    \item We can then define \(p_n = \ud{q}{t} = - i (\frac{\omega_n}{2})^{1/2} (a_n - a_n*)\)
+    \item The hamiltonian takes the form: \(H = \frac12 \sum_n (p_n^2 + \omega_n^2 q_n^2)\)
+    \item Re-expressing \(q_n = \sqrt{2\omega_n} q_n + i \sqrt{\frac{2}{\omega_n}} p_n\)
+    \item \(p_n = \sqrt{2\omega_n} q_n - i \sqrt{\frac{2}{\omega_n}} p_n\)
+\end{itemize}
+
+
+
+\section{Canonical Quantization}
+
+We are now ready to quantize the string.  The canonical commutation relations are:
+
+\begin{align}
+    & [q_n, q_m] = [p_m, p_n] = 0 \\
+    & [q_n, p_m] = i \hbar \delta_{nm}
+\end{align}
+
+
+Those commutation relations immediately imply commutation relations for the raising & lowering operators:
+
+\begin{align}
+    & [a_n, a_m *]= \delta_{mn}
+\end{align}
+
+
+
+
+
+\end{document}
