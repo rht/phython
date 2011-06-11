@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>rotationcurve.py</title>
+  <link rel="stylesheet" href="http://jashkenas.github.com/docco/resources/docco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+      <th class=docs><h1>rotationcurve.py</h1></th>
+      <th class=code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id='section-1'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-1">&#182;</a>
+        </div>
+        <p>!&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">scipy.special</span> <span class="kn">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">P</span>
+
+
+<span class="n">G</span> <span class="o">=</span> <span class="mf">4.306e-6</span>
+<span class="n">rho0</span> <span class="o">=</span>  <span class="mf">1.144e7</span> 
+<span class="n">Sigma0</span> <span class="o">=</span> <span class="mf">6.594e8</span>
+<span class="n">RD</span> <span class="o">=</span> <span class="mf">2.63</span> <span class="c">#in kpc</span>
+<span class="n">rc</span> <span class="o">=</span> <span class="mf">6.414</span> <span class="c">#in kpc</span>
+
+<span class="k">def</span> <span class="nf">gdisk</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">RD</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">G</span> <span class="o">*</span> <span class="n">Sigma0</span> <span class="o">*</span> <span class="p">(</span><span class="n">RD</span> <span class="o">/</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">i0</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">k0</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">i1</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">k1</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">ghalo</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">G</span> <span class="o">*</span> <span class="n">rho0</span> <span class="o">/</span> <span class="n">r</span> <span class="o">*</span> <span class="p">((</span><span class="n">rc</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">((</span><span class="n">rc</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">arctan</span><span class="p">(</span><span class="n">r</span><span class="o">/</span><span class="n">rc</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">vc</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="p">(</span><span class="n">gdisk</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="n">ghalo</span><span class="p">(</span><span class="n">r</span><span class="p">)))</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-2'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-2">&#182;</a>
+        </div>
+        <p> This is \(\LaTeX : c = 2\cdot(a+b)\)</p>
+
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="n">radius</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">speed</span> <span class="o">=</span> <span class="p">[</span><span class="n">vc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">radius</span><span class="p">]</span>
+
+<span class="n">P</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span><span class="n">speed</span><span class="p">)</span>
+<span class="n">P</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre></div>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
