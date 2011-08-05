@@ -27,6 +27,8 @@ def Hamiltonian(kx, ky): #returns a N by N matrix for a given kx, ky
     H = t1*H1+ t2*H2
     return trace(H+ H.getH())/q
 
+print "hello world"
+
 #def Hamiltonian(kx,ky,q):
     #return -cos(kx) - cos(ky)
 
