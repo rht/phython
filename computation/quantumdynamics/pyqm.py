@@ -5,7 +5,6 @@
 ##http://www.sciencedirect.com/science/article/pii/S0375960109004927
 
 from pylab import *
-from fipy import *
 from mpl_toolkits.mplot3d import Axes3D
 
 ##Pauli spin matrices

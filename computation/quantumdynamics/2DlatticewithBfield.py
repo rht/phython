@@ -15,14 +15,14 @@ q = 3 #number of flux/unit cell
 T = 20 #number of timesteps
 t1 = 1.
 t2 = 3.
-kx = 1.
 deltat = 1.
 
 ## Hamiltonian
 
 def Hamiltonian(kx, ky): #returns a N by N matrix for a given kx, ky
     H1 = matrix(diag(ones(q-1, complex), 1))
-    H1[q-1,0] = exp(kx*1j)
+    print shape(H1[q-1,0] ), "\n", H1[q-1,0] 
+    H1[q-1,0] = 5#exp(kx*1j)
     H2 = matrix(diag([cos(2*pi*j/q + ky) for j in range(q)]))
     H = t1*H1+ t2*H2
     return trace(H+ H.getH())/q
