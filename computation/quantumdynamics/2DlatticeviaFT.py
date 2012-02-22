@@ -73,9 +73,7 @@ def IFT(wavefn):
     IFT = array(zeros(q*L**2), complex).reshape(L,L,q)
     for k in range(q):
         IFT[:,:,k]= fft.ifft2(wavefn[:,:,k])
-
-    IFT = IFT/ln.norm(IFT)
-
+    #IFT = IFT/ln.norm(IFT)
     return IFT
     
 
@@ -118,10 +116,25 @@ def plotsurface(function):
 plotsurface(abs(FT(Initial)))
 
 
+def createvideo(spectrums,plotter):
+        #http://dawes.wordpress.com/2007/12/04/animating-png-files/
+        #http://stackoverflow.com/questions/4092927/generating-movie-from-python-without-saving-individual-frames-to-files
+        #http://www.scipy.org/Cookbook/Matplotlib/Animations
+    from pylab import *
+    command = ('ffmpeg','-i', '%03d.png', 'out.mp4', '-r', '25')
+    for i in range(len(spectrums)):
+        plotter(spectrums[i])
+        filename = '%03d'%i + '.png'
+        savefig(filename, dpi=100)
+        print 'Wrote file', filename
+        clf()
+    os.spawnvp(os.P_WAIT, 'ffmpeg', command)
 
 
-##wavefunctions = evolve(Initial, T)
-##amplitudes = [abs(vec) for vec in wavefunctions]
+
+wavefunctions = evolve(Initial, T)
+amplitudes = [abs(vec) for vec in wavefunctions]
+createvideo(amplitudes,plotsurface)
 ##
 ##for i in range(len(amplitudes)):
 ##    plotsurface(amplitudes[i])

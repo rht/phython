@@ -9,26 +9,34 @@ import time
 
 L = 101 #mesh size
 sigma = 4.21 #gaussian standard deviation
+
+def create3Dmesh(dx,nx,q):
+    L = nx * dx
+    X = arange(-(L-1)/2, (L+1)/2,dx)
+    Q = range(q)
+    return meshgrid(X,X,Q) 
+
+
+
 X,Y  = create2Dmesh(1,L)
 Kx,Ky  = create2DmeshK(1,L)
 q = 3 #number of flux/unit cell
 T = 20 #number of timesteps
 t1 = 1.
 t2 = 3.
-deltat = 1.
+deltat = 5.
 
 ## Hamiltonian
 
-def Hamiltonian(kx, ky): #returns a N by N matrix for a given kx, ky
-    H1 = matrix(diag(ones(q-1, complex), 1))
-    print shape(H1[q-1,0] ), "\n", H1[q-1,0] 
-    H1[q-1,0] = 5#exp(kx*1j)
-    H2 = matrix(diag([cos(2*pi*j/q + ky) for j in range(q)]))
-    H = t1*H1+ t2*H2
-    return trace(H+ H.getH())/q
+#def Hamiltonian(kx, ky): #returns a N by N matrix for a given kx, ky
+    #H1 = matrix(diag(ones(q-1, complex), 1))
+    #H1[q-1,0] = 5#array([exp(i*1j) for i in kx])#exp(kx*1j)
+    #H2 = matrix(diag([cos(2*pi*j/q + ky) for j in range(q)]))
+    #H = t1*H1+ t2*H2
+    #return trace(H+ H.getH())/q
 
-#def Hamiltonian(kx,ky,q):
-    #return -cos(kx) - cos(ky)
+def Hamiltonian(kx,ky):
+    return cos(kx) + cos(ky)
 
 def gaussian(x, sigma):
     return  exp(-x*x/(2.*sigma**2))/(2.*pi*sigma**2)**.5
@@ -40,6 +48,7 @@ def gaussian(x, sigma):
 def evolve1step(wavefn,H,deltat):
     '''H must be a matrix in K basis'''
     def timestep(wavefn):
+        #return wavefn * exp(1j * H * deltat)#(1 - 1j * deltat * H)
         return wavefn * (1 - 1j * deltat * H)
     return renormalize(ifft2(timestep(fft2(wavefn))))
 
