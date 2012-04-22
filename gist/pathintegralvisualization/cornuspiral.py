@@ -18,7 +18,7 @@ def plot_cornu(N, size, distance, k):
     plot(X,Y)
 
 for l in linspace(4,200,100):
-    figure()
+    clf()
     plot_cornu(N, D, l, k)
     title('"sum over histories" at distance %dm\n size of aperture %d\n k %d'
             % (l, D, k))
