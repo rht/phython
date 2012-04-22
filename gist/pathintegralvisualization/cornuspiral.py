@@ -15,12 +15,15 @@ def plot_cornu(N, size, distance, k):
         phase = pow(size * i, 2) / 2 / distance
         X[i+1] = X[i] + cos(phase)
         Y[i+1] = Y[i] + sin(phase)
-    plot(X,Y)
+    plot(X[N/2+1:],Y[N/2+1:], 'b')
+    plot(X[:N/2+1],Y[:N/2+1], 'b')
 
+plot_cornu(N, D, 20, k)
+show();exit()
 for l in linspace(4,200,100):
     clf()
     plot_cornu(N, D, l, k)
-    title('"sum over histories" at distance %dm\n size of aperture %d\n k %d'
+    title('"sumoverhistories" at distance %dm\n size of aperture %d\n k %d'
             % (l, D, k))
     savefig("cornu%d.png" %(l))
 #show()
