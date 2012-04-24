@@ -1,0 +1,3 @@
+[submodule "phython.wiki"]
+	path = phython.wiki
+	url = git@github.com:rht/phython.wiki.git
