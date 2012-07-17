@@ -59,5 +59,5 @@ def energy1(H0,H1,ket):
     return expect(H1,ket)
 
 def ket1(H0,H1,Espectrum,ketsk0,ketn0,ketn0i):
-    return sum([dot(ketsk0[i].conj().transpose(),dot(H1,ketn0)) / (Espectrume[ketn0i] - Espectrum[i]) for i in range(len(kets0)) if ketsk0[i] != ketn0])
+    return sum([dot(ketsk0[i].conj().transpose(),dot(H1,ketn0)) / (Espectrum[ketn0i] - Espectrum[i]) for i in range(len(kets0)) if ketsk0[i] != ketn0])
 
