@@ -1,0 +1,1430 @@
+20 Jul 10:
+
+- ToDoLoops now takes care to order the expressions such
+  that e.g. a loop that sums up variables comes after the
+  loop calculating them.  (Thanks to Martin Wiebusch.)
+
+- Added FinalCollect option to WriteExpr, was executed
+  automatically so far but could take quite long.
+
+- OpenFortran passes options to OpenWrite.
+
+
+14 Jul 10:
+
+- Fixed a lot of hiccups on Ubuntu.  Disabled optimization for
+  gcc 4.2.x and 4.4.3, which would lead to an Internal Compiler
+  Error when compiling Cuba.
+
+
+30 Jun 10:
+
+- Fixed hideous bug in ToFortran.c (strcpy vs. memmove) which
+  would lead to malformed Fortran output on some platforms.
+  (Thanks to Alex Arbey.)
+
+
+17 Jun 10:
+
+- Fixed problem with ClearProcess: the zap function (Remove) was
+  not applied correctly, so numbering of abbreviations and 
+  subexpressions did not get reset.
+
+- Repaired problems with the substitution of vectors in
+  ToComponents, nested spinor products, and conjugation properties
+  of polarization vectors in VecSet.m.
+
+
+11 May 10:
+
+- Improved GaugeTerms -> False to include originally eta-dependent
+  terms where the eta dependence drops out due to cancellations.
+
+- Fixed 'mysterious' problem that abbreviations would be
+  generated twice, rather delicate handling of head vs. whole
+  function substitution in SplitExpr.
+
+
+4 May 10:
+
+- Kept IndexSum from evaluating inside the G[_][__][_][_]
+  expressions, renaming index would upset substitution of
+  insertions.
+
+- Made Lorentz index in FourVector optional, to be used as in
+  LeviCivita[mu, nu, FourVector[k], FourVector[p]].
+
+
+20 Apr 10:
+
+- Added ExtractInt to isolate invocations of LoopTools functions
+  from an expression, i.e. the B0i, C0i, ... invocations are
+  replaced by Bval, Cval, ... and a list of corresponding
+  Bget, Cget, ... calls is added.
+
+
+15 Apr 10:
+
+- Fixed various issues with explicit Dirac indices.  Ghosts
+  either carry DiracObject[1][...] with them or P$NonCommuting
+  has to include U.
+
+- Added IndexSum[..., x] (not {x, n}) to indicate summation
+  over Lorentz indices.
+
+
+26 Mar 10:
+
+- Explicit Dirac indices on fermion objects are now handled,
+  in-chain: DiracObject[DiracMatrix[...]][di1, di2],
+  end-of-chain: DiracObject[DiracSpinor[...]][di],
+  See Dirac.gen of FeynArts.
+
+
+26 Feb 10:
+
+- Fixed problem with transferring Mathematica's special symbols
+  like \[Alpha] to/from ReadForm.
+
+
+3 Feb 10:
+
+- Fixed problem with (differences of) vectors becoming zero
+  in arguments of loop functions.
+
+
+31 Jan 10:
+
+- Added .so files to the linker-relevant bits in fcc.
+
+
+16 Dec 09:
+
+- Fixed problem with universal binaries (Mac OS) in fcc.
+
+- Added MmaGetInteger, MmaGetIntegerList to mktm.
+
+
+27 Nov 09:
+
+- Added {SM,MSSM}{Reduce,Shorten,Simplify} functions for
+  model-specific simplification.
+
+
+13 Nov 09:
+
+- Re-introduced "Divergence" in UVDivergentPart.  The version
+  with Dminus4, being in the denominator, was performing 
+  significantly worse in the simplification of renormalization
+  constants.
+
+
+10 Nov 09:
+
+- Added NClear function to remove numerical values for constants.
+
+
+4 Nov 09:
+
+- Added NoBracket option for CalcFeynAmp.
+
+
+12 Oct 09:
+
+- Removed hideous bug from bit encoding of helicities for
+  external massive vector bosons.
+
+- Added Dimension -> 0 mode where the dimensionality is retained
+  (Dminus4 appears in the amplitude).  Also no local (rational)
+  terms are added.
+
+
+2 Oct 09:
+
+- Fixed problem with Generic-only insertions.
+
+- Avoided substitution of momenta in CalcFeynAmp if those were
+  not of type FourMomentum.  This gave rise to silly errors
+  when people set momenta to zero by hand.
+
+
+3 Sep 09:
+
+- Added |Hel| = 2 modes for graviton and gravitino.  Not complete
+  yet, i.e. wave functions not initialized.  Just the "helicities"
+  argument of SquaredME.
+
+
+1 Sep 09:
+
+- Fixed problem with conjugation of VA chains in HelicityME.
+
+
+27 Aug 09:
+
+- Moved sorting of propagators inside loop back to FORM,
+  otherwise InsertionPolicy -> Begin would never have any effect.
+
+
+12 Aug 09:
+
+- Bug fixes in SubstSimpleAbbr and inv.
+
+- DiracCoeff glosses over polarization vectors
+  (experimental, for spin-3/2 particles).
+
+
+30 Jul 09:
+
+- Temporary FORM file is written out with explicit path now.
+  Was a problem when doing a SetDirectory after loading
+  ReadForm (FormCalc).
+
+
+29 Jul 09:
+
+- Fixed linking problem on Mac due to gcc -lstdc++ being used
+  instead of g++.
+
+
+27 Jul 09:
+
+- Yet more changes re Windows.
+  Fixed some bizarre problems in ReadForm for Cygwin with strings
+  and fork/exec.
+
+
+22 Jul 09:
+
+- Lots of trivia re Windows version, such as:
+  quoting for filenames with spaces,
+  removal of $TemporaryPrefix (%TEMP% not readable for non-root),
+  deactivation of -pipe switch for Win FORM.
+
+
+6 Jul 09:
+
+- Fixed problem due to overzealous replace_ in DotSimplify
+  (would work on e.g. Spinors).
+
+
+30 Jun 09:
+
+- Changed MomSimplify to MomElim: user can now choose which
+  momentum to eliminate via momentum conservation.  Automatic
+  chooses the combination that generates the fewest terms.
+
+
+22 Jun 09:
+
+- Replaced "contract 0" in CalcFeynAmp.frm by a procedure which
+  contracts only the e_ connected through Lorentz indices (thus
+  generating fewer terms).
+
+
+19 Jun 09:
+
+- Revamped DotSimplify in CalcFeynAmp.frm to use the shortest
+  combination of vectors for each term individually.
+
+
+16 Jun 09:
+
+- Adapted conventions of VecSet.m to VecSet.F and fixed a bug in 
+  the application of spinors in VecSet.m (missing multiplication 
+  with Hel[i]).
+
+
+15 Jun 09:
+
+- Fixed problem with e_ and composite vectors (e_(p1+p2, ...)).
+
+- Added proper contract statements in DotSimplify.
+
+
+12 Jun 09:
+
+- Added the possibility to pass options to InsertFields to
+  SelfEnergy, DSelfEnergy, MassRC, FieldRC, TadpoleRC, WidthRC.
+
+
+9 Jun 09:
+
+- Cleaned up some context associations for compatibility with
+  the LoopTools MathLink executable.
+
+- Fixed cancellation of factors involving gauge parameters after
+  partial fractioning of denominators.
+
+
+3 Jun 09:
+
+- Fixed minor bits in FORM procedure "Square" for Mac FORM.
+
+
+28 May 09:
+
+- Taken into account `hidden' index dependence through SumOvers and
+  lower-level DoLoops in Hoist ("Expensive" option of WriteExpr).
+
+
+26 May 09:
+
+- Fixed quoting problem with explicit Fierz ordering in
+  CalcFeynAmp.frm.
+
+
+23 Apr 09:
+
+- Added the RealArgs *function* for fine-tuning the conversion of
+  integers into reals for WriteExpr.  Cases in point: Acut, Bcut, etc.
+
+
+22 Apr 09:
+
+- Added the Expensive option to PrepareExpr.
+
+
+1 Apr 09:
+
+- Added Mma{Get,Put}{Real,Complex}List functions to mktm.
+
+
+26 Mar 09:
+
+- (Hopefully) fixed the spurious detection of 32-bit systems
+  as 64-bit ones in configure.
+
+
+25 Mar 09:
+
+- Replaced MLReleaseString by MLDisownString in ReadForm.tm,
+  the former being included in the MathLink of Mathematica
+  versions 6 and up only.
+
+
+20 Mar 09:
+
+- Added the Sq[...] =. definition.
+
+
+15 Mar 09:
+
+- Added the $LongitudinalSE variable with which the longitudinal
+  part of the self-energy can be selected.
+
+
+12 Mar 09:
+
+- Extended UVDivergentPart to recursive definitions of RCs
+  (this holds for the currently defined RenConst).
+
+
+11 Mar 09:
+
+- Added $LongitudinalSE for taking the longitudinal part of the
+  self-energies.
+
+
+5 Mar 09:
+
+- Re-enabled pipe communication for Mac OS and fixed up some
+  details in the handshake.  Works for most cases now.
+
+- Patched a couple of warnings in ReadForm.tm.
+
+
+23 Feb 09:
+
+- Fixed problem with negative powers of functions inside
+  fermion chains in FORM.
+
+
+20 Feb 09:
+
+- Added ZapFunction option to preserve symbols across
+  ClearProcess.
+
+- Added workaround for MacOS FORM (disabled pipe communication).
+
+
+11 Feb 09:
+
+- Fixed bug in categorization of abbreviations (problem for
+  spin vector s(i) only).
+
+
+28 Jan 09:
+
+- Corrected signs in charge conjugation of Dirac chains during
+  Fierzing, must be same as in HelicityME.
+
+- Added nicer formatting for Dirac and Weyl chains.
+
+
+22 Jan 09:
+
+- Fixed problem in HelicityME: negative chiralities were
+  flipped wrongly in ConjChain (e.g. -7 xor 1 = -8, not -6).
+
+- Lorentz indices arrived in Mathematica as Lor[2$] instead
+  of Lor[2] due to a mistake in the character handling.
+
+
+13 Jan 09:
+
+- Fixed compile and fcc for Mathematica 7.
+
+
+7 Jan 09:
+
+- DiracChain[om, mu, nu, ...] -> DiracChain[-om, mu, nu, ...]
+  if Antisymmetrize -> True.
+
+
+2 Jan 09:
+
+- Added FileIncludes, SubroutineIncludes, FilePrefix, and
+  FileHeader options to both WriteSquaredME and WriteRenConst.
+
+
+20 Dec 08:
+
+- Again changed _ substitute to $$ (not ß), because of problems
+  w/character encoding on Mac.
+
+- Added Abbreviate[expr, patt] functionality.
+
+
+17 Dec 08:
+
+- Internal "escape character" for _ in FORM output is now ß
+  (_ + 128).  This avoids clashes with Mathematica's auto-generated
+  patterns, e.g. i_ becomes i$_ if definition is created from inside
+  a function.
+
+- Replaced the one remaining hel by helM in HelicityME.frm.
+
+
+16 Dec 08:
+
+- Fixed (trivial) bug in VecSet.m.
+
+
+15 Dec 08:
+
+- Introduced ...M notation for symbols shared between FORM
+  and Mathematica to minimize symbol collisions.
+
+
+12 Dec 08:
+
+- Fixed race condition in threads handling pipe communication.
+
+- Added Antisymmetrize option of DeclareProcess.
+
+
+10 Dec 08:
+
+- Added the TreeSquare option of WriteSquaredME.
+
+- Fixed two bugs in the pipe code of ReadForm.
+
+
+3 Dec 08:
+
+- Hopefully final correction of signs in fermion-flip rule in
+  HelicityME.frm.
+
+- Moved test of BIT_RESET in SetEnergy such that ModelVarIni is
+  not called every time.
+
+- Reformulated AbbrScale-related code without $-variables.
+
+- Added fortranflush function to util/system/ and mktm for
+  compatibility with gfortran.
+
+
+27 Nov 08:
+
+- Replaced popen call with explicit pipe & fork.  Now sending an
+  explicit kill to the FORM process before wait, thus reliably
+  handling aborts.
+
+
+25 Nov 08:
+
+- Fixed problem with Majorana spinors and HelicityME.
+  Also e_ were wrongly abbreviated inside fme.
+
+
+20 Nov 08:
+
+- Extended IndexIf for the "else if" cases, i.e.
+  IndexIf[c1, a1, c2, a2, b] corresponds to
+	if( c1 ) then
+	  a1
+	else if( c2 ) then
+	  a2
+	else
+	  b
+	endif
+
+
+17 Nov 08:
+
+- Added the Keep function.
+
+
+14 Nov 08:
+
+- Renamed InsertAt to InsertionPolicy and added integer values,
+  specifying a LeafCount above which the insertion is postponed
+  until the amplitude comes back from FORM.
+
+- Fixed problem with FindRenConst: expansion of RCs has to
+  happen during the search process, not at the end.
+
+
+13 Nov 08:
+
+- Moved filling-in of insertions completely to replace_.
+
+
+11 Nov 08:
+
+- Added explicit variable declaration to pipe I/O, to
+  safeguard for user definitions and other hiccups.
+
+
+31 Oct 08:
+
+- Fixed bug in RegisterAbbr (ferm set without scale argument).
+
+
+30 Oct 08:
+
+- Made DeclareProcess an independent and public function.
+  Useful e.g. if one wants to compute HelicityME without
+  going through CalcFeynAmp.
+
+
+29 Oct 08:
+
+- Accounted for the antisymmetrization also in HelicityME.
+  Moved much of the HelicityME code to FORM (HelicityME.frm)
+  in the process.  Gained some efficiency on bracketing out
+  helicities cleverly for massless projectors.
+
+
+15 Oct 08:
+
+- Added alternate-channel communication in ReadForm.
+  Amplitudes are sent to Mathematica for abbreviationing
+  (usually) after generic simplification.
+
+- DiracChains are now antisymmetrized, i.e. DiracChain[1, mu, nu]
+  is Sigma[mu, nu].
+
+
+31 Jul 08:
+
+- Introduced Error(...) and Warning(...) together with Error.F
+  in a FeynHiggs-like error-reporting system, i.e. suppresses errors
+  repeating fast.
+
+- Separated subroutine HiggsMasses in model_mssm.F into
+  HiggsMassesConst and HiggsMassesVar.
+
+
+30 Jul 08:
+
+- Eliminated a few bugs from the NMFV initialization in model_mssm.F.
+
+- Added RegisterAbbr function similar to RegisterSubexpr.
+
+
+29 May 08:
+
+- Added FORCE_ONSHELL to lumi_parton.F, to force a decaying
+  particle on-shell no matter which sqrtS is given from the
+  outside.
+
+
+13 May 08:
+
+- Modified PrepareExpr to deliver a "fully Mathematica"
+  output in FortranExpr.  DoLoop and IndexIf structures are
+  finally translated into Fortran code only by WriteExpr.
+
+- Added DebugLines option to PrepareExpr and corresponding
+  function DebugLine.
+
+
+8 May 08:
+
+- Improved CalcRenConst: no indiscriminate collection
+  w.r.t. integrals any more, only when necessary (gives
+  shorter expressions).
+
+
+30 Apr 08:
+
+- Added Abbr[patt] (i.e. with pattern).
+
+- Added Deny option of Abbreviate.
+
+
+25 Apr 08:
+
+- Complete overhaul of the WriteExpr function.  Rolled
+  WriteDoLoops and WriteSummedExpr into WriteExpr.
+
+
+20 Mar 08:
+
+- Extended the ColourFactor function to ColourSimplify,
+  for public use.
+
+- Added the ColourGrouping function, which serves as an
+  extension to FeynArts' DiagramGrouping function in that
+  it simplifies colour structures before grouping.
+
+
+2 Mar 08:
+
+- Introduced IndexDiff[i, j] = 1 - IndexDelta[i, j].
+
+- Added ToIndexIf function to turn IndexDeltas and
+  IndexDiffs into IndexIfs.
+
+- Modified WriteExpr and WriteSummedExpr to correctly
+  generate code containing IndexIfs which are translated
+  into Fortran if-statements.
+
+
+28 Feb 08:
+
+- Added LeviCivita symbol for antisymmetric tensors with
+  kinematic indices appearing in the generic model file.
+
+
+26 Feb 08:
+
+- Fixed a couple of quirks in main.F (among others) mainly
+  for the Alpha platform.
+
+- Added setfpu.c to put the FPU into trapping mode (i.e.
+  floating-point errors are immediately fatal) for g77 and
+  gfortran.
+
+
+20 Feb 08:
+
+- Fixed a bug in ApplyUnitarity.
+
+
+11 Feb 08:
+
+- Removed DECL1..20, unnecessary now due to user.h.
+
+
+4 Feb 08:
+
+- Added generation of if statements (IndexIf) - useful e.g. for
+  RCs dependent on index equality (dZf etc.).
+
+
+18 Jan 08:
+
+- Added decl.h as one-stop include file for all generated code.
+
+- Added separate file user.h for user declarations.
+
+
+27 Nov 07:
+
+- Improved compile script.
+
+- Fixed SetEnergy subroutine to call ModelVarIni even if the
+  energy is the same but the RESET flag is set.
+
+
+23 Nov 07:
+
+- Fixed xlf-problem in Diag library (wouldn't accept 2D0**-102,
+  must be 2D0**(-102)).
+
+
+22 Nov 07:
+
+- Added FORM binaries to distribution.  Fed up with advising folks
+  to use latest version.
+
+
+20 Nov 07:
+
+- 'Cleaned up' some internals: new function KinFunc which
+  allows to cast statements like #3.#4 -> -1 as e.ec -> -1
+  (mainly in DeclareProcess).
+
+- Enlarged the FORM setup parameters, in particular
+  MaxTermSize.  This is irrelevant for 32-bit platforms,
+  where the maximum is 32568, but useful for 64-bit ones.
+
+- Downgraded a few makefile.in features for compatibility
+  with GNU make 3.80.
+
+
+18 Nov 07:
+
+- Fixed bug in the normalization of external polarization vectors.
+  (Was ei.eci -> 0, not -1, due to copy & paste error.)
+  Relevant only for HelicityME.
+
+- Improved PolarizationSum by introducing the gauge-dependent
+  vectors eta explicitly (formerly e(i)).  Added calls to eiei
+  and eiki routines, should speed up slightly.
+
+
+11 Nov 07:
+
+- Extended CalcFeynAmp's InsertBefore flag to InsertAt, with choices:
+  1. Begin = apply Insertions in the FORM code, but before
+     simplifications,
+  2. Default = apply Insertions in the FORM code, but after
+     simplifications,
+  3. End = apply `bulky' Insertions in Mathematica
+     (workaround for FORM bugs).
+
+
+8 Nov 07:
+
+- Added DECL1..20 statements to run.F for declarations of local
+  variables.
+
+- Made DECL*, LOOP*, PRINT* statements optional (i.e. the user
+  may omit superfluous ones).
+
+- Fixed the drivers/tools/mcc script for Mathematica 6 under
+  Windows/Cygwin.
+
+- Upgraded to latest version of the Diag library (1.3).
+
+
+7 Nov 07:
+
+- Further simplified generated makefiles.  Macros DIR and LIB
+  of makefile.in are now used.
+
+- Added SqrtPhiGl definitions for the gluino phase.
+
+
+18 Oct 07:
+
+- Fixed bug in ColourME: for powers of a colour trace, e.g.
+  SUNT[Glu2, Glu1, Glu3, 0, 0]^2, only one replacement index for
+  the "0, 0" was generated.  This led to a wrong colour factor.
+
+
+17 Oct 07:
+
+- Moved flush calls from logfile.c to xsection.F, due to special
+  handling of the flush "intrinsic" by gfortran.
+
+
+11 Oct 07:
+
+- Upgraded the FeynHiggs interface to the latest version (2.6.1).
+
+
+15 Sep 07:
+
+- "Downgraded" to 32-bit compile on x86_64 systems for compatibility.
+
+
+12 Sep 07:
+
+- Added charge conjugation to the FermionOrder techniques.
+  Fermion chains are now definitely rearranged in the prescribed
+  order.
+
+
+29 Aug 07:
+
+- Replaced USfSimplify by the more general function
+  ApplyUnitarity.
+
+- Since USfSimplify might be slightly more thorough, it is
+  still available in tools/USfSimplify.m.
+
+
+28 Aug 07:
+
+- Improved 4D Fierz identitites (better matching, more cases).
+
+- Introduced Sigma[mu, nu] on 4D fermion chains.
+
+
+14 Aug 07:
+
+- Renamed HornerForm (option of CalcFeynAmp) into HornerStyle.
+  FormCalc is now fully compliant with Mathematica 6.
+
+
+9 Aug 07:
+
+- Modified the compile and mcc script for compliance with Mma 6.
+
+
+2 Aug 07:
+
+- Added EpsilonScalar indices and corresponding polarization
+  vectors z, zc.
+
+- Renamed the polarization tensors from ee, eec to eT, eTc because
+  of collisions with the ee* symbols of the 5-point function.
+
+
+20 Jul 07:
+
+- Again changed makefile setup for compliance with older gmake
+  versions (< 3.80).
+
+
+18 Jul 07:
+
+- Changed SPEC_K{X,Y,Z} to SPEC_E{X,Y,Z}.  The SPEC_Ki can
+  easily be reconstructed from SPEC_K and SPEC_Ei.
+
+
+13 Jul 07:
+
+- Renamed Small to Neglect for compatibility with Mma 6.
+
+
+11 Jul 07:
+
+- Revamped makefile handling in the drivers to avoid absolute
+  paths.  These are a nightmare for make if they contain spaces,
+  which is often the case on Windows and Mac OS.
+
+- Made compilation process Windows compliant.  FormCalc would
+  now run under Windows (Cygwin) if a FORM version for Cygwin
+  were available.
+
+
+1 Jul 07:
+
+- Added handling of polarization tensors for gravity in the
+  symbolic part.
+
+
+8 Mar 07:
+
+- Added Fierz identities for 4D spinors.  The order in which
+  the external spinors shall be arranged is chosen with the
+  FermionOrder option of CalcFeynAmp.
+
+
+26 Feb 07:
+
+- Added SEPart function to allow for modifications of parts of
+  renormalization constants.
+
+
+13 Feb 07:
+
+- Added MassRC, FieldRC, TadpoleRC, WidthRC functions to simplify
+  the definition of renormalization constants (and introduce
+  fewer errors).
+
+
+6 Feb 07:
+
+- Added MoveDepsLeft and MoveDepsRight functions to disentangle
+  dependences between categories of abbreviations.
+
+
+3 Feb 07:
+
+- Separated abbreviations into such for tree and loop part.
+  Changed the third "reset" argument of SquaredME to a more
+  general flag register.  Bit 0 is the old "reset" value,
+  bit 1 determines whether the loop correction should be added,
+  i.e. bit 1 = 0 computes the tree-level part only.
+
+
+29 Jan 07:
+
+- Added ToArray function which turns symbols into array references,
+  e.g. Xyz1234 -> Xyz[1234].
+
+- Added MaxDims function which determines the maximum dimensions of
+  array references, e.g. MaxDims[Xyz[1, 2], Xyz[2, 1]] -> {Xyz[2, 2]}.
+
+- Added Renumber function which renumbers the given array references.
+
+- Added SubstSimpleAbbr function which removes `simple' abbreviations
+  and subexpressions from the list and substitutes them directly
+  into the expressions they appear in.
+
+
+24 Jan 07:
+
+- Added startmath template script with which programs that use the
+  Mathematica interface can be distributed (parallelized).
+
+- Added handling of IndexEps objects which represent antisymmetric
+  combinations of indices (e.g. colour or generation).
+
+
+15 Jan 07:
+
+- Revamped ReadForm.tm for better C style.  Adapted the MathLink
+  string functions to the latest MathLink version.
+
+- Fixed configure to work properly with pgf77 6.2.
+
+- Fixed some problems with the Mathematica interface.
+
+
+18 Nov 06:
+
+- Added Mac OS X details to configure and makefile.in for g77 and xlf.
+
+
+30 Oct 06:
+
+- Added the six-point tensor reduction.
+
+- Fixed overflow problem in FORM due to the procedure DotSimplify
+  in CalcFeynAmp.
+
+
+24 Oct 06:
+
+- Added Mathematica interface for generated code.
+  Generalized some sections of CalcFeynAmp.frm, added
+  the F function as far as tensor reduction goes.
+
+
+11 Sep 06:
+
+- Adapted FeynHiggs interface to latest version (2.4.x).
+
+- Adapted LHAPDF invocations to latest version (5.x).
+
+
+15 Jul 06:
+
+- Revamped the entire linear algebra section.  Routines now
+  available as separate library.  Added TakagiFactor.
+
+
+10 Apr 06:
+
+- The SquaredME subroutine no longer sets the "reset" flag to
+  .FALSE. after initialization.  Rather, this is done in xsection.F.
+  This makes it easier to combine several squaredme modules.
+
+
+7 Apr 06:
+
+- Moved the Li2 function to LoopTools, substituted the Kronecker
+  Delta function by a preprocessor macro.
+
+- Updated configure to look for FeynHiggs and LHAPDF and also
+  check more places.
+
+
+27 Feb 06:
+
+- Added the MultiplyDiagrams function of which the TagDiagrams
+  function introduced earlier is just a special case.
+
+
+20 Jan 06:
+
+- Added the $ReadFormDebug variable.  When set to a non-zero value,
+  ReadForm echos each line of the FORM output.
+
+
+15 Dec 05:
+
+- Added the Pool function which collects terms with common
+  prefactors.
+
+
+1 Dec 05:
+
+- Added the OnSize function, which constructs a Switch
+  statement for simplifying an expression according to its
+  LeafCount.
+
+
+23 Nov 05:
+
+- Added the Abbreviate function, which introduces abbreviations
+  for certain subexpressions (currently only sums).  Subexpr[]
+  returns the definitions of the subexpressions and ClearSubexpr[]
+  removes them.
+
+
+25 Oct 05:
+
+- The last change is now automatic with ./configure --quad.
+
+
+20 Oct 05:
+
+- Replaced all dble -> DBLE, dimag -> DIMAG, dconjg -> DCONJG.
+  This way, the entire code can easily be treated to quadruple
+  precision using the change in the makefile:
+  FC = ifort -r16 -DDBLE=QEXT -DDIMAG=QIMAG -DDCONJG=QCONJG
+
+
+21 Sep 05:
+
+- Fixed bug re summation of Deltas in CalcFeynAmp.frm.
+
+- Fixed problem with #call Shortest if args included parentheses,
+  e.g. #call Shortest(..., MSf2(...)).
+
+
+2 Aug 05:
+
+- Corrected bug in PolarizationSum for massive vector bosons.
+  Terms not containing the polarization vector were multiplied
+  with 2; the correct number of polarizations is of course 3.
+
+
+29 Jul 05:
+
+- Added a generational dependence to the preprocessor macros
+  for the sfermion mass-parameters, e.g. MLE -> MLE(g).
+
+
+24 Jun 05:
+
+- Improved internal InvSimplify FORM procedure which had some
+  problems with large expressions.
+
+
+8 Jun 05:
+
+- Renamed internal symbols i$, d$, e$, p$, dummy$ to
+  iJ, dJ, ... because Mathematica uses the $ also in Modules
+  and then gives warnings of the kind "Form`i$ may be shadowed
+  by Global`i$".
+
+
+13 Apr 05:
+
+- Consistently renamed all remaining occurrences of Mandel* to
+  Inv*, e.g. MandelSimplify -> InvSimplify.
+
+
+7 Mar 05:
+
+- Fixed problem with insertions in Particle-level amplitudes.
+
+- Updated some Cuba bug fixes.
+
+
+9 Feb 05:
+
+- Switched to unitary representation for the CKM matrix in sm_ini.F.
+
+
+8 Feb 05:
+
+- Added UASf + MASf stuff for FVMSSM.
+
+- Added TagDiagrams function.
+
+- Updated to Cuba 1.2.
+
+
+7 Feb 05:
+
+- Added cuba.F to the drivers.  Takes care of numerical integration
+  using the parameters defined in run.F with a simple interface.
+
+- Removed ModelDigest from *_ini.F files.  ModelVarIni now dumps
+  the parameters once after each ModelConstIni invocation.
+  Signalling done via the *_digest logical variables in model.h.
+
+
+2 Feb 05:
+
+- Added CompAZ to the util library.
+
+
+25 Jan 05:
+
+- Extended mssm_ini.F for linking with FeynHiggs 2.2.
+
+- Updated to Cuba 1.1.
+
+- Improved ReadData for reading huge data files.
+
+- Log-file name now a 7-digit number.
+
+
+12 Aug 04:
+
+- Significant changes in the FORM part: Rational exponents now
+  treated properly in FORM.  Scaling (AbbrScale) works properly.
+
+- Improvements in PolarizationSum.
+
+- Added InsertBefore option with which the loop integrals can
+  be completely symmetrized.
+
+
+18 Jun 04:
+
+- Rewrote RemoveRedundancy, it now sorts tmp variables in such that
+  they come after everything they depend on has been calculated
+  (essentially like OnePassOrder applied to the result).
+
+
+6 May 04:
+
+- Added sqrtSstep to the output file name.
+
+- Added submit script to automatically distribute run.F jobs over a
+  cluster.
+
+
+15 Apr 04:
+
+- Added reorder utility which works much like restack in older versions.
+
+
+14 Apr 04:
+
+- openlog skips already existing logfiles.  This is useful if the
+  executable dies or is killed.  One may need to remove the last,
+  partial, log file, but can otherwise restart the program with
+  the same parameters to resume the calculation.
+
+
+9 Apr 04:
+
+- Fixed some technical Fortran issues wrt g77 in squared_me.F.
+
+- Added sqrtSstep in main.F.
+
+
+8 Apr 04: lots of new stuff!
+
+- Integrated the Cuba library [hep-ph/0404043] into util.a.
+
+- Rearranged main.F so that the actual main program scans only the
+  command line and then invokes the subroutine ParameterScan, which
+  performs the actual calculation.
+
+- Introduced serial numbers on the command line.  With this concept
+  one can with very little effort parallelize a parameter scan on a
+  large cluster.
+
+- Every pass of the parameter-scan loop (LOOP1..15) yields an individual
+  output file in all output is stored, messages and "true" data alike,
+  where the latter are merely tagged by a @ in the first position.
+  These output files are written to a directory named much like the
+  output files in older versions, e.g. run.UUUU.00500/.  The script
+  "data" extracts the actual data from the output files in this directory.
+
+- Likewise, the main program yields as an exit value for the shell the
+  number of passes of the parameter loop which were actually computed.
+
+- The PARALLEL stuff has been removed.  Forking is much too valuable
+  to waste on the simple parallelization that can be performed more
+  efficiently using the serial numbers.  Forking is reserved for the
+  parallelization of the integration algorithms.
+
+- Returned to the SymbolPrefix option (rather than the $SymbolPrefix
+  global variable).  Now implemented as PREFIX preprocessor def with
+  the SymbolPrefix value as default.
+
+- Helicities are now encoded as bit string.  Got rid of that stupid
+  TrueHel this way.  Thus
+    7 = 111b = use pols +1,0,-1 (unpolarized),
+    2 = 010b = use only 0 (longitudinal),
+    5 = 101b = use +1,-1 (transverse).
+  Bits for particle 1 are at the lower end of the word.
+
+- IDENTICALFACTOR is now multiplied also with the differential
+  cross-section.  The factor comes from Bose statistics and not
+  from phase-space overcounting and will hence be observed in
+  differential cross-sections too.
+
+- Archive now unpacks into subdirectory, no longer "flat."
+
+
+27 Oct 03:
+
+- Put the $SymbolPrefix in a lot of places where it was missing.
+
+
+20 Oct 03:
+
+- Enlarged TERMBUF limit in ReadForm.tm.
+
+
+7 Oct 03:
+
+- Rearranged some internal context stuff.
+
+- Fixed some minor problems with PolarizationSum.
+
+
+26 Jun 03:
+
+- Moved "call setdelta" in main.F etc. into loop over parameters as
+  DELTA, MUDIM, and LAMBDA may depend on model parameters.
+
+
+3 Jun 03:
+
+- Changed default to FermionChains -> Weyl in CalcFeynAmp.
+  Rearranged all examples accordingly.
+
+
+2 Jun 03:
+
+- Got the Weyl-van der Waerden spinors going!
+  Significant gains in both numerical stability and speed.
+
+- When using standard Dirac fermions and the trace technique (i.e.
+  HelicityME), the DIRACFERMIONS flag in process.h should be defined to
+  compute unpolarized cross-sections efficiently, i.e. without actually
+  summing up the different helicities.
+
+
+27 May 03:
+
+- Added PolarizationSum for performing the sum over the polarizations
+  of the squared amplitude analytically.  The gauge-dependent terms
+  (for massless external gauge bosons) are expressed in terms of a
+  vector eta, but can also be turned off with GaugeTerms -> False
+  (careful!).
+
+- Moved all programs internal to FormCalc to the FormCalc subdirectory,
+  much like in FeynArts.
+
+
+30 Apr 03:
+
+- Rearranged entirely the representation of vectors in the driver
+  programs, now all functions in util/kin use the Weyl-van der Waerden
+  representation, improves stability and is a first step towards the
+  full Weyl spinor formalism.
+
+- Removed VADecompose option of CalcFeynAmp.  It now has the new option
+  FermionChains -> Chiral|VA|Weyl, which subsumes the functionality of
+  VADecompose.  With FermionChains -> Weyl, Weyl spinor chains are
+  returned by CalcFeynAmp.  Currently these are not useful for Fortran
+  code generation.
+
+- The renormalization constants are now split into several files if
+  they become too large.
+
+
+31 Mar 03:
+
+- Fixed problem with phase in SingularValues, formerly
+  U A V^+ = diag(d), now U^* A V^+ = diag(d).
+
+- Rewrote Eigensystem and Eigen2x2 from scratch using Jacobi algorithm,
+  much better precision now.
+
+
+7 Mar 03:
+
+- Added possibility to calculate amplitudes at Generic level.
+  The generic objects not suitable for FORM, like the generic couplings
+  (G[_][_][__][__]) are substituted by symbols, e.g. Coupling1.
+  These symbols remain after CalcFeynAmp.  GenericList[] returns
+  a list of substitutions, thus "result /. GenericList[]" recovers
+  the original objects.
+
+
+6 Mar 03: major rearrangement of the structure of the generated code
+(version number therefore now 4.0 beta):
+
+- New syntax for WriteSquaredME and WriteRenConst:
+	dir = SetupCodeDir["myfortran", Drivers -> "mydrivers"];
+	WriteSquaredME[..., dir];
+	WriteRenConst[..., dir]
+  i.e. setting up the code directory is now a separate step.	
+
+- Generated modules are now put in own subdirectories (squared_me/ and
+  renconst/ by default, may be changed with the Folder option of
+  WriteSquaredME and WriteRenConst).  Only a minimalistic makefile is
+  generated in each subdirectory.  FormCalc is now completely unaware
+  of the drivers (they used to be mentioned as dependencies in the
+  makefile).  Code generated by WriteSquaredME and WriteRenConst is
+  completely independent of each other (option RenConstFile gone).
+  The connection which renconst to use with which squared_me is now
+  made by the central makefile.in in the drivers.
+
+- The makefile.in in the drivers directory determines which
+  subdirectories are taken into account.  This makes it easy to have,
+  e.g., several subdirectories with squared matrix elements, such as
+  for up- and down-type-quark processes when considering proton
+  scattering.  Moreover, the makefile.in can be modified and copied
+  to the custom driver directory since it is no longer overwritten by
+  WriteSquaredME.
+
+- WriteSquaredME's SymbolPrefix option replaced by the global
+  variable $SymbolPrefix which is used by WriteSquaredME, WriteRenConst,
+  SubroutineDecl, and CommonDecl.
+
+- Added sfx shell script that packs all files necessary to compile
+  the code generated by FormCalc into a self-extracting archive for
+  easy distribution to other people.
+
+- Added turnoff shell script with which the calculation of certain
+  modules in squared_me.F can be turned off (i.e. the calls to the
+  modules are commented out in squared_me.F).
+
+- Moved pnuglot script to the drivers directory, making it unnecessary
+  to set path to ~/FormCalc/tools.
+
+- Much less dependence on preprocessor variables.  Most utility
+  functions now moved to a library util.a which needs to be compiled
+  only once.
+
+- Main program now in main.F, the 1to2, 2to2, and 2to3 drivers now
+  contain only the output routines for differential and integrated
+  cross-sections, DoDifferential and DoIntegrated.
+
+- Added one-dimensional integration algorithm "Patterson" which,
+  though non-adaptive, gives an error estimate together with the
+  integral.  The basic integration rule has 21 points; if the error
+  is deemed too large, a 43-point rule is used (re-using all 21
+  previously computed points); if that is still insufficient, a
+  81-point rule is taken (again re-using all previous values).
+
+- The executables run etc. are now invoked as "./run uuuu ..."
+  instead of "./run u u u u ..." as before.  The new version makes
+  it easier to scan the command-line arguments.
+
+- The generated subroutine SquaredME (and indeed all other driver
+  programs, too) no longer pass the results in two scalar variables
+  tree and loop, but now in an array with NCOMP components (NCOMP is
+  defined in run.F), where result(1) = tree and result(2) = loop.
+  This makes it easy to add further components, e.g. if the square
+  of the one-loop matrix element shall be returned, too.
+
+- The third column in the result files, which used to be the
+  tree-level result plus the one-loop contribution, is now only the
+  one-loop contribution.  This way there is no loss of precision
+  if the tree-level result is much larger than the one-loop
+  contribution.
+
+
+17 Feb 03:
+
+- Made DCUHRE the default integrator for 2 -> 3.
+
+- dcuhre.f now included by 2to3.F, obviating the need to explicitly
+  compile libdcuhre.a.
+
+
+12 Feb 03:
+
+- Added OffShell function to take individual particles off shell.
+
+- Removed last remaining CERNlib dependence by adding own routine to
+  compute alpha_s.
+
+- Added "--with-cernlib" switch to configure to restore old behaviour
+  (e.g. alpha_s should be computed by PDFlib when using the parton
+  distribution functions from PDFlib).
+
+
+28 Jan 03:
+
+- Rearranged much of the Gauss-Kronrod integration in multigauss to
+  fix a bug. 
+
+- Fixed up minor problem with allocation of working space in DCUHRE, too.
+
+
+22 Jan 03: FormCalc 3.2 released, lots of new stuff:
+
+- Completely general and systematic introduction of invariants
+  for any number of external legs.
+
+- Added an absolute precision goal to Vegas and Multigauss.
+
+- Improvements in the ScanGraphics package.
+
+- Improvements in ReadData (much faster now).
+
+- 1 -> 2 drivers added.
+
+- Added possibility for parallel execution of FormCalc-generated
+  code (compile with -DPARALLEL, see hep-ph/0210220).
+
+- Improvements in the code generation:
+  1. Now uses preprocessor macros k(n), e(n), ec(n), and s(n) instead of
+     integers to access vectors.
+  2. New sumup function improves readability of squared_me.F considerably.
+  3. Helicities passed to SquaredME as arrays, not single integers.
+  4. sqrtS no longer passed to SquaredME.
+  5. Because of the changes in the calling conventions (#3 & #4), the
+     subroutine's name has been changed from squared_me to SquaredME
+     to alert the user to the new conventions.
+
+- Internal reordering mostly in the FORM part:
+  1. Better partial factorization of expressions
+  2. Simplification of invariants now done in FORM
+
+- Needs Mathematica 4 or higher now.
+
+- Compiled executables now reside in a single directory, which is named
+  by Mathematica's $SystemID, rather than by the shell's $HOSTTYPE,
+  e.g. Linux/{ReadForm,ToForm,ToFortran,ReadData}.
+  ($HOSTTYPE had led to some complications because tcsh and bash had
+  different values for it on some OSs.)
+
+- mssm_ini now uses At, Ab, and Atau (rather than Au and Ad).
+  Names have deliberately been chosen different than before because
+  Atau must be given in addition to At and Ab, hence this is not
+  just a renaming, but there must be at least a statement "Atau = Ab"
+  or similar.
+
+- mssm_ini has its own set of SVD and diagonalization routines and is
+  hence no longer dependent on LAPACK (libmathlib.a of CERNlib).
+  The conventions are now that all mass arrays are sorted into ascending 
+  order (MNeu and MCha were in decreasing order so far).  This matches
+  the conventions commonly adapted in the literature.
+
+
+13 Sep 01:
+
+- Added adaptive Gauss-Kronrod integration for 2 -> 3 (multigauss.F),
+  algorithm can be tuned using the NODES_var preprocessor defines in run.F
+  and may be significantly faster for some applications, though also worse
+  for nasty integrands.
+
+- Added special cases of B1[0, ...] to tools/btensor.m.
+
+
+30 Aug 01:
+
+- Largely rewritten the internal FormCalc functions for optimization and
+  pre-output ordering: OptimizeAbbr, Dependencies, and OnePassOrder, yields
+  some 30% in speed.
+
+
+27 Aug 01:
+
+- Switched 2 -> 3 code from (fixed-point) multiple Gaussian integration to
+  VEGAS, added the adaptive ACM-algorithm DCUHRE for checking.
+

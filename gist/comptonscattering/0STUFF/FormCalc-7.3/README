@@ -1,0 +1,25 @@
+FormCalc 6.0 README file
+
+FormCalc is a Mathematica package for the calculation of tree-level
+and one-loop Feynman diagrams.  It reads diagrams generated with
+FeynArts 3 and returns the results in a way well suited for further
+numerical (or analytical) evaluation.
+
+Installation notes for the impatient:
+
+- unpack the archive FormCalc-m.n.tar.gz (presumably you did
+  this already or else you wouldn't be reading this file),
+
+- run ./compile to compile the C programs needed by FormCalc.
+
+You can find the complete manual in FC6Guide.ps.gz.
+
+The latest version of FormCalc can be downloaded from
+http://www.feynarts.de/formcalc.
+
+
+Enjoy!
+
+Thomas Hahn
+hahn@feynarts.de
+

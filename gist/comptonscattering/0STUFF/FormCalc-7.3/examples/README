@@ -1,0 +1,114 @@
+This directory contains example calculations with
+FeynArts and FormCalc.
+
+The files in this directory are named in the following way:
+
+  PROCESS-MODEL.m	   -- the Mathematica program that
+			      generates the Fortran code,
+
+  PROCESS-MODEL.drivers/   -- the directory with customized
+			      (process-specific) versions of
+			      the driver programs,
+
+  PROCESS-MODEL.fortran/   -- the directory which will be
+			      created by PROCESS-MODEL.m
+			      and in which the generated
+			      Fortran code is put.
+
+Currently, PROCESS is one of
+
+  eett    -- e^+ e^- -> t-bar t
+  eettA   -- e^+ e^- -> t-bar t gamma (hard bremsstrahlung for eett)
+  eeWW    -- e^+ e^- -> W^+ W^-
+  eeHH    -- e^+ e^- -> H^+ H^-
+  AAAA    -- gamma gamma -> gamma gamma
+  AAtt    -- gamma gamma -> t-bar t
+  AAttA   -- gamma gamma -> t-bar t gamma (hard bremsstrahlung for AAtt)
+  WWWW    -- W^+ W^- -> W^+ W^-
+  ZZZZ    -- Z Z -> Z Z
+
+and MODEL is the FeynArts model-file name minus the ".mod", i.e.
+
+  SM      -- the electroweak Standard Model
+  SMbgf   -- the same in the background-field formulation
+  MSSM    -- the Minimal Supersymmetric Standard Model
+
+The Fortran code for these processes can also be
+obtained from www.hep-processes.de.
+
+
+To execute the demo programs you need
+
+> Mathematica 5 or higher
+
+> FORM 3.2 or higher
+  (available from http://www.nikhef.nl/~form)
+
+> FeynArts 3.2 or higher
+  (available from http://www.feynarts.de)
+
+> LoopTools 2.2 or higher
+  (available from http://www.feynarts.de/looptools)
+
+> GNU make 3.80 or higher
+  (available e.g. from http://www.gnu.org/directory/GNU/make.html)
+
+> a Fortran-77 compiler (g77 if you don't have any other)
+
+> for plotting the results: gnuplot 3.7 or higher
+  (available from http://www.gnuplot.info)
+
+
+The demo programs are invoked as follows:
+
+Please do have a look at PROCESS-MODEL.m to see what it's doing,
+whether e.g. some diagrams are left out or similar things.
+
+Start Mathematica and type
+	<< PROCESS-MODEL.m
+
+After the program has finished, quit Mathematica and change into the
+directory PROCESS-MODEL.fortran.  You may want to look into run.F or 
+model.h for changing some of the parameters.  Then type
+	./configure
+	make
+to compile the Fortran code.  The resulting executable will be called
+run.  For several runs, place the parameters for each in a separate
+file, say run1.F, run2.F, ..., and say "make run1", "make run2" etc.
+
+Run "run" with the following parameters:
+	./run <p1>...<pN> <sqrtS_from>,<sqrtS_to>
+where the <pi> are the polarizations of the external particles.
+E.g. to obtain an unpolarized differential cross-section at
+Sqrt[s] = 500 GeV use
+	./run uuuu 500
+This creates a subdirectory called run.UUUU.00500 with the
+output files.  Extract the "real" data from those (log)files using
+	./data run.UUUU.00500
+which results in a file run.UUUU.00500.data.  The data are
+organized in columns, where column 1 is the ordinate data (angle
+for a differential cross-section, Sqrt[S] for a total), column 2
+is the Born cross-section, column 3 is the one-loop correction.
+If present, columns 4 and 5 contain the integration errors for
+columns 2 and 3, respectively.
+
+If you have gnuplot 3.7 (or higher) installed, it is very easy to
+plot the results.  Invoke e.g.
+	./pnuglot run.UUUU.00500.data
+It is important to understand that pnuglot does not make the plot
+directly.  Rather, it writes out a shell script to do this
+(run.UUUU.00500.gpl) which it then executes to produce the actual
+plot (run.UUUU.00500.eps).  The advantage of this extra level of 
+indirection is that if you're not completely satisfied with the
+gnuplot commands pnuglot puts into the script by default, you can
+easily edit run.UUUU.00500.gpl and change whatever you like.  Then
+run the .gpl script (not pnuglot!) from the shell prompt to update
+the .eps file:
+	./run.UUUU.00500.gpl
+
+
+Send bug reports, omissions, fan mail etc. to
+Thomas Hahn <hahn@feynarts.de>
+
+Have fun!
+

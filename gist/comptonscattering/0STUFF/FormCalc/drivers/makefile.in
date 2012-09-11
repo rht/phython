@@ -1,0 +1,87 @@
+# makefile.in
+# makefile template used by configure
+# this file is part of FormCalc
+# last modified 5 May 10 th
+
+# Note: make permanent changes only in makefile.in,
+# changes in makefile will be overwritten by configure.
+
+
+.PHONY: all force clean distclean
+
+MAKECMDGOALS ?= run
+
+MAKECMDGOALS := $(MAKECMDGOALS:%=%$(EXE))
+
+all: $(MAKECMDGOALS)
+
+
+VPATH := $(SRC):$(SRC)/squaredme:$(SRC)/renconst:$(LT)/../include:$(LT)
+
+INCLUDE := $(patsubst %,-I%,$(subst :, ,$(VPATH)))
+
+PREFIX :=
+
+FFLAGS += $(INCLUDE)
+
+ifdef DEBUG
+FFLAGS += -g $(DEF)DEBUG
+endif
+
+export FC
+export FFLAGS
+export CC
+export CFLAGS
+
+
+DECL_H = decl.h model.h util.h looptools.h renconst.h user.h
+
+
+DIR = $(SRC)/$(FOLDER)
+LIB = $(FOLDER).a
+
+LIBS :=
+
+FOLDER := squaredme
+-include $(DIR)/makefile
+
+FOLDER := renconst
+-include $(DIR)/makefile
+
+CLEANLIBS := $(LIBS)
+
+FOLDER := util
+-include $(DIR)/makefile
+
+
+DEPS := $(wildcard *.d)
+
+clean:
+	$(RM) $(DEPS) $(DEPS:%.d=%.o) $(DEPS:%.d=%$(EXE)) $(CLEANLIBS)
+
+distclean:
+	$(RM) $(DEPS) $(DEPS:%.d=%.o) $(DEPS:%.d=%$(EXE)) $(LIBS) makefile
+
+
+-include $(SRC)/$(MAKECMDGOALS:%$(EXE)=%.d)
+
+%.d: $(SRC)/%.F
+	( grep "^[^c*].*Mma" $< >/dev/null 2>&1 ; \
+	  echo "MMA = $$?" ; \
+	  echo "$*$(EXE): $@ $(LIBS)" ; \
+	  $(CPP) -M $(INCLUDE) -x c $< | sed 's/^.*:/$@:/' ) > $@
+
+ifeq ($(MMA), 0)
+%$(EXE):: $(SRC)/%.F %.d $(SRC)/mktm
+	$(SRC)/mktm $<
+	$(FC) $(FFLAGS) $(DEF)MMA $(DEF)PREFIX=$(PREFIX) -c $<
+	CC="$(SRC)/tools/fcc" CXX="$(SRC)/tools/fcc" REALCC="$(CC)" \
+	  PATH="$(PATH):$(SRC)/tools" \
+	  mcc $(MCFLAGS) -o $@ $*.tm $*.o $(LIBS) $(STDLIBS) $(LDFLAGS)
+	-$(RM) $*.o $*.tm $*.tm.c
+else
+%$(EXE):: $(SRC)/%.F %.d
+	$(FC) $(FFLAGS) $(DEF)PREFIX=$(PREFIX) -o $@ $< $(LIBS) $(STDLIBS)
+	-$(RM) $*.o
+endif
+

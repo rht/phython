@@ -1,0 +1,34 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\begin{document}
+First, convert the equation
+$$\hat{H} \psi = E \psi$$
+where
+$$\hat{H} = v \mathbf{\sigma} \cdot \mathbf{p} + V(\mathbf{r}) \sigma_{z}$$
+
+into polar-coordinate form:
+$$\begin{bmatrix} 0 & e^{-i\phi}(\partial_{r} - (i/r)\partial_{\phi}) \\ e^{i\phi}(\partial_{r} + (i/r)\partial_{\phi}) & 0 \end{bmatrix} \left( \begin{array}{c} \psi_1 \\ \psi_2 \end{array} \right) = k \left( \begin{array}{c} \psi_1 \\ \psi_2 \end{array} \right)$$
+
+with solution:
+$$ \psi_{l}  = \left( \begin{array}{c} \psi_{1l} \\ \psi_{2l} \end{array} \right) = e^{il\phi}\left( \begin{array}{c} J_{l}(kr) \\ ie^{i\phi}J_{l+1}(kr) \end{array} \right)$$
+
+boundary condition:
+
+$$\frac{\psi_{2}(R_{1})}{\psi_{1}(R_{1})} = -i e^{i\varphi}$$
+and
+$$\frac{\psi_{2}(R_{2})}{\psi_{1}(R_{2})} = i e^{i\varphi}$$
+note:
+
+
+we get
+$$j_l (E) = - j_{l+1} (E)$$
+
+$$j_l (\eta E) =  j_{l+1} (\eta E)$$
+
+\end{document}  

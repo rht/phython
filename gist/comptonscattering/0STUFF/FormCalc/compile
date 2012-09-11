@@ -1,0 +1,113 @@
+#! /bin/sh
+# compile script for the C programs used by FormCalc
+# last modified 14 Jul 10 th
+
+# If this compile script doesn't work on your system, check these things:
+#
+# a) You need gcc.  If that's not installed on your system, change all
+#    "gcc"s to "cc"s, but have your fingers crossed: not all ccs will
+#    compile MathLink programs without errors.  You may need to change
+#    CFLAGS to e.g. relax strict ANSI compliance.
+#
+# b) You need mcc.  mcc is a script which compiles MathLink programs.
+#    Such programs have the extension .tm.  If you have Mathematica,
+#    you should also have mcc.  If mcc is not on the path, specify it
+#    in the environment variable MCC, e.g.
+#    setenv MCC /opt/Wolfram/Mathematica/5.2/Executables/mcc
+
+CC=${CC:-gcc}
+
+CXX=${CXX:-g++}
+
+MCC=${MCC:-mcc}
+
+CFLAGS="${CFLAGS:--O3 -fomit-frame-pointer -ffast-math} $@"
+
+SRC="${SRC:-`dirname $0`}"
+
+mathcmd=math
+exe=
+shopt -s nullglob > /dev/null 2>&1
+set --
+case `uname -s` in
+Darwin)
+	mathcmd=MathKernel
+	set -- /Applications/Mathematica*/Contents/MacOS \
+	       $HOME/Desktop/Mathematica*/Contents/MacOS ;;
+CYG*)
+	exe=.exe
+	set -- "$PROGRAMFILES/Wolfram Research/Mathematica"/* ;;
+esac
+
+if [ -z "$DEST" ] ; then
+  for dir in "$@" ; do
+    path="$dir:$path"
+  done
+  mathcmd="`PATH=\"$PATH:$path\" which $mathcmd`"
+
+  set -- `"$mathcmd" -run 'Print[$SystemID]; Exit[]' < /dev/null | tr '\r' ' ' | tail -1`
+
+  [ $? -ne 1 ] || {
+    echo "Cannot determine Mathematica's system ID using $mathcmd" 1>&2
+    exit 1
+  }
+
+  DEST="$1"
+fi
+
+case "$DEST" in
+Linux | MacOSX-x86)		CFLAGS="$CFLAGS -m32" ;;
+Linux-x86-64 | MacOSX-x86-64)	CFLAGS="$CFLAGS -m64" ;;
+esac
+
+[ -d "$DEST" ] || mkdir "$DEST" || {
+  echo "Cannot create directory $DEST"
+  exit 1
+}
+
+echo "Compiling for system type $DEST"
+
+case "$CFLAGS" in
+*-static*) MCFLAGS="$MCFLAGS -st" ;;
+esac
+
+t="$SRC/drivers/tools"
+mcc="REALCC=\"$CC\" CC=\"$t/fcc\" \
+REALCXX=\"$CXX\" CXX=\"$t/f++\" \
+PATH=\""'$$PATH'":$t\" $MCC $MCFLAGS $CFLAGS"
+
+cc="$CC $CFLAGS"
+
+make -f - << _EOF_ || exit 1
+all: $DEST/ReadForm$exe $DEST/ToForm$exe $DEST/ToFortran$exe $DEST/ReadData$exe $DEST/reorder$exe
+
+$DEST/ReadForm$exe: $SRC/FormCalc/ReadForm.tm
+	$mcc -o $DEST/ReadForm$exe $SRC/FormCalc/ReadForm.tm
+	-strip $DEST/ReadForm$exe
+
+$DEST/ToForm$exe: $SRC/FormCalc/ToForm.c
+	$cc -o $DEST/ToForm$exe $SRC/FormCalc/ToForm.c
+	-strip $DEST/ToForm$exe
+
+$DEST/ToFortran$exe: $SRC/FormCalc/ToFortran.c
+	$cc -o $DEST/ToFortran$exe $SRC/FormCalc/ToFortran.c
+	-strip $DEST/ToFortran$exe
+
+$DEST/ReadData$exe: $SRC/tools/ReadData.tm
+	$mcc -o $DEST/ReadData$exe $SRC/tools/ReadData.tm
+	-strip $DEST/ReadData$exe
+
+$DEST/reorder$exe: $SRC/tools/reorder.c
+	$cc -o $DEST/reorder$exe $SRC/tools/reorder.c
+	-strip $DEST/reorder$exe
+_EOF_
+
+
+# Second, make the util library.
+
+cd "$DEST"
+
+trap "rm -f makefile" 0 1 2 3 15
+
+"../$SRC/drivers/configure" --make=util.a
+

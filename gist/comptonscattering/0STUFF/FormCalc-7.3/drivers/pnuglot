@@ -1,0 +1,171 @@
+#! /bin/sh
+
+#	pnuglot
+#		makes a plotting script from data files
+#		this file is part of FormCalc
+#		last modified 28 Jul 11 th
+
+# This program works in two steps:
+#
+# First, it generates a script called "file.gpl", if "file" was the
+# original file name.  This script contains an invocation of gnuplot 
+# with a lot of plotting parameters pre-set to reasonable values.
+#
+# It then executes the newly created .gpl script to produce a rough
+# version of the .eps file.  This is done by letting gnuplot produce
+# its output in "pslatex" format and running this output through
+# LaTeX and dvips -E to produce the actual .eps figure.
+#
+# The draft version of the .gpl script made by pnuglot can now be
+# edited to fine-tune the plotting parameters.  Run the .gpl script
+# (not pnuglot!) again for the changes to take effect.
+
+
+out=""
+files=""
+loop=1
+tree=1
+data=`dirname $0`/data
+
+while [ $# -gt 0 ] ; do
+  case $1 in
+  -o)	out=`dirname $2`/`basename $2 .gpl`.gpl
+	shift
+	;;
+  -2)	loop=0
+	;;
+  -3)	tree=0
+	;;
+  *)	file=$1
+	if [ -d $1 ] ; then
+	  file=`dirname $1/x`.data
+	  $data $1 || exit 1
+	fi
+	if (file $file | grep -q -i -e script -e PostScript) ; then
+	  echo "ignored: $file"
+	else
+	  files="$files $file"
+	  [ -z "$out" ] && out=`dirname $file`/`basename $file .data`.gpl
+	fi
+	;;
+  esac
+  shift
+done
+
+if [ -z "$files" ] ; then
+  echo "Usage:  $0 [-2 -3 -o outfile] datafile(s)"
+  echo ""
+  echo "Plots datafile(s) with gnuplot.  The options are:"
+  echo "  -2             uses only columns 1:2 for plotting"
+  echo "  -3             uses only columns 1:3 for plotting"
+  echo "  -o outfile     gives the name of the output file"
+  echo ""
+  exit 1
+fi
+
+
+cat << \_TEMPLATE_ > $out
+#! /bin/sh
+
+trap "rm -f tmpgpl.*" 0 1 2 3 15
+
+gnuplot << \_EOF_
+
+# ----- The gnuplot commands start here -----
+
+set term pslatex color solid
+# if you want black lines in different dash styles rather than
+# solid lines in different colors, remove the "color solid" above
+
+set output "tmpgpl.pslatex"
+set lmargin 10
+set rmargin 4
+set tmargin 0
+set bmargin 2
+
+set size 1,1.1
+set key spacing 2
+set tics scale .6
+
+#set title "Cross-section"
+
+set format y '$%g$'
+# for a log axis, use
+#set logscale y
+#set format y '$10^{%T}$'
+
+set label '[l]{$\sqrt s$/GeV}' at graph 1.05,0
+# looks better than set xlabel '...'
+
+set label '[tr]{$\sigma$/pb}' at graph -.15,.95
+# looks better than set ylabel '...'
+
+set style data lines
+
+_TEMPLATE_
+
+if (echo "test\c"; echo 1,2,3) | grep c > /dev/null ; then
+  if (echo -n test; echo 1,2,3) | grep n > /dev/null ; then
+    echo_n=
+    echo_c='
+'
+  else
+    echo_n=-n
+    echo_c=
+  fi
+else
+  echo_n=
+  echo_c='\c'
+fi
+
+specs='u 1:2 t "tree", \
+  "" u 1:($2 + $3) t "loop"'
+[ $tree = 0 ] && specs='u 1:($2 + $3) t "loop"'
+[ $loop = 0 ] && specs='u 1:2 t "tree"'
+
+delim='plot \
+'
+
+for file in $files ; do
+  echo $echo_n "$delim  \"$file\" $specs$echo_c" >> $out
+  delim=', \
+'
+done
+
+
+cat << \_TEMPLATE_ >> $out
+
+
+# ----- The gnuplot commands end here -----
+
+_EOF_
+
+cat << \_EOF_ > tmpgpl.tex
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\textwidth=500bp
+\oddsidemargin=0bp
+\evensidemargin=0bp
+\parindent=0bp
+\pagestyle{empty}
+\begin{document}
+_EOF_
+
+sed /endinput/d tmpgpl.pslatex >> tmpgpl.tex
+
+cat << \_EOF_ >> tmpgpl.tex
+\end{document}
+_EOF_
+
+epsfile="`dirname $0`/`basename $0 .gpl`.eps"
+latex tmpgpl.tex
+dvips -Ppdf -E -o $epsfile tmpgpl.dvi
+
+grep -q '3\.5\.8' `which gv` && eq=' ' || eq='='
+gv -scale${eq}2 $epsfile &
+
+_TEMPLATE_
+
+chmod 755 $out
+exec `dirname $out`/`basename $out`
+

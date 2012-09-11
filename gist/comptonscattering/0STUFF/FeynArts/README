@@ -1,0 +1,29 @@
+FeynArts 3 README file
+
+FeynArts is a Mathematica package for the generation and
+visualization of Feynman diagrams and amplitudes.
+
+To install FeynArts, unpack the archive FeynArts-3.3.tar.gz in
+a directory.  FeynArts requires Mathematica 3 or higher.
+
+For Mathematica versions less than 4.2, the J/Link package and
+a Java Runtime Environment need to be installed to be able to
+use the topology editor of FeynArts.  Both ingredients can be
+obtained free of charge from
+
+http://www.wolfram.com/solutions/mathlink/jlink     (J/Link),
+http://java.sun.com/j2se                            (Java).
+
+Installing a Java VM may not even be necessary, as many systems
+(e.g. Windows) have it pre-installed.  Follow the instructions
+that come with J/Link for installation on the various platforms.
+
+More detailed instructions can be found in the manual, in the file
+FA3Guide.ps.gz.  The latest version of FeynArts can be downloaded
+from http://www.feynarts.de.
+
+Enjoy!
+
+Thomas Hahn
+hahn@feynarts.de
+

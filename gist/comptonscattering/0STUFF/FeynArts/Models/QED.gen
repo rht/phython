@@ -1,0 +1,171 @@
+(*
+	QED.gen
+		Generic model file for QED
+		(simplex version of Lorentz.gen)
+		by A. Denner, H. Eck, O. Hahn, S. Kueblbeck
+		last modified 4 May 10 by Thomas Hahn
+*)
+
+
+	(* Kinematic indices are `transported' along a propagator line.
+	   KinematicIndices[X] = {Name} means that the generic field X
+	   will carry an index Index[Name, i] along the line:  
+	   X[ n, {m..}, p, {Index[Name, i]} -> {Index[Name, i + 1]} ] *)
+
+KinematicIndices[ F ] = {};
+KinematicIndices[ V ] = {Lorentz}
+
+IndexStyle[ Index[Lorentz, i_Integer] ] := Greek[i + 11]
+
+Attributes[ MetricTensor ] = Attributes[ ScalarProduct ] = {Orderless}
+
+
+FourVector/: -FourVector[ mom_, mu___ ] := FourVector[Expand[-mom], mu]
+
+FourVector[ 0, ___ ] = 0
+
+
+M$GenericPropagators = {
+
+	(* general fermion propagator: *)
+
+  AnalyticalPropagator[External][ s F[i, mom] ] == 
+    NonCommutative[
+      DiracSpinor[-mom, Mass[F[i]], Sequence@@ Drop[{i}, 1]] ],
+
+  AnalyticalPropagator[Internal][ s F[i, mom] ] ==
+    NonCommutative[ DiracSlash[-mom] + Mass[F[i]] ] *
+      I PropagatorDenominator[mom, Mass[F[i]]], 
+
+	(* general vector boson propagator: *)
+
+  AnalyticalPropagator[External][ s V[i, mom, {li2}] ] ==
+    PolarizationVector[V[i], mom, li2],
+
+  AnalyticalPropagator[Internal][ s V[i, mom, {li1} -> {li2}] ] ==
+    -I PropagatorDenominator[mom, Mass[V[i]]] *
+      (MetricTensor[li1, li2] - (1 - GaugeXi[V[i]]) *
+         FourVector[mom, li1] FourVector[mom, li2] *
+         PropagatorDenominator[mom, Sqrt[GaugeXi[V[i]]] Mass[V[i]]])
+}
+
+	(* Definition of the generic couplings.
+	   The couplings must be defined as a Dot product of the (generic)
+	   coupling vector G[+/-][ field1, field2, .. ] and the
+	   kinematical vector Gamma = {Gamma1, Gamma2, ...}.
+	   The kinematical vector must have the following properties:
+	   a) the entries of Gamma must close under permutation of the
+	      fields, i.e. under permutation of the momenta and
+	      kinematical indices. One exception is allowed: if the
+	      elements of Gamma only change their signs under certain
+	      permutations (e.g. Gamma1 = mom1 - mom2), a coupling vector
+	      G[-] can be used.
+	      This leads to the following behaviour during the
+	      construction of the classes couplings: if a permuted
+	      coupling was found and the corresponding permutation doesn't
+	      resolve the coupling vector entry, then the program tries
+	      the negative expression of the corresponding Gamma and
+	      multiplies the coupling with (-1).
+	   b) the entries of the kinematical vector have to be closed
+	      under application of the M$FlippingRules, i.e. fermionic
+	      couplings have to be written such that the flipped couplings
+	      are present in the generic coupling. Again, it is possible
+	      to define flippings that change the sign of Gamma and to
+	      take care for those signs by using a G[-]. *)
+
+M$GenericCouplings = {
+
+        (* F-F: *)
+
+  AnalyticalCoupling[ s1 F[i, mom1], s2 F[j, mom2] ] ==
+    G[1][s1 F[i], s2 F[j]] .
+      { NonCommutative[DiracSlash[mom1], ChiralityProjector[-1]],
+        NonCommutative[DiracSlash[mom2], ChiralityProjector[+1]],
+        NonCommutative[ChiralityProjector[-1]],
+        NonCommutative[ChiralityProjector[+1]] },
+
+	(* V-V: *)
+
+  AnalyticalCoupling[ s1 V[i, mom1, {li1}], s2 V[j, mom2, {li2}] ] ==
+    G[1][s1 V[i], s2 V[j]] .
+      { MetricTensor[li1, li2] ScalarProduct[mom1, mom2],
+        MetricTensor[li1, li2],
+        FourVector[mom1, li2] FourVector[mom2, li1] },
+
+	(* F-F-V: *)
+
+  AnalyticalCoupling[ s1 F[i, mom1], s2 F[j, mom2],
+      s3 V[k, mom3, {li3}] ] ==
+    G[-1][s1 F[i], s2 F[j], s3 V[k]] .
+      { NonCommutative[DiracMatrix[li3], ChiralityProjector[-1]], 
+        NonCommutative[DiracMatrix[li3], ChiralityProjector[+1]] }
+}
+
+	(* FlippingRules: the flipping rules determines how Dirac
+	   objects change when the order of fermion fields in the
+	   coupling is reversed. In other words, it defines how the
+	   coupling C[F, -F, ...] is derived from C[-F, F, ...].
+	   Of the elements of the Dirac algebra we need to consider
+	   only gamma_mu omega_pm since the others are either
+	   unchanged or not used (sigma_{mu,nu}).
+	   See Denner, Eck, Hahn, Kueblbeck, NPB 387 (1992) 467. *)
+
+M$FlippingRules =
+  NonCommutative[dm:_DiracMatrix | _DiracSlash, ChiralityProjector[pm_]] ->
+    -NonCommutative[dm, ChiralityProjector[-pm]]
+
+	(* TruncationRules: rule for omitting the wave functions of
+	   external Propagators defined in this file. *)
+
+M$TruncationRules = {
+  _PolarizationVector -> 1,
+  _DiracSpinor -> 1
+}
+
+	(* LastGenericRules: the very last rules that are applied to an
+	   amplitude before it is returned by CreateFeynAmp. *)
+
+M$LastGenericRules = {
+	(* relicts of the truncation of spinors: *)
+  Dot[1, line__, 1] :> Dot[line],
+  Dot[1, 1] :> 1,
+	(* outgoing vector bosons: throw away signs of momenta *)
+  PolarizationVector[p_, _. k:FourMomentum[Outgoing, _], li_] :>
+    Conjugate[PolarizationVector][p, k, li]
+}
+
+
+	(* cosmetics: *)
+
+Format[
+  FermionChain[
+    NonCommutative[_[s1_. mom1_, mass1_]],
+    r___,
+    NonCommutative[_[s2_. mom2_, mass2_]]] ] :=
+  Overscript[If[FreeQ[mom1, Incoming], "u", "v"], "_"][mom1, mass1] .
+    r . If[FreeQ[mom2, Outgoing], "u", "v"][mom2, mass2]
+
+Format[ DiracSlash ] = "gs"
+
+Format[ DiracMatrix ] = "ga"
+
+Format[ ChiralityProjector[1] ] = SequenceForm["om", Subscript["+"]]
+
+Format[ ChiralityProjector[-1] ] = SequenceForm["om", Subscript["-"]]
+
+Format[ GaugeXi[a_] ] := SequenceForm["xi", Subscript[a]]
+
+Format[ PolarizationVector ] = "ep"
+
+Unprotect[Conjugate];
+Format[ Conjugate[a_] ] := SequenceForm[a, Superscript["*"]];
+Protect[Conjugate]
+
+Format[ MetricTensor ] = "g"
+
+Format[ ScalarProduct[a__] ] := Dot[a]
+
+Format[ FourVector[a_, b_] ] := a[b]
+
+Format[ FourVector[a_] ] := a
+

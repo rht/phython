@@ -1,0 +1,230 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      8169,        221]
+NotebookOptionsPosition[      7651,        200]
+NotebookOutlinePosition[      8027,        217]
+CellTagsIndexPosition[      7984,        214]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"SetDirectory", "[", 
+  "\"\</Users/rht/Dropbox/projects/physicsproject/comptonscattering/0STUFF/\
+FeynArts-3.5\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"<<", "FeynArts`"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.497742695613263*^9, 3.497742824526497*^9}, {
+  3.49774286351147*^9, 3.4977428817541647`*^9}, {3.508615824741749*^9, 
+  3.508615825935978*^9}, {3.508732056557982*^9, 3.508732059606872*^9}, {
+  3.551619868612627*^9, 3.5516198898518248`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"t22", " ", "=", " ", 
+    RowBox[{"CreateTopologies", "[", 
+     RowBox[{"1", ",", 
+      RowBox[{"1", "\[Rule]", "1"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+  
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"aa", " ", "=", " ", 
+     RowBox[{"InsertFields", "[", 
+      RowBox[{"t22", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"2", ",", 
+            RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+          RowBox[{"V", "[", "1", "]"}]}], "}"}], " ", "\[Rule]", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"2", ",", 
+            RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+          RowBox[{"V", "[", "1", "]"}]}], "}"}]}]}], "]"}]}], ";"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"aa", " ", "=", " ", 
+   RowBox[{"InsertFields", "[", 
+    RowBox[{"t22", ",", 
+     RowBox[{
+      RowBox[{"F", "[", "2", "]"}], "\[Rule]", " ", 
+      RowBox[{"F", "[", "2", "]"}]}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"aamp", " ", "=", " ", 
+  RowBox[{"CreateFeynAmp", "[", "aa", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Paint", "[", "aa", "]"}]}], "Input",
+ CellChangeTimes->{{3.497742773900384*^9, 3.497742804820365*^9}, {
+   3.497742981531743*^9, 3.497743000845441*^9}, {3.49774348340324*^9, 
+   3.49774348645856*^9}, {3.4977436895433807`*^9, 3.497743783560849*^9}, 
+   3.4977438257143497`*^9, {3.497744164987513*^9, 3.4977441782815447`*^9}, {
+   3.497744223866123*^9, 3.497744249527915*^9}, {3.497744935735984*^9, 
+   3.497744967610588*^9}, {3.4977452817128153`*^9, 3.497745334584483*^9}, {
+   3.49774537958095*^9, 3.4977453826682568`*^9}, {3.498951377339685*^9, 
+   3.49895140139942*^9}, 3.498951453983914*^9, {3.498951490993627*^9, 
+   3.49895149266358*^9}, {3.508615734655958*^9, 3.50861577124953*^9}, {
+   3.50861581810844*^9, 3.5086158208018303`*^9}, {3.5087299024572783`*^9, 
+   3.50872990700499*^9}, {3.508730137557426*^9, 3.508730142685155*^9}, {
+   3.508730187024173*^9, 3.508730270495307*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"t33", " ", "=", " ", 
+   RowBox[{"CreateTopologies", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{"1", "\[Rule]", "1"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"bb", " ", "=", " ", 
+  RowBox[{"InsertFields", "[", 
+   RowBox[{"t33", ","}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"CreateFeynAmp", "[", "bb", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Paint", "[", "bb", "]"}]}], "Input",
+ CellChangeTimes->{
+  3.508615752692761*^9, {3.5086158104915457`*^9, 3.508615813941132*^9}, {
+   3.5086160234998007`*^9, 3.5086160562900867`*^9}, {3.508616209060979*^9, 
+   3.508616219314418*^9}, {3.508616416643284*^9, 3.5086164560368032`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"top", " ", "=", " ", 
+   RowBox[{"CreateTopologies", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{"1", "\[Rule]", "1"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Paint", "[", "top", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ins", "=", 
+  RowBox[{"InsertFields", "[", 
+   RowBox[{"top", ",", 
+    RowBox[{
+     RowBox[{"V", "[", "1", "]"}], "\[Rule]", 
+     RowBox[{"V", "[", "1", "]"}]}], ",", 
+    RowBox[{"Model", "\[Rule]", "SM"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Paint", "[", "ins", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"amp", "=", 
+  RowBox[{"CreateFeynAmp", "[", "ins", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"amp", ">>", "PhotonSelfEnergy.amp"}]}], "Input",
+ CellChangeTimes->{{3.497743015228774*^9, 3.497743020284916*^9}, {
+  3.497743466868278*^9, 3.49774346840135*^9}, {3.4977449765443087`*^9, 
+  3.497744978128384*^9}, {3.4977452557919273`*^9, 3.497745279166003*^9}, {
+  3.5087299228336143`*^9, 3.508729957312214*^9}, {3.508730003267714*^9, 
+  3.5087300207008944`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"examine", " ", "feynarts", " ", "functions"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"?", "FeynArts`*"}]}]], "Input",
+ CellChangeTimes->{{3.4977441962632113`*^9, 3.497744200973104*^9}, 
+   3.5086157272269573`*^9, {3.508730619364243*^9, 3.508730630022719*^9}, {
+   3.508730678325163*^9, 3.508730679458313*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tops", " ", "=", " ", 
+   RowBox[{"CreateTopologies", "[", 
+    RowBox[{"0", ",", "4", ",", 
+     RowBox[{"ExcludeTopologies", "\[Rule]", 
+      RowBox[{"{", "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ins", " ", "=", " ", 
+   RowBox[{"InsertFields", "[", 
+    RowBox[{"tops", ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"F", "[", 
+         RowBox[{"3", ",", 
+          RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+        RowBox[{"-", 
+         RowBox[{"F", "[", 
+          RowBox[{"3", ",", 
+           RowBox[{"{", "1", "}"}]}], "]"}]}]}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"F", "[", 
+         RowBox[{"2", ",", 
+          RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+        RowBox[{"-", 
+         RowBox[{"F", "[", 
+          RowBox[{"2", ",", 
+           RowBox[{"{", "1", "}"}]}], "]"}]}]}], "}"}]}], ",", 
+     RowBox[{"Model", "\[Rule]", "SMQCD"}], ",", 
+     RowBox[{"InsertionLevel", "\[Rule]", 
+      RowBox[{"{", "Classes", "}"}]}], ",", 
+     RowBox[{"ExcludeParticles", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"S", "[", "1", "]"}], ",", 
+         RowBox[{"S", "[", "2", "]"}], ",", 
+         RowBox[{"S", "[", "3", "]"}]}], "}"}], "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Paint", "[", 
+   RowBox[{"ins", ",", 
+    RowBox[{"ColumnsXRows", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}]}], ",", 
+    RowBox[{"PaintLevel", "\[Rule]", 
+     RowBox[{"{", "Classes", "}"}]}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"famp", "=", 
+  RowBox[{"CreateFeynamp", "[", "ins", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"famp", " ", "//", " ", "Length"}], "\[IndentingNewLine]", 
+ RowBox[{"strm", " ", "=", " ", 
+  RowBox[{
+  "OpenWrite", "[", "\"\<testtestan.amp\>\"", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Write", "[", 
+  RowBox[{"strm", ",", "famp2"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Close", "[", "strm", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5087306813605347`*^9, 3.508730822753058*^9}, {
+  3.508730865799684*^9, 3.508730892218297*^9}, {3.5087309611954937`*^9, 
+  3.508730987507821*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{{3.508731246343811*^9, 3.508731282891305*^9}}]
+},
+WindowSize->{638, 756},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+ShowSelection->True,
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 13, \
+2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 493, 9, 73, "Input"],
+Cell[1041, 31, 2090, 49, 88, "Input"],
+Cell[3134, 82, 676, 14, 73, "Input"],
+Cell[3813, 98, 1041, 22, 103, "Input"],
+Cell[4857, 122, 369, 8, 43, "Input"],
+Cell[5229, 132, 2304, 63, 193, "Input"],
+Cell[7536, 197, 111, 1, 43, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,340 @@
+#! /bin/sh
+# configure script for FormCalc
+# note: has nothing to do with GNU autoconf
+# this file is part of FormCalc
+# last modified 14 Jul 10 th
+
+
+LC_ALL=C
+export LC_ALL
+
+test=test$$
+trap "rm -f $test*" 0 1 2 3 15
+
+if (echo "test\c"; echo 1,2,3) | grep c > /dev/null ; then
+  if (echo -n test; echo 1,2,3) | grep n > /dev/null ; then
+    echo_n=
+    echo_c='
+'
+  else
+    echo_n=-n
+    echo_c=
+  fi
+else
+  echo_n=
+  echo_c='\c'
+fi
+
+
+findprog()
+{
+  echo $echo_n "looking for $1... $echo_c" 1>&2
+  shift
+  for prog in "$@" ; do
+    full="`which \"$prog\" 2> /dev/null`"
+    if [ -x "$full" ] ; then
+      echo $full 1>&2
+      echo $prog
+      return 0
+    fi
+  done
+  echo "no $@ in your path" 1>&2
+  return 1
+}
+
+
+findlib()
+{
+  echo $echo_n "looking for $1... $echo_c" 1>&2
+  file=$2
+  shift 2
+  for base in "$@" ; do
+    for path in \
+      "$base/lib" \
+      "$base/$CONF_HOSTTYPE/lib" \
+      ${CONF_QUAD+"$base/build-quad"} \
+      "$base/build" \
+      "$base/src" \
+      "$base"
+    do
+      if [ -f "$path/$file" ] ; then
+        echo "$path" 1>&2
+        echo "$path"
+        return 0
+      fi
+    done
+  done
+  echo "not found" 1>&2
+  return 1
+}
+
+
+ldflags()
+{
+  # Mma 5.1's mcc needs this for static linking
+  LDFLAGS="$LDFLAGS -lpthread"
+
+  while read line ; do
+    ld=0
+    set -- `echo $line | tr ':,()' '    '`
+    while [ $# -gt 0 ] ; do
+      case $1 in
+      */collect2$CONF_EXE | */ld$CONF_EXE | ld$CONF_EXE)
+        ld=1 ;;
+      *.o)
+        ;;
+      -l* | -L* | *.a)
+        [ $ld -eq 1 ] && LDFLAGS="$LDFLAGS $1" ;;
+      *.ld)
+        [ $ld -eq 1 ] && LDFLAGS="$LDFLAGS -Wl,$1" ;;
+      /*)
+        [ $ld -eq 1 ] && LDFLAGS="$LDFLAGS -L$1" ;;
+      -rpath*)
+        [ $ld -eq 1 ] && LDFLAGS="$LDFLAGS -Wl,$1,$2"
+        shift ;;
+      -dynamic-linker)
+        shift ;;
+      esac
+      shift
+    done
+  done
+
+  echo $LDFLAGS
+}
+
+
+CONF_HOSTTYPE=`tcsh -cf 'echo $HOSTTYPE'`
+
+case $CONF_HOSTTYPE in
+*cyg*) CONF_EXE=.exe ;;
+esac
+
+CONF_MAKEARGS=0
+
+for arg in "$@" ; do
+  case "$arg" in
+  --static)
+	case $CONF_HOSTTYPE in
+# Apple discourages static linking, see
+# http://developer.apple.com/qa/qa2001/qa1118.html,
+# so we make only libgcc static.  For a static libg2c do:
+# sudo chmod 000 /usr/local/lib/libg2c.dylib
+	*mac*) CONF_STATIC="-static-libgcc" ;;
+	*)     CONF_STATIC="-static" ;;
+	esac ;;
+  --quad)
+	CONF_QUAD=1 ;;
+  --debug)
+	CONF_DEBUG="-O0 -g \$(DEF)DEBUG" ;;
+  --make*)
+	CONF_MAKEARGS="`expr "$arg" : "--make=\(.*\)"`" ;;
+  --help)
+	cat << _EOF_ 1>&2
+$0 configures FormCalc-generated Fortran code, i.e. determines
+or guesses the compiler and flags and writes out a makefile.
+
+$0 understands the following options:
+
+--static            link the executables statically,
+
+--quad              compiles with quadruple precision (ifort and xlf only),
+
+--debug             compiles with optimization disabled,
+
+--make[=ARGS]       immediately continue with "make ARGS" after configure.
+
+_EOF_
+	exit 1 ;;
+  -*)
+	echo "Warning: $arg is not a valid option." 1>&2 ;;
+  *=*)
+	eval `echo $arg\" | sed 's/=/="/'` ;;
+  *)
+	echo "Warning: $arg is not a valid argument." 1>&2 ;;
+  esac
+done
+
+
+## look for some programs
+
+CONF_MAKE=`findprog make $MAKE gmake Make make` || exit 1
+
+CONF_CC=`findprog gcc $CC gcc` || exit 1
+
+opt=-O3
+case `$CONF_CC --version 2>&1 < /dev/null` in
+gcc*4.2* | gcc*4.4.3*) opt=-O0 ;;
+esac
+CONF_CFLAGS="${CFLAGS-${CONF_DEBUG-$opt -g} -fomit-frame-pointer -ffast-math} $CONF_STATIC"
+
+CONF_FC=`findprog f77 $FC ${CONF_QUAD+ifort} pgf77 ifort xlf fort77 f77 f90 g77 g95 gfortran` || exit 1
+
+CONF_DEF="-D"
+
+case "`$CONF_FC --version -c 2>&1`" in
+*G95*)
+  CONF_FFLAGS="-O0 -g -ffixed-line-length-132 -freal-loops $CONF_STATIC $FFLAGS" ;;
+*GNU*)
+  case "$CONF_FC" in
+  *gfortran*) CONF_WARN="-Wall -Wtabs ${CONF_DEBUG:+-ffpe-trap=invalid,overflow,zero}" ;;
+  *) CONF_WARN="-Wall" ;;
+  esac
+  CONF_FFLAGS="-O0 -g -ffixed-line-length-none $CONF_WARN $CONF_STATIC $FFLAGS" ;;
+#  case $CONF_HOSTTYPE in
+#  *cyg*) CONF_FFLAGS="$CONF_FFLAGS -mno-cygwin"
+#         CONF_CFLAGS="$CONF_CFLAGS -mno-cygwin" ;;
+#  esac
+*)
+  CONF_FFLAGS="${FFLAGS-default}"
+  [ "$CONF_FFLAGS" = default ] && case "$CONF_FC$CONF_HOSTTYPE" in
+  *pgf*)
+	CONF_FFLAGS="${CONF_DEBUG--fast -g} ${CONF_DEBUG:+-Ktrap=fp} -Mextend -g77libs ${CONF_STATIC+-Bstatic}" ;;
+  *ifort*)
+	CONF_FFLAGS="${CONF_DEBUG--O3 -g} -extend_source -warn truncated_source -assume bscc $CONF_STATIC ${CONF_QUAD+-r16 -DDBLE=QEXT -DDIMAG=QIMAG -DDCONJG=QCONJG -DDCMPLX=QCMPLX}" ;;
+  *alpha)
+	CONF_FFLAGS="-old_f77 ${CONF_DEBUG--fast -g3} ${CONF_DEBUG:+-fpe0} -extend_source -warn truncated_source $CONF_STATIC" ;;
+  *sun* | *sparc*)
+	CONF_FFLAGS="${CONF_DEBUG--fast -g} ${CONF_DEBUG:+-ftrap=common} -e ${CONF_STATIC+-Bstatic}" ;;
+  *hp*)
+	CONF_FFLAGS="${CONF_DEBUG--O2 -g} ${CONF_DEBUG:++FPVZO} +es +U77 ${CONF_STATIC+-Wl,-noshared}" ;;
+  *xlf*)
+	CONF_FFLAGS="${CONF_DEBUG--O2 -g} ${CONF_DEBUG:+-qflttrap=enable:invalid:overflow:zerodivide} -qfixed=132 -qmaxmem=-1 -qextname ${CONF_QUAD+-qautodbl=dbl}"
+	CONF_DEF="-WF,-D" ;;
+  *)
+	CONF_FFLAGS="${CONF_DEBUG--O -g}" ;;
+  esac
+esac
+
+
+## find the Fortran libraries
+
+echo $echo_n "extracting the Fortran libraries... $echo_c" 1>&2
+
+rm -f $test*
+
+cat > $test.f << _EOF_
+	program dontpanic
+	print *, "Hi"
+	end
+_EOF_
+
+CONF_LDFLAGS=`$CONF_FC $CONF_FFLAGS -v -o $test $test.f 2>&1 | ldflags`
+
+CONF_STDLIBS="$STDLIBS"
+case $CONF_HOSTTYPE in
+*mac*) CONF_STDLIBS="$CONF_STDLIBS -lSystemStubs" ;;
+# this is supposed to fix the saveFP/restFP problem on Macs
+# not needed on Tiger anymore
+#  *mac*) CONF_LDFLAGS=`echo $CONF_LDFLAGS | sed 's/-lgcc /-lcc_dynamic /g'` ;;
+esac
+
+echo $CONF_LDFLAGS 1>&2
+
+
+## does Fortran need externals for U77 routines?
+
+echo $echo_n "does $CONF_FC need externals for U77 routines... $echo_c" 1>&2
+
+rm -f $test*
+
+cat > $test.f << _EOF_
+	program test
+	implicit none
+	print *, iargc(), lnblnk("Hi")
+	end
+_EOF_
+
+if $CONF_FC $CONF_FFLAGS -c $test.f > /dev/null 2>&1 ; then
+  echo "no" 1>&2
+  CONF_U77EXT=0
+else
+  echo "yes" 1>&2
+  CONF_U77EXT=1
+fi
+
+CONF_FFLAGS="$CONF_FFLAGS \$(DEF)U77EXT=$CONF_U77EXT"
+
+
+## does Fortran append underscores to symbols?
+
+echo $echo_n "does $CONF_FC append underscores... $echo_c" 1>&2
+
+rm -f $test*
+
+cat > $test.f << _EOF_
+	subroutine uscore
+	end
+_EOF_
+
+$CONF_FC $CONF_FFLAGS -c $test.f > /dev/null 2>&1
+
+if nm $test.o | grep uscore_ > /dev/null 2>&1 ; then
+  echo "yes" 1>&2
+  CONF_CFLAGS="$CONF_CFLAGS -DUNDERSCORE"
+else
+  echo "no" 1>&2
+fi
+
+case "`uname -m`" in
+*86*)	mach=32
+	case "`file $test.o`" in
+	*x86?64*) mach=64 ;;
+	esac
+	CONF_CFLAGS="$CONF_CFLAGS -m$mach" ;;
+esac
+
+
+# check for the necessary libraries
+
+CONF_LT="`findlib LoopTools libooptools${CONF_QUAD+-quad}.a \
+  $LT ../LoopTools* ../../LoopTools* ../../../LoopTools* $HOME/LoopTools* \
+  /usr/local/LoopTools* /usr/LoopTools* /usr/local /usr`" && \
+  CONF_STDLIBS="$CONF_STDLIBS -L\$(LT) -looptools${CONF_QUAD+-quad}"
+
+CONF_FH="`findlib FeynHiggs libFH.a \
+  $FH ../FeynHiggs* ../../FeynHiggs* ../../../FeynHiggs* $HOME/FeynHiggs* \
+  /usr/local/FeynHiggs* /usr/FeynHiggs* /usr/local /usr`" && \
+  CONF_STDLIBS="$CONF_STDLIBS -L$CONF_FH -lFH"
+
+CONF_LHAPDF="`findlib LHAPDF libLHAPDF.a \
+  $LHAPDF ../lhapdf* ../../lhapdf* ../../../lhapdf* $HOME/lhapdf* \
+  /usr/local/lhapdf* /usr/lhapdf* /usr/local /usr`" && \
+  CONF_STDLIBS="$CONF_STDLIBS -L$CONF_LHAPDF -Wl,-rpath,$CONF_LHAPDF -lLHAPDF"
+
+
+echo "creating makefile" 1>&2
+
+cat - `dirname $0`/makefile.in > makefile << _EOF_
+# --- variables defined by configure ---
+
+SRC = `dirname $0`
+
+EXE = $CONF_EXE
+DEF = $CONF_DEF
+
+LT = $CONF_LT
+STDLIBS = $CONF_STDLIBS
+LDFLAGS = $CONF_LDFLAGS
+
+FC = $CONF_FC
+FFLAGS = $CONF_FFLAGS
+
+CC = $CONF_CC
+CFLAGS = $CONF_CFLAGS
+MCFLAGS = ${CONF_STATIC+-st} \$(CFLAGS)
+
+# --- end defs by configure ---
+
+
+_EOF_
+
+if [ "$CONF_MAKEARGS" = 0 ] ; then
+  echo "" 1>&2
+  echo "now you must run $CONF_MAKE" 1>&2
+  echo "" 1>&2
+else
+  $CONF_MAKE $CONF_MAKEARGS
+fi
+
+exit 0
+

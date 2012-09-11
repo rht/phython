@@ -1,0 +1,119 @@
+#! /bin/sh
+# a script to automatically distribute a calculation on a cluster
+# this file is part of FormCalc
+# last modified 20 Jan 05 th
+
+maxcpus=10000
+
+while [ $# -gt 0 ] ; do
+  case $1 in
+  -f) rcfile=$2 ;;
+  -m) maxcpus=$2 ;;
+  *)  break ;;
+  esac
+  shift 2
+done
+
+
+if [ $# -ne 3 ] ; then
+  cat << _EOF_
+Usage:  $0 [-f <rcfile>] [-m <maxcpus>] <commandline>
+
+Automatically distributes a job on a cluster of computers, where 
+<commandline> is the usual invocation of the "run" program, e.g.
+	run uuuu 500,1000
+Note that only parameter scans can be parallelized in this way.
+There will be no speedup of the computation of the cross-section
+for a single set of parameters.
+
+If no rcfile is explicitly specified with the -f option, the
+following locations are checked:
+	.submitrc
+	`dirname $0`/.submitrc
+	$HOME/.submitrc
+	/usr/local/share/submitrc
+Each machine is declared in the rcfile on a single line as
+	machine [#cpus]
+where #cpus defaults to 1 but can be higher for SMP machines.
+A line of the form
+	nice <n>
+determines the nice value at which the jobs are started.
+Empty lines and lines beginning with # are treated as comments
+and ignored.  The -m option can further be used to limit the
+number of CPUs used.
+
+ruptime is used to determine the load of the system and at
+most (CPUs - current load) processes are started on each machine.
+If the ruptime service is not available, the machines are assumed
+empty and a job is started for each CPU.
+
+ssh is used to log onto remote systems, so for practical use
+the public key of the invoking user should be available on the
+remote systems.
+
+_EOF_
+  exit 1
+fi
+
+
+if [ -z "$rcfile" ] ; then
+  rcfile=.submitrc
+  [ -f $rcfile ] || rcfile=`dirname $0`/.submitrc
+  [ -f $rcfile ] || rcfile=$HOME/.submitrc
+  [ -f $rcfile ] || rcfile=/usr/local/share/submitrc
+fi
+
+if [ ! -f $rcfile ] ; then
+  echo "No .submitrc file found"
+  exit 1
+fi
+
+
+readrc()
+{
+  allcpus=0
+  nice=0
+  uptimes=`ruptime`
+  while read host cpus ignore ; do
+    case "$host" in
+    "" | \#*) ;;
+    nice)
+      nice=${cpus:-10} ;;
+    *)
+      cpus=${cpus:-1}
+      [ -z "$uptimes" ] || cpus=`echo "$uptimes" | \
+        awk "/^$host *up/ {print int($cpus - \\$7 + .5)}"`
+      if [ ${cpus:-0} -gt 0 ] ; then
+        [ $cpus -gt $maxcpus ] && cpus=$maxcpus
+        args="$args $host $cpus"
+        allcpus=`expr $allcpus + $cpus`
+        maxcpus=`expr $maxcpus - $cpus`
+        [ $maxcpus -gt 0 ] || break
+      fi ;;
+    esac
+  done
+  echo $allcpus $nice $args
+}
+
+
+cmdline="$@"
+set -- `cat $rcfile | readrc`
+allcpus=$1
+[ $2 -gt 0 ] && cmdline="nice -$2 $cmdline"
+
+dir=`pwd`
+logdir=submit-log.$$
+mkdir $logdir
+
+from=0
+while [ $# -gt 3 ] ; do
+  shift 2
+  cpu=0
+  while [ $cpu -lt $2 ] ; do
+    cpu=`expr $cpu + 1`
+    from=`expr $from + 1`
+    ( set -x ;
+      ssh -x $1 "cd $dir ; sh -c \"$cmdline $from,,$allcpus < /dev/null > $logdir/$1-$cpu 2>&1 &\"" )
+  done
+done
+

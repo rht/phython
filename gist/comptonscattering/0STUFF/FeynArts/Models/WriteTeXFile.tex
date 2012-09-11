@@ -1,0 +1,84 @@
+\documentclass[11pt,twoside]{article}
+\usepackage[fleqn,leqno]{amsmath}
+\usepackage{a4wide,lscape,longtable,multicol,array}
+
+\renewcommand{\rmdefault}{ppl}
+\DeclareSymbolFont{operators}{OT1}{pplcm}{m}{n}
+\DeclareSymbolFont{letters}{OML}{pplcm}{m}{it}
+%\DeclareSymbolFont{symbols}{OMS}{pzccm}{m}{n}
+\DeclareSymbolFont{largesymbols}{OMX}{psycm}{m}{n}
+\DeclareSymbolFont{bold}{OT1}{ppl}{bx}{n}
+\DeclareSymbolFont{italic}{OT1}{ppl}{m}{it}
+\DeclareMathAlphabet{\mathrm}{OT1}{ppl}{m}{n}
+\DeclareMathAlphabet{\mathbf}{OT1}{ppl}{bx}{n}
+\DeclareMathAlphabet{\mathit}{OT1}{ppl}{m}{it}
+
+\raggedbottom
+\raggedcolumns
+
+\advance\topmargin -9cm
+\advance\textheight 11cm
+
+\advance\oddsidemargin -2cm
+\advance\evensidemargin -2cm
+\advance\textwidth 3cm
+
+\parindent=0pt
+
+\makeatletter
+\pagestyle{plain}
+\renewcommand{\@evenfoot}{\hfill\rotatebox{90}{\bf\qquad\qquad\thepage}}
+\renewcommand{\@oddfoot}{\hfill\smash{\raise 27.8cm\hbox{%
+  \rotatebox{90}{\bf\thepage}}}}
+
+\newenvironment{CoupVec}%
+  {\left[\begin{array}{>{\displaystyle}c}}%
+  {\end{array}\right]}
+\newenvironment{PlusB}%
+  {\left\{\begin{array}{l}}%
+  {\end{array}\right\}}
+\newenvironment{PlusN}%
+  {\begin{array}[t]{l}}%
+  {\end{array}}
+
+\def\Class#1#2{\par%
+  \addcontentsline{toc}{subsection}{\texttt{[#1]} #2}%
+  \fbox{\Large\texttt{[#1]}~~\textbf{#2}}\\[3ex]%
+  \nopagebreak\bigskip\ignorespaces%
+}
+
+\def\Mfunction#1{\displaystyle #1}
+\def\Muserfunction#1{\text{#1}}
+\def\Mvariable#1{\text{#1}}
+\def\InvisibleSpace{}
+
+\def\Bar#1{\setbox0=\hbox{$#1$}\rlap{\raise\ht0\hbox{$-$}}\box0}
+\def\nbox#1{\rlap{\lower 2ex\hbox{\scriptsize #1}}}
+\def\i{\mathrm{i}}
+
+\begin{document}
+
+\begin{landscape}
+
+\begin{minipage}{25cm}
+
+\begin{large}
+\begin{multicols}{2}[\section*{MODEL}]
+\@starttoc{toc}
+\end{multicols}
+\end{large}
+
+\end{minipage}
+
+\clearpage
+
+\renewcommand{\arraystretch}{1.5}
+
+\begin{longtable}{p{.985\linewidth}}
+COUPLINGS
+\end{longtable}
+
+\end{landscape}
+
+\end{document}
+

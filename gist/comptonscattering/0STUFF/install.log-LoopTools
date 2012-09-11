@@ -1,0 +1,161 @@
+wget --user-agent=FeynInstall http://www.feynarts.de/looptools/LoopTools-2.7.tar.gz 2>&1
+--2012-07-18 14:24:39--  http://www.feynarts.de/looptools/LoopTools-2.7.tar.gz
+Resolving www.feynarts.de... 134.107.3.76
+Connecting to www.feynarts.de|134.107.3.76|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 523999 (512K) [application/x-gzip]
+Saving to: `LoopTools-2.7.tar.gz'
+
+     0K .......... .......... .......... .......... ..........  9%  142K 3s
+    50K .......... .......... .......... .......... .......... 19%  140K 3s
+   100K .......... .......... .......... .......... .......... 29%  144K 3s
+   150K .......... .......... .......... .......... .......... 39%  143K 2s
+   200K .......... .......... .......... .......... .......... 48%  212K 2s
+   250K .......... .......... .......... .......... .......... 58%  215K 1s
+   300K .......... .......... .......... .......... .......... 68%  220K 1s
+   350K .......... .......... .......... .......... .......... 78%  221K 1s
+   400K .......... .......... .......... .......... .......... 87%  227K 0s
+   450K .......... .......... .......... .......... .......... 97%  369K 0s
+   500K .......... .                                          100% 1.03M=2.7s
+
+2012-07-18 14:24:42 (190 KB/s) - `LoopTools-2.7.tar.gz' saved [523999/523999]
+
+rm -fr LoopTools-2.7
+gunzip -c LoopTools-2.7.tar.gz | tar xf -
+(cd LoopTools-2.7 && ./configure && make default install clean) 2>&1
+/Users/rht/Dropbox/projects/physicsproject/comptonscattering/0STUFF/LoopTools-2.7
+looking for make... /usr/bin/Make
+looking for gcc... /usr/bin/clang
+looking for g++... /usr/bin/clang
+looking for f77... /usr/local/bin/gfortran
+looking for ar... /usr/bin/ar
+looking for ranlib... /usr/bin/ranlib
+looking for nm... /usr/bin/nm
+looking for dlltool... no dlltool in your path
+extracting the Fortran libraries... -lpthread -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc/i686-apple-darwin11/4.2.1/x86_64 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/x86_64 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/x86_64 -L/usr/lib/i686-apple-darwin11/4.2.1 -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc/i686-apple-darwin11/4.2.1 -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc -L/usr/lib/gcc/i686-apple-darwin11/4.2.1 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1 -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc/i686-apple-darwin11/4.2.1/../../.. -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/../../../i686-apple-darwin11/4.2.1 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/../../.. -lgfortranbegin -lgfortran -lSystem -lSystem
+does gfortran support REAL*16... no
+does gfortran need externals for U77 routines... no
+does gfortran append underscores... no
+are we big-endian... no
+do we have MathLink... no
+creating makefile
+
+now you must run Make
+
+mkdir build
+find "`cd ./src ; pwd`" -follow -exec ln -sf {} build \;
+touch build/timestamp
+cd build && make -j 2 LIB="libooptools.a" FE="lt" MFE="LoopTools" EXE="" DEF="-D" NOUNDERSCORE="1" XFC="gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I." F90="" CC="clang" CFLAGS="-O3 -g -fomit-frame-pointer -ffast-math -Wall -m32   -DNOUNDERSCORE=1 -DBIGENDIAN=0 " CXX="clang" CXXFLAGS="-O3 -g -fomit-frame-pointer -ffast-math -Wall -m32  " ML="0" MCC="mcc" MCFLAGS="-b32" AR="ar" RANLIB="ranlib" NM="nm" DLLTOOL="" LDFLAGS="-lpthread -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc/i686-apple-darwin11/4.2.1/x86_64 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/x86_64 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/x86_64 -L/usr/lib/i686-apple-darwin11/4.2.1 -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc/i686-apple-darwin11/4.2.1 -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc -L/usr/lib/gcc/i686-apple-darwin11/4.2.1 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1 -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc/i686-apple-darwin11/4.2.1/../../.. -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/../../../i686-apple-darwin11/4.2.1 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/../../.. -lgfortranbegin -lgfortran -lSystem -lSystem -m32" LIBPATH="" OBJS-quad="" default
+/Users/rht/Dropbox/projects/physicsproject/comptonscattering/0STUFF/LoopTools-2.7/build
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o A0.o A0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o A0C.o A0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o A00.o A00.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o A00C.o A00.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxa0.o ffxa0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffca0.o ffca0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Bget.o Bget.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o BgetC.o Bget.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Bcoeff.o Bcoeff.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o BcoeffC.o BcoeffC.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Bcoeffa.o Bcoeffa.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o BcoeffaC.o Bcoeffa.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Bcoeffb.o Bcoeffb.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxb0.o ffxb0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcb0.o ffcb0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxb1.o ffxb1.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcb1.o ffcb1.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxb2p.o ffxb2p.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcb2p.o ffcb2p.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxdb0.o ffxdb0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcdb0.o ffcdb0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxdb1.o ffxdb1.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffdel2.o ffdel2.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcel2.o ffcel2.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o C0.o C0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o C0C.o C0C.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Cget.o Cget.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o CgetC.o Cget.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxc0.o ffxc0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcc0.o ffcc0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxc0i.o ffxc0i.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxc0p0.o ffxc0p0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxc0p.o ffxc0p.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcc0p.o ffcc0p.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffdxc0.o ffdxc0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffdcc0.o ffdcc0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffdel3.o ffdel3.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcel3.o ffcel3.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o D0.o D0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o D0C.o D0C.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Dget.o Dget.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o DgetC.o Dget.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxd0.o ffxd0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxd0h.o ffxd0h.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxd0i.o ffxd0i.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxd0p.o ffxd0p.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxd0m0.o ffxd0m0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxd0tra.o ffxd0tra.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxdbd.o ffxdbd.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffdel4.o ffdel4.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffd0c.o ffd0c.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffTn.o ffTn.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffT13.o ffT13.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffS2.o ffS2.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffS3n.o ffS3n.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffRn.o ffRn.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o E0.o E0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o E0C.o E0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Eget.o Eget.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o EgetC.o Eget.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Ecoeffa.o Ecoeffa.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o EcoeffaC.o Ecoeffa.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Ecoeffb.o Ecoeffb.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o EcoeffbC.o Ecoeffb.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxe0.o ffxe0.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffdel5.o ffdel5.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ini.o ini.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o auxCD.o auxCD.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o solve.o solve.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o solveC.o solve.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Dump.o Dump.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o DumpC.o Dump.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Li2.o Li2.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o Li2C.o Li2.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o Li2omx.o Li2omx.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -DCOMPLEXPARA -c -o Li2omxC.o Li2omx.F
+clang -O3 -g -fomit-frame-pointer -ffast-math -Wall -m32   -DNOUNDERSCORE=1 -DBIGENDIAN=0  -c -o cache.o cache.c
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffinit.o ffinit.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxli2.o ffxli2.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcli2.o ffcli2.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffxxyz.o ffxxyz.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcxyz.o ffcxyz.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcrr.o ffcrr.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcxr.o ffcxr.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o fftran.o fftran.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffabcd.o ffabcd.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ff2dl2.o ff2dl2.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcxs3.o ffcxs3.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffcxs4.o ffcxs4.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffdcxs.o ffdcxs.F
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -c -o ffbndc.o ffbndc.F
+sed "s:NOUNDERSCORE:1:" ftypes.h clooptools.h.in > clooptools.h
+sed -e 's|^fldflags=.*|fldflags="-lpthread -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc/i686-apple-darwin11/4.2.1/x86_64 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/x86_64 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/x86_64 -L/usr/lib/i686-apple-darwin11/4.2.1 -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc/i686-apple-darwin11/4.2.1 -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc -L/usr/lib/gcc/i686-apple-darwin11/4.2.1 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1 -L/usr/local/Cellar/gfortran/4.2.4-5666.3/bin/../lib/gcc/i686-apple-darwin11/4.2.1/../../.. -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/../../../i686-apple-darwin11/4.2.1 -L/usr/lib/gcc/i686-apple-darwin11/4.2.1/../../.. -lgfortranbegin -lgfortran -lSystem -lSystem -m32"|' fcc.in > fcc
+chmod 755 fcc
+ln -s fcc f++
+ar cru libooptools.a A0.o A0C.o A00.o A00C.o ffxa0.o ffca0.o Bget.o BgetC.o Bcoeff.o BcoeffC.o Bcoeffa.o BcoeffaC.o Bcoeffb.o ffxb0.o ffcb0.o ffxb1.o ffcb1.o ffxb2p.o ffcb2p.o ffxdb0.o ffcdb0.o ffxdb1.o ffdel2.o ffcel2.o C0.o C0C.o Cget.o CgetC.o ffxc0.o ffcc0.o ffxc0i.o ffxc0p0.o ffxc0p.o ffcc0p.o ffdxc0.o ffdcc0.o ffdel3.o ffcel3.o D0.o D0C.o Dget.o DgetC.o ffxd0.o ffxd0h.o ffxd0i.o ffxd0p.o ffxd0m0.o ffxd0tra.o ffxdbd.o ffdel4.o ffd0c.o ffTn.o ffT13.o ffS2.o ffS3n.o ffRn.o E0.o E0C.o Eget.o EgetC.o Ecoeffa.o EcoeffaC.o Ecoeffb.o EcoeffbC.o ffxe0.o ffdel5.o ini.o auxCD.o solve.o solveC.o Dump.o DumpC.o Li2.o Li2C.o Li2omx.o Li2omxC.o cache.o ffinit.o ffxli2.o ffcli2.o ffxxyz.o ffcxyz.o ffcrr.o ffcxr.o fftran.o ffabcd.o ff2dl2.o ffcxs3.o ffcxs4.o ffdcxs.o ffbndc.o
+/usr/bin/ranlib: archive member: libooptools.a(cache.o) cputype (7) does not match previous archive members cputype (16777223) (all members must match)
+ranlib libooptools.a
+ranlib: archive member: libooptools.a(cache.o) cputype (7) does not match previous archive members cputype (16777223) (all members must match)
+make[2]: [libooptools.a] Error 1 (ignored)
+gfortran -ff2c -O0 -g -ffixed-line-length-none     -fno-range-check -ff2c  -DQUAD=0 -DU77EXT=0  -I. -o lt lt.F libooptools.a
+Undefined symbols for architecture x86_64:
+  "_ljcachelookup_", referenced from:
+      _MAIN__ in cchmQGOG.o
+      _cget_ in libooptools.a(Cget.o)
+      _dget_ in libooptools.a(Dget.o)
+      _eget_ in libooptools.a(Eget.o)
+      _bget_ in libooptools.a(Bget.o)
+ld: symbol(s) not found for architecture x86_64
+collect2: ld returned 1 exit status
+make[2]: *** [lt] Error 1
+make[1]: *** [default] Error 2

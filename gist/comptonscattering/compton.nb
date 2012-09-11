@@ -1,0 +1,1141 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     42658,       1132]
+NotebookOptionsPosition[     39969,       1049]
+NotebookOutlinePosition[     40345,       1066]
+CellTagsIndexPosition[     40302,       1063]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"http", ":"}], "//", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"www", ".", "nhn", ".", "ou", ".", "edu"}], "/", 
+        RowBox[{"~", "morrison"}]}], "/", "Mathematica"}], "/", "TipSheets"}],
+      "/", 
+     RowBox[{"Packages", ".", "pdf"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"http", ":"}], "//", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"www", ".", "feynarts", ".", "de"}], "/", "formcalc"}], "/", 
+     RowBox[{"FC6Guide", ".", "pdf"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Prepend", "[", 
+     RowBox[{
+     "$Path", ",", " ", 
+      "\"\</Users/rht/Dropbox/projects/physicsproject/comptonscattering/\
+0STUFF/FeynArts\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Prepend", "[", 
+     RowBox[{
+     "$Path", ",", " ", 
+      "\"\</Users/rht/Dropbox/projects/physicsproject/comptonscattering/\
+0STUFF/FormCalc\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Needs", "[", "\"\<FeynArts`\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Needs", "[", "\"\<FormCalc`\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.497742695613263*^9, 3.497742824526497*^9}, {
+  3.49774286351147*^9, 3.4977428817541647`*^9}, {3.508615824741749*^9, 
+  3.508615825935978*^9}, {3.508732056557982*^9, 3.508732059606872*^9}, {
+  3.551619868612627*^9, 3.5516198898518248`*^9}, {3.551621871565346*^9, 
+  3.551621879890874*^9}, {3.5516220560474463`*^9, 3.551622069257143*^9}, {
+  3.551622120503791*^9, 3.551622123326775*^9}, {3.5516221546294403`*^9, 
+  3.551622189302681*^9}, {3.551622236939996*^9, 3.5516222391704617`*^9}, {
+  3.551622392740493*^9, 3.551622420142503*^9}, {3.551622728374771*^9, 
+  3.5516227298239813`*^9}, {3.551622773548767*^9, 3.551622785073209*^9}, {
+  3.5516229994285307`*^9, 3.551623024876032*^9}, {3.551623093676301*^9, 
+  3.551623138907374*^9}, {3.551623233548986*^9, 3.551623291191457*^9}, {
+  3.55162345900193*^9, 3.5516235500173483`*^9}, {3.551623600723155*^9, 
+  3.551623667858924*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"\"\>"], "Print",
+ CellChangeTimes->{3.551625797068343*^9, 3.5516326400275307`*^9}],
+
+Cell[BoxData["\<\"FeynArts 3.7\"\>"], "Print",
+ CellChangeTimes->{3.551625797068343*^9, 3.55163264003157*^9}],
+
+Cell[BoxData["\<\"by Hagen Eck, Sepp Kueblbeck, and Thomas Hahn\"\>"], "Print",
+ CellChangeTimes->{3.551625797068343*^9, 3.551632640035715*^9}],
+
+Cell[BoxData["\<\"last revised 11 Jul 12\"\>"], "Print",
+ CellChangeTimes->{3.551625797068343*^9, 3.551632640040099*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"CreateTopologies", "::", "shdw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Symbol \[NoBreak]\\!\\(\\\"CreateTopologies\\\"\\)\
+\[NoBreak] appears in multiple contexts \[NoBreak]\\!\\({\\\"FeynArts`\\\", \
+\\\"Global`\\\"}\\)\[NoBreak]; definitions in context \
+\[NoBreak]\\!\\(\\\"FeynArts`\\\"\\)\[NoBreak] may shadow or be shadowed by \
+other definitions. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\
+\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/shdw\\\", ButtonNote -> \
+\\\"FeynArts`CreateTopologies::shdw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.551625797144288*^9, 3.551632640107991*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"InsertFields", "::", "shdw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Symbol \[NoBreak]\\!\\(\\\"InsertFields\\\"\\)\[NoBreak] \
+appears in multiple contexts \[NoBreak]\\!\\({\\\"FeynArts`\\\", \
+\\\"Global`\\\"}\\)\[NoBreak]; definitions in context \
+\[NoBreak]\\!\\(\\\"FeynArts`\\\"\\)\[NoBreak] may shadow or be shadowed by \
+other definitions. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\
+\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/shdw\\\", ButtonNote -> \
+\\\"FeynArts`InsertFields::shdw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.551625797144288*^9, 3.551632640169114*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"InsertionLevel", "::", "shdw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Symbol \[NoBreak]\\!\\(\\\"InsertionLevel\\\"\\)\[NoBreak] \
+appears in multiple contexts \[NoBreak]\\!\\({\\\"FeynArts`\\\", \
+\\\"Global`\\\"}\\)\[NoBreak]; definitions in context \
+\[NoBreak]\\!\\(\\\"FeynArts`\\\"\\)\[NoBreak] may shadow or be shadowed by \
+other definitions. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\
+\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/shdw\\\", ButtonNote -> \
+\\\"FeynArts`InsertionLevel::shdw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.551625797144288*^9, 3.551632640214776*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Particles", "::", "shdw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Symbol \[NoBreak]\\!\\(\\\"Particles\\\"\\)\[NoBreak] \
+appears in multiple contexts \[NoBreak]\\!\\({\\\"FeynArts`\\\", \
+\\\"Global`\\\"}\\)\[NoBreak]; definitions in context \
+\[NoBreak]\\!\\(\\\"FeynArts`\\\"\\)\[NoBreak] may shadow or be shadowed by \
+other definitions. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\
+\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/shdw\\\", ButtonNote -> \
+\\\"FeynArts`Particles::shdw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.551625797144288*^9, 3.551632640269114*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Model", "::", "shdw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Symbol \[NoBreak]\\!\\(\\\"Model\\\"\\)\[NoBreak] appears \
+in multiple contexts \[NoBreak]\\!\\({\\\"FeynArts`\\\", \\\"Global`\\\"}\\)\
+\[NoBreak]; definitions in context \[NoBreak]\\!\\(\\\"FeynArts`\\\"\\)\
+\[NoBreak] may shadow or be shadowed by other definitions. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/shdw\\\", \
+ButtonNote -> \\\"FeynArts`Model::shdw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.551625797144288*^9, 3.551632640314006*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"F", "::", "shdw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Symbol \[NoBreak]\\!\\(\\\"F\\\"\\)\[NoBreak] appears in \
+multiple contexts \[NoBreak]\\!\\({\\\"FeynArts`\\\", \\\"Global`\\\"}\\)\
+\[NoBreak]; definitions in context \[NoBreak]\\!\\(\\\"FeynArts`\\\"\\)\
+\[NoBreak] may shadow or be shadowed by other definitions. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/shdw\\\", \
+ButtonNote -> \\\"FeynArts`F::shdw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.551625797144288*^9, 3.551632640368526*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"V", "::", "shdw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Symbol \[NoBreak]\\!\\(\\\"V\\\"\\)\[NoBreak] appears in \
+multiple contexts \[NoBreak]\\!\\({\\\"FeynArts`\\\", \\\"Global`\\\"}\\)\
+\[NoBreak]; definitions in context \[NoBreak]\\!\\(\\\"FeynArts`\\\"\\)\
+\[NoBreak] may shadow or be shadowed by other definitions. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/shdw\\\", \
+ButtonNote -> \\\"FeynArts`V::shdw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.551625797144288*^9, 3.551632640414185*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"CreateFeynAmp", "::", "shdw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Symbol \[NoBreak]\\!\\(\\\"CreateFeynAmp\\\"\\)\[NoBreak] \
+appears in multiple contexts \[NoBreak]\\!\\({\\\"FeynArts`\\\", \
+\\\"Global`\\\"}\\)\[NoBreak]; definitions in context \
+\[NoBreak]\\!\\(\\\"FeynArts`\\\"\\)\[NoBreak] may shadow or be shadowed by \
+other definitions. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\
+\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/shdw\\\", ButtonNote -> \
+\\\"FeynArts`CreateFeynAmp::shdw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.551625797144288*^9, 3.5516326404196367`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"\"\>"], "Print",
+ CellChangeTimes->{3.551625797068343*^9, 3.551632640524477*^9}],
+
+Cell[BoxData["\<\"FormCalc 6.1\"\>"], "Print",
+ CellChangeTimes->{3.551625797068343*^9, 3.551632640528117*^9}],
+
+Cell[BoxData["\<\"by Thomas Hahn\"\>"], "Print",
+ CellChangeTimes->{3.551625797068343*^9, 3.5516326405351467`*^9}],
+
+Cell[BoxData["\<\"last revised 20 Jul 10\"\>"], "Print",
+ CellChangeTimes->{3.551625797068343*^9, 3.551632640542042*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.551621973025728*^9, 3.551621975421154*^9}, 
+   3.551622243461541*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"t22", " ", "=", " ", 
+    RowBox[{"CreateTopologies", "[", 
+     RowBox[{"1", ",", 
+      RowBox[{"1", "\[Rule]", "1"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+  
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"aa", " ", "=", " ", 
+     RowBox[{"InsertFields", "[", 
+      RowBox[{"t22", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"2", ",", 
+            RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+          RowBox[{"V", "[", "1", "]"}]}], "}"}], " ", "\[Rule]", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"2", ",", 
+            RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+          RowBox[{"V", "[", "1", "]"}]}], "}"}]}]}], "]"}]}], ";"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"aa", " ", "=", " ", 
+   RowBox[{"InsertFields", "[", 
+    RowBox[{"t22", ",", 
+     RowBox[{
+      RowBox[{"F", "[", "2", "]"}], "\[Rule]", " ", 
+      RowBox[{"F", "[", "2", "]"}]}]}], " ", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.497742773900384*^9, 3.497742804820365*^9}, {
+   3.497742981531743*^9, 3.497743000845441*^9}, {3.49774348340324*^9, 
+   3.49774348645856*^9}, {3.4977436895433807`*^9, 3.497743783560849*^9}, 
+   3.4977438257143497`*^9, {3.497744164987513*^9, 3.4977441782815447`*^9}, {
+   3.497744223866123*^9, 3.497744249527915*^9}, {3.497744935735984*^9, 
+   3.497744967610588*^9}, {3.4977452817128153`*^9, 3.497745334584483*^9}, {
+   3.49774537958095*^9, 3.4977453826682568`*^9}, {3.498951377339685*^9, 
+   3.49895140139942*^9}, 3.498951453983914*^9, {3.498951490993627*^9, 
+   3.49895149266358*^9}, {3.508615734655958*^9, 3.50861577124953*^9}, {
+   3.50861581810844*^9, 3.5086158208018303`*^9}, {3.5087299024572783`*^9, 
+   3.50872990700499*^9}, {3.508730137557426*^9, 3.508730142685155*^9}, {
+   3.508730187024173*^9, 3.508730270495307*^9}, {3.5516200611416683`*^9, 
+   3.551620062504573*^9}, {3.551625070760466*^9, 3.551625142508675*^9}, {
+   3.551625741372684*^9, 3.551625753866261*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"tcompton", " ", "=", " ", 
+    RowBox[{"CreateTopologies", "[", 
+     RowBox[{"0", ",", " ", 
+      RowBox[{"2", "\[Rule]", "2"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+  
+  RowBox[{"(*", 
+   RowBox[{
+   "the", " ", "first", " ", "argument", " ", "is", " ", "the", " ", "number",
+     " ", "of", " ", "loops"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"compton", " ", "=", " ", 
+    RowBox[{"InsertFields", "[", 
+     RowBox[{"tcompton", ",", " ", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"F", "[", 
+          RowBox[{"1", ",", 
+           RowBox[{"{", "1", "}"}]}], "]"}], ",", " ", 
+         RowBox[{"V", "[", "1", "]"}]}], "}"}], " ", "\[Rule]", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"F", "[", 
+          RowBox[{"1", ",", 
+           RowBox[{"{", "1", "}"}]}], "]"}], ",", " ", 
+         RowBox[{"V", "[", "1", "]"}]}], "}"}]}], ",", " ", 
+      RowBox[{"InsertionLevel", " ", "\[Rule]", " ", 
+       RowBox[{"{", "Particles", "}"}]}], ",", " ", 
+      RowBox[{"Model", " ", "\[Rule]", " ", "QED"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"F", "[", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"{", "1", "}"}]}], "]"}], " ", "is", " ", "electron"}], ",", 
+    " ", 
+    RowBox[{
+     RowBox[{"V", "[", "1", "]"}], " ", "is", " ", "photon"}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Paint", "[", "compton", "]"}], ";"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"comptonamp", "=", 
+  RowBox[{"CreateFeynAmp", "[", "compton", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"comptonamp", " ", ">>", "comptomamp.amp"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"comptonresult", " ", "=", " ", 
+   RowBox[{"CalcFeynAmp", "[", "comptonamp", "]"}]}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"comptonamp", ">>", 
+    RowBox[{"compton", ".", "amp"}]}], 
+   "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.551620119314117*^9, 3.551620167189393*^9}, {
+   3.551620232644413*^9, 3.5516202490088882`*^9}, {3.551620368148649*^9, 
+   3.551620388553322*^9}, {3.551620435004425*^9, 3.5516204410987253`*^9}, {
+   3.551620502503253*^9, 3.551620577702487*^9}, {3.551620704713949*^9, 
+   3.551620715975316*^9}, {3.551621146031067*^9, 3.55162114722173*^9}, {
+   3.551621681427309*^9, 3.551621725395472*^9}, {3.55162176083426*^9, 
+   3.551621761208762*^9}, {3.551621925569632*^9, 3.551621944912113*^9}, 
+   3.551622493937601*^9, {3.551623674714025*^9, 3.5516237032229633`*^9}, {
+   3.5516239933133583`*^9, 3.551623998115759*^9}, 3.551625826865402*^9, {
+   3.5516326244480467`*^9, 3.55163263216217*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"\"\>"], "Print",
+ CellChangeTimes->{3.551632650838747*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\"\>", "\[InvisibleSpace]", "\<\"loading \"\>", 
+   "\[InvisibleSpace]", "\<\"generic\"\>", 
+   "\[InvisibleSpace]", "\<\" model file \"\>", 
+   "\[InvisibleSpace]", \
+"\<\"/Users/rht/Dropbox/projects/physicsproject/comptonscattering/0STUFF/\
+FeynArts/Models/Lorentz.gen\"\>"}],
+  SequenceForm[
+  "", "loading ", "generic", " model file ", 
+   "/Users/rht/Dropbox/projects/physicsproject/comptonscattering/0STUFF/\
+FeynArts/Models/Lorentz.gen"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.5516326508445587`*^9}],
+
+Cell[BoxData["\<\"> $SVMixing is OFF\"\>"], "Print",
+ CellChangeTimes->{3.5516326508503857`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"generic model \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "\<\"Lorentz\"\>", "}"}], 
+   "\[InvisibleSpace]", "\<\" initialized\"\>"}],
+  SequenceForm["generic model ", {"Lorentz"}, " initialized"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.5516326508565063`*^9}],
+
+Cell[BoxData["\<\"\"\>"], "Print",
+ CellChangeTimes->{3.551632650862185*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\"\>", "\[InvisibleSpace]", "\<\"loading \"\>", 
+   "\[InvisibleSpace]", "\<\"classes\"\>", 
+   "\[InvisibleSpace]", "\<\" model file \"\>", 
+   "\[InvisibleSpace]", \
+"\<\"/Users/rht/Dropbox/projects/physicsproject/comptonscattering/0STUFF/\
+FeynArts/Models/QED.mod\"\>"}],
+  SequenceForm[
+  "", "loading ", "classes", " model file ", 
+   "/Users/rht/Dropbox/projects/physicsproject/comptonscattering/0STUFF/\
+FeynArts/Models/QED.mod"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.55163265086786*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"> \"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\" particles (incl. antiparticles) in \"\>", 
+   "\[InvisibleSpace]", "2", "\[InvisibleSpace]", "\<\" classes\"\>"}],
+  SequenceForm["> ", 7, " particles (incl. antiparticles) in ", 2, " classes"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.5516326508734922`*^9}],
+
+Cell[BoxData["\<\"> $CounterTerms are ON\"\>"], "Print",
+ CellChangeTimes->{3.55163265087816*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"> \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" vertices\"\>"}],
+  SequenceForm["> ", 1, " vertices"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.5516326508819437`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"> \"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\" counter terms of order 1\"\>"}],
+  SequenceForm["> ", 3, " counter terms of order 1"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.551632650886161*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"classes model \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "\<\"QED\"\>", "}"}], 
+   "\[InvisibleSpace]", "\<\" initialized\"\>"}],
+  SequenceForm["classes model ", {"QED"}, " initialized"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.5516326508906612`*^9}],
+
+Cell[BoxData["\<\"\"\>"], "Print",
+ CellChangeTimes->{3.551632650897286*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"inserting at level(s) \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "Particles", "}"}]}],
+  SequenceForm["inserting at level(s) ", {FeynArts`Particles}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.5516326509044533`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"> Top. \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\": \"\>", 
+   "\[InvisibleSpace]", "\<\"0 Particles insertions\"\>"}],
+  SequenceForm["> Top. ", 1, ": ", "0 Particles insertions"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.551632650911639*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"> Top. \"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\": \"\>", 
+   "\[InvisibleSpace]", "\<\"1 Particles insertion\"\>"}],
+  SequenceForm["> Top. ", 2, ": ", "1 Particles insertion"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.551632650919112*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"> Top. \"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\": \"\>", 
+   "\[InvisibleSpace]", "\<\"0 Particles insertions\"\>"}],
+  SequenceForm["> Top. ", 3, ": ", "0 Particles insertions"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.551632650926784*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"> Top. \"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\": \"\>", 
+   "\[InvisibleSpace]", "\<\"1 Particles insertion\"\>"}],
+  SequenceForm["> Top. ", 4, ": ", "1 Particles insertion"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.551632650933365*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"in total: \"\>", 
+   "\[InvisibleSpace]", "\<\"2 Particles insertions\"\>"}],
+  SequenceForm["in total: ", "2 Particles insertions"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.551632650940352*^9}],
+
+Cell[BoxData["\<\"\"\>"], "Print",
+ CellChangeTimes->{3.5516326509474163`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"creating amplitudes at level(s) \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "Particles", "}"}]}],
+  SequenceForm["creating amplitudes at level(s) ", {FeynArts`Particles}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.551632650953855*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"> Top. \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\": \"\>", 
+   "\[InvisibleSpace]", "\<\"1 Particles amplitude\"\>"}],
+  SequenceForm["> Top. ", 1, ": ", "1 Particles amplitude"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.5516326509608707`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"> Top. \"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\": \"\>", 
+   "\[InvisibleSpace]", "\<\"1 Particles amplitude\"\>"}],
+  SequenceForm["> Top. ", 2, ": ", "1 Particles amplitude"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.551632650967802*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"in total: \"\>", 
+   "\[InvisibleSpace]", "\<\"2 Particles amplitudes\"\>"}],
+  SequenceForm["in total: ", "2 Particles amplitudes"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.551632650974722*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FeynAmpList", "[", 
+   RowBox[{
+    RowBox[{"Process", "\[Rule]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"1", ",", 
+            RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+          InterpretationBox[
+           RowBox[{"\<\"p\"\>", "\[InvisibleSpace]", "1"}],
+           SequenceForm["p", 1],
+           Editable->False], ",", "ME"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"V", "[", "1", "]"}], ",", 
+          InterpretationBox[
+           RowBox[{"\<\"p\"\>", "\[InvisibleSpace]", "2"}],
+           SequenceForm["p", 2],
+           Editable->False], ",", "0"}], "}"}]}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"1", ",", 
+            RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+          InterpretationBox[
+           RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "1"}],
+           SequenceForm["k", 1],
+           Editable->False], ",", "ME"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"V", "[", "1", "]"}], ",", 
+          InterpretationBox[
+           RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "2"}],
+           SequenceForm["k", 2],
+           Editable->False], ",", "0"}], "}"}]}], "}"}]}]}], ",", 
+    RowBox[{"Model", "\[Rule]", 
+     RowBox[{"{", "\<\"QED\"\>", "}"}]}], ",", 
+    RowBox[{"GenericModel", "\[Rule]", 
+     RowBox[{"{", "\<\"Lorentz\"\>", "}"}]}], ",", 
+    RowBox[{"AmplitudeLevel", "\[Rule]", 
+     RowBox[{"{", "Particles", "}"}]}], ",", 
+    RowBox[{"ExcludeParticles", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"ExcludeFieldPoints", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"LastSelections", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "]"}], "[", 
+  RowBox[{
+   RowBox[{"FeynAmp", "[", 
+    RowBox[{
+     RowBox[{"GraphID", "[", 
+      RowBox[{
+       RowBox[{"Topology", "\[Equal]", "1"}], ",", 
+       RowBox[{"Generic", "\[Equal]", "1"}], ",", 
+       RowBox[{"Particles", "\[Equal]", "1"}], ",", 
+       RowBox[{"Number", "\[Equal]", "1"}]}], "]"}], ",", 
+     RowBox[{"Integral", "[", "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        OverscriptBox["\<\"u\"\>", "\<\"_\"\>"], "[", 
+        RowBox[{
+         InterpretationBox[
+          RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "1"}],
+          SequenceForm["k", 1],
+          Editable->False], ",", "ME"}], "]"}], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"\[ImaginaryI]", " ", "EL", " ", 
+          RowBox[{
+           RowBox[{"\<\"ga\"\>", "[", 
+            InterpretationBox[
+             RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "2"}],
+             SequenceForm["Lor", 2],
+             Editable->False], "]"}], ".", 
+           RowBox[{"(", 
+            InterpretationBox[
+             RowBox[{"\<\"om\"\>", "\[InvisibleSpace]", 
+              RowBox[{"Subscript", "[", "\<\"-\"\>", "]"}]}],
+             SequenceForm["om", 
+              Subscript["-"]],
+             Editable->False], ")"}]}]}], "+", 
+         RowBox[{"\[ImaginaryI]", " ", "EL", " ", 
+          RowBox[{
+           RowBox[{"\<\"ga\"\>", "[", 
+            InterpretationBox[
+             RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "2"}],
+             SequenceForm["Lor", 2],
+             Editable->False], "]"}], ".", 
+           RowBox[{"(", 
+            InterpretationBox[
+             RowBox[{"\<\"om\"\>", "\[InvisibleSpace]", 
+              RowBox[{"Subscript", "[", "\<\"+\"\>", "]"}]}],
+             SequenceForm["om", 
+              Subscript["+"]],
+             Editable->False], ")"}]}]}]}], ")"}], ".", 
+       RowBox[{"(", 
+        RowBox[{"ME", "+", 
+         RowBox[{"\<\"gs\"\>", "[", 
+          RowBox[{
+           InterpretationBox[
+            RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "1"}],
+            SequenceForm["k", 1],
+            Editable->False], "+", 
+           InterpretationBox[
+            RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "2"}],
+            SequenceForm["k", 2],
+            Editable->False]}], "]"}]}], ")"}], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"\[ImaginaryI]", " ", "EL", " ", 
+          RowBox[{
+           RowBox[{"\<\"ga\"\>", "[", 
+            InterpretationBox[
+             RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "1"}],
+             SequenceForm["Lor", 1],
+             Editable->False], "]"}], ".", 
+           RowBox[{"(", 
+            InterpretationBox[
+             RowBox[{"\<\"om\"\>", "\[InvisibleSpace]", 
+              RowBox[{"Subscript", "[", "\<\"-\"\>", "]"}]}],
+             SequenceForm["om", 
+              Subscript["-"]],
+             Editable->False], ")"}]}]}], "+", 
+         RowBox[{"\[ImaginaryI]", " ", "EL", " ", 
+          RowBox[{
+           RowBox[{"\<\"ga\"\>", "[", 
+            InterpretationBox[
+             RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "1"}],
+             SequenceForm["Lor", 1],
+             Editable->False], "]"}], ".", 
+           RowBox[{"(", 
+            InterpretationBox[
+             RowBox[{"\<\"om\"\>", "\[InvisibleSpace]", 
+              RowBox[{"Subscript", "[", "\<\"+\"\>", "]"}]}],
+             SequenceForm["om", 
+              Subscript["+"]],
+             Editable->False], ")"}]}]}]}], ")"}], ".", 
+       RowBox[{"\<\"u\"\>", "[", 
+        RowBox[{
+         InterpretationBox[
+          RowBox[{"\<\"p\"\>", "\[InvisibleSpace]", "1"}],
+          SequenceForm["p", 1],
+          Editable->False], ",", "ME"}], "]"}]}], " ", 
+      RowBox[{"\<\"ep\"\>", "[", 
+       RowBox[{
+        RowBox[{"V", "[", "1", "]"}], ",", 
+        InterpretationBox[
+         RowBox[{"\<\"p\"\>", "\[InvisibleSpace]", "2"}],
+         SequenceForm["p", 2],
+         Editable->False], ",", 
+        InterpretationBox[
+         RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "1"}],
+         SequenceForm["Lor", 1],
+         Editable->False]}], "]"}], " ", 
+      FractionBox["1", 
+       RowBox[{
+        RowBox[{"-", "ME2"}], "+", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"-", 
+            RowBox[{"(", 
+             InterpretationBox[
+              RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "1"}],
+              SequenceForm["k", 1],
+              Editable->False], ")"}]}], "-", 
+           InterpretationBox[
+            RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "2"}],
+            SequenceForm["k", 2],
+            Editable->False]}], ")"}], "2"]}]], " ", 
+      RowBox[{
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{"\<\"ep\"\>", "\[InvisibleSpace]", 
+          RowBox[{"Superscript", "[", "\<\"*\"\>", "]"}]}],
+         SequenceForm[$CellContext`PolarizationVector, 
+          Superscript["*"]],
+         Editable->False], ")"}], "[", 
+       RowBox[{
+        RowBox[{"V", "[", "1", "]"}], ",", 
+        InterpretationBox[
+         RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "2"}],
+         SequenceForm["k", 2],
+         Editable->False], ",", 
+        InterpretationBox[
+         RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "2"}],
+         SequenceForm["Lor", 2],
+         Editable->False]}], "]"}]}]}], "]"}], ",", 
+   RowBox[{"FeynAmp", "[", 
+    RowBox[{
+     RowBox[{"GraphID", "[", 
+      RowBox[{
+       RowBox[{"Topology", "\[Equal]", "2"}], ",", 
+       RowBox[{"Generic", "\[Equal]", "1"}], ",", 
+       RowBox[{"Particles", "\[Equal]", "1"}], ",", 
+       RowBox[{"Number", "\[Equal]", "2"}]}], "]"}], ",", 
+     RowBox[{"Integral", "[", "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        OverscriptBox["\<\"u\"\>", "\<\"_\"\>"], "[", 
+        RowBox[{
+         InterpretationBox[
+          RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "1"}],
+          SequenceForm["k", 1],
+          Editable->False], ",", "ME"}], "]"}], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"\[ImaginaryI]", " ", "EL", " ", 
+          RowBox[{
+           RowBox[{"\<\"ga\"\>", "[", 
+            InterpretationBox[
+             RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "1"}],
+             SequenceForm["Lor", 1],
+             Editable->False], "]"}], ".", 
+           RowBox[{"(", 
+            InterpretationBox[
+             RowBox[{"\<\"om\"\>", "\[InvisibleSpace]", 
+              RowBox[{"Subscript", "[", "\<\"-\"\>", "]"}]}],
+             SequenceForm["om", 
+              Subscript["-"]],
+             Editable->False], ")"}]}]}], "+", 
+         RowBox[{"\[ImaginaryI]", " ", "EL", " ", 
+          RowBox[{
+           RowBox[{"\<\"ga\"\>", "[", 
+            InterpretationBox[
+             RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "1"}],
+             SequenceForm["Lor", 1],
+             Editable->False], "]"}], ".", 
+           RowBox[{"(", 
+            InterpretationBox[
+             RowBox[{"\<\"om\"\>", "\[InvisibleSpace]", 
+              RowBox[{"Subscript", "[", "\<\"+\"\>", "]"}]}],
+             SequenceForm["om", 
+              Subscript["+"]],
+             Editable->False], ")"}]}]}]}], ")"}], ".", 
+       RowBox[{"(", 
+        RowBox[{"ME", "+", 
+         RowBox[{"\<\"gs\"\>", "[", 
+          RowBox[{
+           RowBox[{"-", 
+            RowBox[{"(", 
+             InterpretationBox[
+              RowBox[{"\<\"p\"\>", "\[InvisibleSpace]", "2"}],
+              SequenceForm["p", 2],
+              Editable->False], ")"}]}], "+", 
+           InterpretationBox[
+            RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "1"}],
+            SequenceForm["k", 1],
+            Editable->False]}], "]"}]}], ")"}], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"\[ImaginaryI]", " ", "EL", " ", 
+          RowBox[{
+           RowBox[{"\<\"ga\"\>", "[", 
+            InterpretationBox[
+             RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "2"}],
+             SequenceForm["Lor", 2],
+             Editable->False], "]"}], ".", 
+           RowBox[{"(", 
+            InterpretationBox[
+             RowBox[{"\<\"om\"\>", "\[InvisibleSpace]", 
+              RowBox[{"Subscript", "[", "\<\"-\"\>", "]"}]}],
+             SequenceForm["om", 
+              Subscript["-"]],
+             Editable->False], ")"}]}]}], "+", 
+         RowBox[{"\[ImaginaryI]", " ", "EL", " ", 
+          RowBox[{
+           RowBox[{"\<\"ga\"\>", "[", 
+            InterpretationBox[
+             RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "2"}],
+             SequenceForm["Lor", 2],
+             Editable->False], "]"}], ".", 
+           RowBox[{"(", 
+            InterpretationBox[
+             RowBox[{"\<\"om\"\>", "\[InvisibleSpace]", 
+              RowBox[{"Subscript", "[", "\<\"+\"\>", "]"}]}],
+             SequenceForm["om", 
+              Subscript["+"]],
+             Editable->False], ")"}]}]}]}], ")"}], ".", 
+       RowBox[{"\<\"u\"\>", "[", 
+        RowBox[{
+         InterpretationBox[
+          RowBox[{"\<\"p\"\>", "\[InvisibleSpace]", "1"}],
+          SequenceForm["p", 1],
+          Editable->False], ",", "ME"}], "]"}]}], " ", 
+      RowBox[{"\<\"ep\"\>", "[", 
+       RowBox[{
+        RowBox[{"V", "[", "1", "]"}], ",", 
+        InterpretationBox[
+         RowBox[{"\<\"p\"\>", "\[InvisibleSpace]", "2"}],
+         SequenceForm["p", 2],
+         Editable->False], ",", 
+        InterpretationBox[
+         RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "1"}],
+         SequenceForm["Lor", 1],
+         Editable->False]}], "]"}], " ", 
+      FractionBox["1", 
+       RowBox[{
+        RowBox[{"-", "ME2"}], "+", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           InterpretationBox[
+            RowBox[{"\<\"p\"\>", "\[InvisibleSpace]", "2"}],
+            SequenceForm["p", 2],
+            Editable->False], "-", 
+           InterpretationBox[
+            RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "1"}],
+            SequenceForm["k", 1],
+            Editable->False]}], ")"}], "2"]}]], " ", 
+      RowBox[{
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{"\<\"ep\"\>", "\[InvisibleSpace]", 
+          RowBox[{"Superscript", "[", "\<\"*\"\>", "]"}]}],
+         SequenceForm[$CellContext`PolarizationVector, 
+          Superscript["*"]],
+         Editable->False], ")"}], "[", 
+       RowBox[{
+        RowBox[{"V", "[", "1", "]"}], ",", 
+        InterpretationBox[
+         RowBox[{"\<\"k\"\>", "\[InvisibleSpace]", "2"}],
+         SequenceForm["k", 2],
+         Editable->False], ",", 
+        InterpretationBox[
+         RowBox[{"\<\"Lor\"\>", "\[InvisibleSpace]", "2"}],
+         SequenceForm["Lor", 2],
+         Editable->False]}], "]"}]}]}], "]"}]}], "]"}]], "Output",
+ CellChangeTimes->{{3.5516257654399433`*^9, 3.5516258283199253`*^9}, {
+  3.551632634206997*^9, 3.551632650987515*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"\"\>"], "Print",
+ CellChangeTimes->{3.551632651003048*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"preparing FORM code in \"\>", 
+   "\[InvisibleSpace]", "\<\"/Users/rht/fc1.frm\"\>"}],
+  SequenceForm["preparing FORM code in ", "/Users/rht/fc1.frm"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.551632651007616*^9}],
+
+Cell["running FORM... ", "Print",
+ CellChangeTimes->{3.551632651018527*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"LinkObject", "::", "linkd"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Unable to communicate with closed link \
+\[NoBreak]\\\\!\\\\(LinkObject[\\\\(\\\\(\\\"/Users/rht/Dropbox/projects/\
+physicsproject/comptonscattering/0STUFF/FormCalc/MacOSX-x86-64/ReadForm\\\", \
+8, 8\\\\)\\\\)]\\\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/LinkObject/linkd\\\", ButtonNote -> \
+\\\"LinkObject::linkd\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.551632651195931*^9}],
+
+Cell[BoxData["\<\"ok\"\>"], "Print",
+ CellChangeTimes->{3.551632651219612*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partd"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \[NoBreak]\\\\!\\\\($Failed \
+\\\\[LeftDoubleBracket] 1 \\\\[RightDoubleBracket]\\\\)\[NoBreak] is longer \
+than depth of object. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partd\\\", ButtonNote -> \
+\\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.5516326512727203`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Amp", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"ME", ",", "0"}], "}"}], "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"ME", ",", "0"}], "}"}]}], "]"}], "[", 
+  RowBox[{"$Failed", ",", "1"}], "]"}]], "Output",
+ CellChangeTimes->{{3.5516257654399433`*^9, 3.5516258283199253`*^9}, {
+  3.551632634206997*^9, 3.5516326512796907`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5516218056195*^9, 3.551621812816888*^9}, 
+   3.551621847516343*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"t33", " ", "=", " ", 
+   RowBox[{"CreateTopologies", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{"1", "\[Rule]", "1"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"bb", " ", "=", " ", 
+  RowBox[{"InsertFields", "[", 
+   RowBox[{"t33", ","}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"CreateFeynAmp", "[", "bb", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Paint", "[", "bb", "]"}]}], "Input",
+ CellChangeTimes->{
+  3.508615752692761*^9, {3.5086158104915457`*^9, 3.508615813941132*^9}, {
+   3.5086160234998007`*^9, 3.5086160562900867`*^9}, {3.508616209060979*^9, 
+   3.508616219314418*^9}, {3.508616416643284*^9, 3.5086164560368032`*^9}, {
+   3.551620591352255*^9, 3.5516206022194843`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"top", " ", "=", " ", 
+   RowBox[{"CreateTopologies", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{"1", "\[Rule]", "1"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Paint", "[", "top", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ins", "=", 
+  RowBox[{"InsertFields", "[", 
+   RowBox[{"top", ",", 
+    RowBox[{
+     RowBox[{"V", "[", "1", "]"}], "\[Rule]", 
+     RowBox[{"V", "[", "1", "]"}]}], ",", 
+    RowBox[{"Model", "\[Rule]", "SM"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Paint", "[", "ins", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"amp", "=", 
+  RowBox[{"CreateFeynAmp", "[", "ins", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"amp", ">>", "PhotonSelfEnergy.amp"}]}], "Input",
+ CellChangeTimes->{{3.497743015228774*^9, 3.497743020284916*^9}, {
+  3.497743466868278*^9, 3.49774346840135*^9}, {3.4977449765443087`*^9, 
+  3.497744978128384*^9}, {3.4977452557919273`*^9, 3.497745279166003*^9}, {
+  3.5087299228336143`*^9, 3.508729957312214*^9}, {3.508730003267714*^9, 
+  3.5087300207008944`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"examine", " ", "feynarts", " ", "functions"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"?", "FeynArts`*"}]}]], "Input",
+ CellChangeTimes->{{3.4977441962632113`*^9, 3.497744200973104*^9}, 
+   3.5086157272269573`*^9, {3.508730619364243*^9, 3.508730630022719*^9}, {
+   3.508730678325163*^9, 3.508730679458313*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tops", " ", "=", " ", 
+   RowBox[{"CreateTopologies", "[", 
+    RowBox[{"0", ",", "4", ",", 
+     RowBox[{"ExcludeTopologies", "\[Rule]", 
+      RowBox[{"{", "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ins", " ", "=", " ", 
+   RowBox[{"InsertFields", "[", 
+    RowBox[{"tops", ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"F", "[", 
+         RowBox[{"3", ",", 
+          RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+        RowBox[{"-", 
+         RowBox[{"F", "[", 
+          RowBox[{"3", ",", 
+           RowBox[{"{", "1", "}"}]}], "]"}]}]}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"F", "[", 
+         RowBox[{"2", ",", 
+          RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+        RowBox[{"-", 
+         RowBox[{"F", "[", 
+          RowBox[{"2", ",", 
+           RowBox[{"{", "1", "}"}]}], "]"}]}]}], "}"}]}], ",", 
+     RowBox[{"Model", "\[Rule]", "SMQCD"}], ",", 
+     RowBox[{"InsertionLevel", "\[Rule]", 
+      RowBox[{"{", "Classes", "}"}]}], ",", 
+     RowBox[{"ExcludeParticles", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"S", "[", "1", "]"}], ",", 
+         RowBox[{"S", "[", "2", "]"}], ",", 
+         RowBox[{"S", "[", "3", "]"}]}], "}"}], "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Paint", "[", 
+   RowBox[{"ins", ",", 
+    RowBox[{"ColumnsXRows", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}]}], ",", 
+    RowBox[{"PaintLevel", "\[Rule]", 
+     RowBox[{"{", "Classes", "}"}]}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"famp", "=", 
+  RowBox[{"CreateFeynamp", "[", "ins", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"famp", " ", "//", " ", "Length"}], "\[IndentingNewLine]", 
+ RowBox[{"strm", " ", "=", " ", 
+  RowBox[{
+  "OpenWrite", "[", "\"\<testtestan.amp\>\"", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Write", "[", 
+  RowBox[{"strm", ",", "famp2"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Close", "[", "strm", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5087306813605347`*^9, 3.508730822753058*^9}, {
+  3.508730865799684*^9, 3.508730892218297*^9}, {3.5087309611954937`*^9, 
+  3.508730987507821*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{{3.508731246343811*^9, 3.508731282891305*^9}}]
+},
+WindowSize->{638, 756},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+ShowSelection->True,
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 13, \
+2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 2146, 50, 163, "Input"],
+Cell[CellGroupData[{
+Cell[2738, 76, 100, 1, 20, "Print"],
+Cell[2841, 79, 109, 1, 20, "Print"],
+Cell[2953, 82, 143, 1, 20, "Print"],
+Cell[3099, 85, 120, 1, 20, "Print"]
+}, Open  ]],
+Cell[3234, 89, 711, 13, 59, "Message"],
+Cell[3948, 104, 699, 13, 57, "Message"],
+Cell[4650, 119, 705, 13, 57, "Message"],
+Cell[5358, 134, 690, 13, 57, "Message"],
+Cell[6051, 149, 676, 12, 57, "Message"],
+Cell[6730, 163, 664, 12, 57, "Message"],
+Cell[7397, 177, 664, 12, 57, "Message"],
+Cell[8064, 191, 704, 13, 57, "Message"],
+Cell[CellGroupData[{
+Cell[8793, 208, 98, 1, 20, "Print"],
+Cell[8894, 211, 110, 1, 20, "Print"],
+Cell[9007, 214, 114, 1, 20, "Print"],
+Cell[9124, 217, 120, 1, 20, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[9271, 222, 118, 2, 27, "Input"],
+Cell[9392, 226, 2071, 47, 58, "Input"],
+Cell[CellGroupData[{
+Cell[11488, 277, 2753, 67, 178, "Input"],
+Cell[CellGroupData[{
+Cell[14266, 348, 76, 1, 20, "Print"],
+Cell[14345, 351, 568, 13, 51, "Print"],
+Cell[14916, 366, 96, 1, 20, "Print"],
+Cell[15015, 369, 321, 7, 20, "Print"],
+Cell[15339, 378, 76, 1, 20, "Print"],
+Cell[15418, 381, 557, 13, 51, "Print"],
+Cell[15978, 396, 383, 7, 20, "Print"],
+Cell[16364, 405, 97, 1, 20, "Print"],
+Cell[16464, 408, 243, 6, 20, "Print"],
+Cell[16710, 416, 273, 6, 20, "Print"],
+Cell[16986, 424, 313, 7, 20, "Print"],
+Cell[17302, 433, 76, 1, 20, "Print"],
+Cell[17381, 436, 275, 6, 20, "Print"],
+Cell[17659, 444, 322, 7, 20, "Print"],
+Cell[17984, 453, 320, 7, 20, "Print"],
+Cell[18307, 462, 322, 7, 20, "Print"],
+Cell[18632, 471, 320, 7, 20, "Print"],
+Cell[18955, 480, 254, 6, 20, "Print"],
+Cell[19212, 488, 78, 1, 20, "Print"],
+Cell[19293, 491, 293, 6, 20, "Print"],
+Cell[19589, 499, 322, 7, 20, "Print"],
+Cell[19914, 508, 320, 7, 20, "Print"],
+Cell[20237, 517, 254, 6, 20, "Print"]
+}, Open  ]],
+Cell[20506, 526, 12690, 338, 350, "Output"],
+Cell[CellGroupData[{
+Cell[33221, 868, 76, 1, 20, "Print"],
+Cell[33300, 871, 272, 6, 20, "Print"],
+Cell[33575, 879, 75, 1, 20, "Print"]
+}, Open  ]],
+Cell[33665, 883, 618, 12, 59, "Message"],
+Cell[34286, 897, 78, 1, 20, "Print"],
+Cell[34367, 900, 527, 11, 40, "Message"],
+Cell[34897, 913, 369, 10, 27, "Output"]
+}, Open  ]],
+Cell[35281, 926, 116, 2, 27, "Input"],
+Cell[35400, 930, 728, 15, 73, "Input"],
+Cell[36131, 947, 1041, 22, 103, "Input"],
+Cell[37175, 971, 369, 8, 43, "Input"],
+Cell[37547, 981, 2304, 63, 193, "Input"],
+Cell[39854, 1046, 111, 1, 43, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

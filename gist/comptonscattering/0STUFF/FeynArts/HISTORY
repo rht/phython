@@ -1,0 +1,54 @@
+Version 1.0 written 1991 by Hagen Eck and Sepp Kueblbeck
+========================================================
+Fast and reliable diagram generator for renormalizable
+field theories (i.e. with 3- and 4-vertices only), but
+suffered from several restrictions:
+-- no counter-term generation possible,
+-- no fermion-number-violating theories possible,
+-- only Lorentz formalism available.
+
+Further modifications and enhancements:
+-- Nov 97: added X11 (`point-and-click') topology editor
+
+
+Version 2.0 written in 1995 by Hagen Eck
+========================================
+Introduces a completely new three-level concept of generation.
+Fills the above-mentioned gaps in FA 1.
+Some extra points are:
+-- the Graphics routines now live in a separate context so as
+   to be reusable by other packages.
+
+
+Version 2.2 written in 1998 by Thomas Hahn:
+===========================================
+-- Completely overhauled: no new concepts, but most of the code was
+   rewritten entirely.
+-- Known FA 2.1 bugs removed.
+-- Much faster: e.g. model initialization is faster roughly by a
+   factor 3.
+-- Includes a point-and-click topology editor together with a
+   sophisticated autoshaping algorithm.
+
+For a list of changes between 2.1 and 2.2 see the manual.
+
+
+Version 3 written in 2000 by Thomas Hahn:
+=========================================
+-- Reprogrammed topology editor in Java for greater portability.
+-- Output of Paint now easier to process further (e.g. selection
+   of diagrams), rendering is done with the standard Mathematica
+   functions Show, Display, Export.
+-- Completely new rendering engine for PostScript and TeX.
+-- Topologies get canonically ordered (main advantage: no extra
+   shapes need to be defined for counter-term tops).
+
+Further modifications and enhancements:
+-- Jun 01: Added MSSM and MSSMQCD model files (see hep-ph/0105349).
+-- Sep 01: Added ModelMaker utility to generate Feynman rules
+   from the Lagrangian and write them to a model file.
+
+
+Please send bug reports, omissions, fan mail, etc. to
+Thomas Hahn <hahn@feynarts.de>
+

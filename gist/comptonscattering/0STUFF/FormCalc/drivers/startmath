@@ -1,0 +1,28 @@
+#! /bin/sh
+# this is an extension to FormCalc's submit script with which
+# also Mathematica programs that utilize FormCalc's Mathematica
+# interface can be distributed (parallelized)
+# this file is part of FormCalc
+# last modified 19 Jan 07 th
+
+# The invocation is
+#	submit startmath
+# i.e. startmath is meant to be used `underneath' submit.
+
+
+# THIS IS A TEMPLATE AND NOT A FINAL PRODUCT.
+# YOU MUST PUT YOUR MATHEMATICA PROGRAM BELOW.
+
+
+math -run "icpu=`echo $1 | cut -d, -f1`" \
+     -run "ncpu=`echo $1 | cut -d, -f3`" << \_EOF_
+
+(* PUT YOUR MATHEMATICA PROGRAM HERE: *)
+
+Install["run"];
+
+run[..., Serial -> {icpu, 2^30, ncpu}];
+
+_EOF_
+
+

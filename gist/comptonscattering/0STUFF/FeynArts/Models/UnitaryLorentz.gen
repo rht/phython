@@ -1,0 +1,14 @@
+(*
+	UnitaryLorentz.gen
+		Add-on for Lorentz.gen in unitary gauge
+		last modified 26 Oct 07 th
+*)
+
+
+M$GenericPropagators = M$GenericPropagators /.
+  AnalyticalPropagator[Internal][_. _V] == _ ->
+  AnalyticalPropagator[Internal][ s1 V[j1, mom, {li1} -> {li2}] ] ==  
+    -I PropagatorDenominator[mom, Mass[V[j1]]] *
+      (MetricTensor[li1, li2] -
+         GaugePart[Mass[V[j1]], GaugeXi[V[j1]], mom] *
+         FourVector[mom, li1] FourVector[mom, li2])

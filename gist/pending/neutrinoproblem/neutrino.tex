@@ -1,0 +1,25 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fancyhdr}
+\usepackage[margin=1in,top=1.5in,headheight=3em]{geometry}
+\pagestyle{fancy} 
+
+\begin{document}
+\title{NEUTRINO OSCILLATIONS}
+\maketitle
+(assumption: 2 state oscillations)
+Eigenstate of neutrino:
+\begin{equation}
+\nu_1 = \cos \theta \nu_\mu - \sin \theta \nu_e ; \nu_2 = \sin \theta \nu_\mu + \cos \theta \nu_e
+\end{equation}
+As usual, by solving the schrodinger equation for two state system, we get
+\begin{equation}
+\nu_1(t) = -\sin \theta e^{-iE_1t/\hbar} ; \nu_2 = \cos \theta e^{-iE_2t/\hbar}
+\end{equation}
+Solving for $\nu_\mu$
+\begin{eqnarray}
+\nu_\mu(t) = \sin \theta \cos \theta (-e^{-iE_1t/\hbar} + e^{-iE_2t/\hbar}) \\
+P_{\nu_e \rightarrow \nu_\mu} = \left[ \sin(2\theta) \sin(\frac{E_2 - E_1}{2\hbar}t) \right]^2
+\end{eqnarray}
+which is approximately $\left[ \sin(2\theta) \sin[\frac{(m_2^2 -m_1^2)c^3}{4\hbar E}z]\right]^2$
+
+\end{document}
