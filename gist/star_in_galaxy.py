@@ -1,3 +1,7 @@
+import matplotlib
+#matplotlib.use('TkAgg')
+#matplotlib.use('module://mplh5canvas.backend_h5canvas')
+
 from pylab import *
 #by fsz, tweaked
 
@@ -37,6 +41,7 @@ def orbit():
     #graphing
     title('Plot of stellar orbit for k= 0.451 for theta = 0 to 20 pi')
     polar(*array(theta_r_v).T[:-1])
+    #show(open_plot=True)
     show()
     
 

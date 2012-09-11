@@ -8,8 +8,7 @@ weyl = matrix([[0, 1],[ -1, 0]])
 sx = matrix([[0, 1],[ 1, 0]])
 sy = matrix([[0, -1j],[1j, 0]])
 sz = matrix([[1, 0],[0, -1]])
-def pauli(x):
-    return [sx, sy, sz][x - 1]
+pauli = lambda x: [sx, sy, sz][x - 1]
 
 
 #gamma0 = kron(sz, eye(2))
@@ -19,7 +18,9 @@ def pauli(x):
 index = [0, 1, 2, 3] 
 gamma0 = kron(sx, eye(2))
 gamma5 = -kron(sz, eye(2))
-mgamma = lambda x: gamma0 if x == 0 else kron(weyl, pauli(x))
+
+#use this only
+gamma = lambda x: gamma0 if x == 0 else kron(weyl, pauli(x))
 
 tgamma = [mgamma(i) for i in index]
 tgamma5 = [gamma5 for i in index]
@@ -34,6 +35,13 @@ def traceofgammas(*args):
 #possibly useful
 #http://docs.scipy.org/doc/numpy/reference/generated/numpy.einsum.html
 
+
+# numerically evaluate trace of gammas
 #print(shape(tproducts(tgamma,tgamma,tgamma)))
 #print(tproducts(tgamma,tgamma))
-print(traceofgammas(tgamma,tgamma,tgamma))
+#print(traceofgammas(tgamma,tgamma,tgamma))
+#print "trace"
+#print(traceofgammas(tgamma,tgamma))
+
+
+
